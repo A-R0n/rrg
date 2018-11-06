@@ -1,0 +1,113 @@
+.entireProfile {
+    position: relative;
+}
+
+.topHalf {
+    text-align: left;
+    width: 100vw;
+    height: 38vh;
+    display: flex;
+    background: rgb(233, 214, 180);
+}
+
+.profilePic {
+    left: 3vw;
+    position: absolute;
+    top: -4vh;
+    width: 8vw;
+    height: 15vh;
+    margin-bottom: 2vh;
+    background: grey;
+    border-radius: 50%;
+    align-content: center;
+}
+
+.editProfileButton {
+    position: absolute;
+    right: 5vw;;
+    top: 2vh;
+    color: blue;
+    border-radius: 25%;
+    font-size: 20px;
+    border: 1px solid blue;
+    padding: 10px;
+}
+
+.userName {
+    position: absolute;
+    top: 12vh;
+    left: 3vw;
+    font-size: 35px;
+}
+
+.biography {
+    position: absolute;
+    top: 19vh;
+    left: 3vw;
+}
+
+.location {
+    position: absolute;
+    left: 3vw;
+    top: 24vh;
+}
+
+.profileData {
+    position: absolute;
+    top: 30.5vh;
+    display: flex;
+    justify-content: center;
+    
+}
+#one, #two, #three, #four {
+    width: 25vw;
+    height: 7.5vh;
+    background: rgb(233, 214, 180);
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(48, 34, 18);
+    opacity: 0.5;
+    
+}
+
+#one {
+    border-bottom: 1px solid rgb(48, 34, 18);
+    opacity: 1;
+}
+
+.allJournalEntries {
+    min-height: 50vh;
+    border: 1px solid black;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    padding-top: 0;
+}
+
+.individualRoute {
+    border-bottom: 1px solid black;
+    height: 15vh;
+    width: 80vw;
+    position: relative;
+}
+
+#profileRouteName {
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin-top: 0;
+    color: white;
+
+}
+
+#profileRouteDescription {
+    text-align: center;
+}
+
+#profileRouteTimeStamp {
+    text-align: center;
+    bottom: 0;
+    margin: 0;
+    color: grey;
+    
+}
+

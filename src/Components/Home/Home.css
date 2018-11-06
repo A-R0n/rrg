@@ -1,0 +1,37 @@
+.homeImg {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    height: 87.5vh;
+}
+
+.cloud {
+    height: 15vh;
+    width: 10vw;
+    position: absolute;
+    left: 5vw;
+    top: 17vh;
+}
+
+.michaela {
+    width: 90%;
+    height: 90%;
+}
+
+#login {
+   position: absolute;
+   top: 9.5vh;
+   right: 7vw; 
+   text-decoration: none;
+   color: white;
+}
+
+#logout {
+    position: absolute;
+    top: 9.5vh;
+    right: 1vw; 
+    text-decoration: none;
+    color: white;
+ }
+

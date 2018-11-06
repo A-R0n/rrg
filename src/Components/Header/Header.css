@@ -1,0 +1,26 @@
+.header {
+    background: rgb(145, 165, 145);
+    height: 12vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    
+}
+#homebutton, #journalbutton, #profilebutton, #weatherbutton {
+    padding-left: 2%;
+    font-weight: bold;
+    color: rgb(65, 34, 34);
+    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
+    
+}
+
+#head {
+    padding-left: 40%;
+    color: rgb(65, 34, 34);
+    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
+    
+}
+
+
