@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import './Profile.css';
-import axios from 'axios';
 import RouteLog from '../RouteLog/RouteLog.js';
+import moment from 'moment';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import { updateUserName, updateBiography, updateLocation, updateProfile } from '../../redux/reducer';
 
-export default class Profile extends Component {
+
+class Profile extends Component {
     constructor(){
         super();
 
@@ -16,30 +20,28 @@ export default class Profile extends Component {
             this.setState({
                 iNeedToBringInRedux: results.data,
             })
-            console.log(this.state.iNeedToBringInRedux)
         })
     }
 
     render(){
         let anotherMap = this.state.iNeedToBringInRedux.map((elem, i) => {
             return <RouteLog key = {i} route_name = {elem.route_name}
-            description_ = {elem.description_} timestamp_ = {elem.time_stamp} />
+            description_ = {elem.description_} timestamp_ = {moment(elem.time_stamp).calendar()} sent = {elem.sent_}/>
 
         })
-        console.log('this is anotherMap', anotherMap)
+        const {updateUserName, updateBiography, updateLocation, updateProfile} = this.props;
         return (
             <div className="entireProfile">
                 <div className="topHalf">
-                    <img className="profilePic"></img>
+                    <img className="profilePic" alt='text'></img>
                     <button className="editProfileButton">Edit Profile </button>
-                    <textarea className="userName" placeholder="User Name"></textarea>
-                    <textarea className="biography" placeholder="Biography"></textarea>
-                    <textarea className="location" placeholder="Location"></textarea>
+                    <textarea className="userName" placeholder="User Name" onChange={(e) => updateUserName(e.target.value)}></textarea>
+                    <textarea className="biography" placeholder="Biography" onChange={(e) => updateBiography(e.target.value)}></textarea>
+                    <textarea className="location" placeholder="Location" onChange={(e) => updateLocation(e.target.value)}></textarea>
+                    <button className= 'makeProfile' onClick={() => updateProfile(this.props)}>submit</button>
                     <div className="profileData">
                         <button id="one">Journal</button>
                         <button id="two">Media</button>
-                        <button id="three">Sends</button>
-                        <button id="four">Projects</button>
                     </div>
                 </div> 
                 <div className="bottomHalf">
@@ -55,8 +57,21 @@ export default class Profile extends Component {
                     <div className="allProjects">
                     
                     </div>
-                </div>
+                </div> 
             </div>
         )
     }
 }
+
+function mapStateToProps( state ) {
+    const { userName, biography, location } = state;
+  
+    return {
+      userName,
+      biography,
+      location
+    };
+  }
+  
+  
+  export default connect( mapStateToProps, { updateUserName, updateBiography, updateLocation, updateProfile } )( Profile );

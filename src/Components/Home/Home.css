@@ -6,32 +6,35 @@
     height: 87.5vh;
 }
 
-.cloud {
-    height: 15vh;
-    width: 10vw;
+.currentWeatherMiddle {
+    height: 24vh;
+    width: 15vw;
     position: absolute;
-    left: 5vw;
-    top: 17vh;
+    left: 39.8vw;
+    top: 16.5vh;
 }
+
 
 .michaela {
     width: 90%;
     height: 90%;
 }
 
-#login {
+#login, #logout {
    position: absolute;
-   top: 9.5vh;
-   right: 7vw; 
    text-decoration: none;
    color: white;
+   top: 17vh;
+   
+}
+
+#login {
+   right: 11vw; 
 }
 
 #logout {
-    position: absolute;
-    top: 9.5vh;
-    right: 1vw; 
-    text-decoration: none;
-    color: white;
- }
+    right: 6vw;
+}
+
+
 

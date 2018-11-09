@@ -4,12 +4,14 @@ import axios from 'axios';
 
 
 
+
 export default class Home extends Component {
     constructor(){
         super();
 
         this.state = {
-            corrd: []
+            corrd: [],
+            routes: []
         }
         
     }
@@ -21,23 +23,24 @@ export default class Home extends Component {
           })
         })
       }
-   
+
 
     render(){
         const {corrd} = this.state
         let mapWeather = corrd.map((val) => {
             return <div>
-            <img className='cloud'src={val.image} alt='text'></img>
+            <img className='currentWeatherMiddle'src={val.image} alt='text'></img>
             </div>
           })
-
         
         return (
+            <div>
             <div className='homeImg'>
             {mapWeather}
             <img  className="michaela" src='https://www.nationalgeographic.com/content/dam/expeditions/destinations/north-america/private/Yosemite/Hero-Yosemite.ngsversion.1524840074980.adapt.1900.1.jpg' alt='text'></img>
             <a id='login' href={`${process.env.REACT_APP_SERVER}/login`}>Login</a>
             <a id='logout' href={`${process.env.REACT_APP_SERVER}/logout`}>Logout</a>
+            </div>
             </div>
         )
     }

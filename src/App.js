@@ -16,16 +16,6 @@ class App extends Component {
     
   }
 
-  // componentDidMount(){
-  //   console.log('hey')
-  //   axios.get('/api/weather').then(results => {
-  //     console.log('comp did mount', results)
-  //     this.setState({
-  //       corrd: results.data.weather
-  //     })
-  //   })
-  // }
-
 
   render() {
    
@@ -38,7 +28,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Header title="Red River Gorge"  profile="Profile" plan="Search" journal='Journal' />
+            <Header title="Red River Gorge"  profile="Profile" plan="Search" journal='Reviews' />
             {routes}
             <div>{mapper}</div>
           </div>

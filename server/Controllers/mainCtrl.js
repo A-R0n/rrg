@@ -34,7 +34,7 @@ const getRoutes = (req, res, next) => {
 const addRoute = (req, res, next) => {
     req.app
         .get('db')
-        .post_route(req.params.id, req.session.passport.user.id)
+        .post_route([req.params.id, req.session.passport.user.id])
         .then(response => 
             res
                 .status(200)
@@ -46,7 +46,15 @@ const addRoute = (req, res, next) => {
 const getTable = (req, res, next) => {
     req.app
         .get('db')
-        .getCart(req.session.passport.user.id)
+        .getCart([req.session.passport.user.id])
+        .then(response => res.status(200).send(response))
+        .catch(err => res.status(500).send(err))
+};
+
+const getEveryonesDescription = (req, res, next) => {
+    req.app
+        .get('db')
+        .getEveryonesCart()
         .then(response => res.status(200).send(response))
         .catch(err => res.status(500).send(err))
 };
@@ -54,7 +62,7 @@ const getTable = (req, res, next) => {
 const update = ( req, res, next ) => {
     req.app
         .get('db')
-        .update_(req.params.id, req.body.description)
+        .update_([req.params.id, req.body.description, req.session.passport.user.id])
         .then(response => res.status(200).send(response) )
         .catch(err => res.status(500).send(err))
 };
@@ -63,14 +71,6 @@ const updateTime = ( req, res, next ) => {
     req.app
         .get('db')
         .update_time(req.params.id)
-        .then(response => res.status(200).send(response) )
-        .catch(err => res.status(500).send(err))
-};
-
-const updateSend = ( req, res, next ) => {
-    req.app
-        .get('db')
-        .sent_(req.params.id)
         .then(response => res.status(200).send(response) )
         .catch(err => res.status(500).send(err))
 };
@@ -84,13 +84,31 @@ const deleteRouteFromJournal = (req, res, next) => {
 };
 
 const createRating = (req, res, next) => {
-    console.log('req.params', req.params)
-    console.log('req.body', req.body)
     req.app
         .get('db')
         .star(req.params.id, req.body.newRating)
         .then(response => res.status(200).send(response) )
         .catch(err => res.status(500).send(err))
+}
+
+const iGotIt = (req, res, next) => {
+    req.app
+        .get('db')
+        .sent_(req.params.id)
+        .then(response => res.status(200).send(response) )
+        .catch(err => res.status(500).send(err))
+}
+
+
+const createProfile = (req, res, next) => {
+    const {userName, biography, location} = req.body.val
+    req.app
+        .get('db')
+        .updateProfile([userName, biography, location, req.user.id])
+        .then(response => res.status(200).send(response) )
+        .catch(err => {
+            console.log(err)
+            res.status(500).send(err)})
 }
 
 
@@ -102,6 +120,8 @@ module.exports = {
     update,
     deleteRouteFromJournal,
     updateTime,
-    updateSend,
-    createRating
+    createRating,
+    iGotIt,
+    getEveryonesDescription,
+    createProfile
 };

@@ -22,13 +22,17 @@ const {
   getRoutes,
   addRoute,
   getTable,
-  updateSend
-} = require("./Controllers/weatherCtrl");
+  iGotIt,
+  getEveryonesDescription,
+  
+  createProfile
+} = require("./Controllers/mainCtrl");
 
 const port = 3001;
 
 app.use(json());
 app.use(cors());
+
 
 app.use(
   session({
@@ -36,7 +40,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 900000000000
+      maxAge: 14 * 24 * 60 * 60 * 1000
     }
   })
 );
@@ -68,9 +72,9 @@ passport.use(
 
 passport.serializeUser((user, done) => {
   const db = app.get("db");
-
+  console.log('user currently logged in', user)
   db.climbers
-    .get_climber_by_authid(user.id)
+    .get_climber_by_authid([user.id])
     .then(response => {
       if (!response[0]) {
         db.climbers
@@ -90,7 +94,7 @@ passport.deserializeUser((user, done) => done(null, user));
 app.get(
   "/login",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/",
+    successRedirect: "http://localhost:3000/profile",
     failureRedirect: "/login"
   })
 );
@@ -98,24 +102,31 @@ app.get(
 app.get("/logout", function(req, res) {
   req.logout();
   req.session.destroy();
-  console.log("this is res.redirect", res.redirect);
   res.redirect("http://localhost:3000/");
 });
 
 // Endpoints
 app.get("/api/user", (req, res) => {
+  console.log('sessss', req.user)
   res.status(200).json(req.session);
 });
 app.get(`/api/weather`, getCoordinate);
 app.get(`/api/routes`, getRoutes);
 app.get(`/api/table`, getTable);
-// app.get(`/api/profile`, getProfile)
+app.get(`/api/everyone`, getEveryonesDescription)
+
 
 app.post(`/api/test/:id`, addRoute);
 
+app.put(`/api/iGotIt/:id`, iGotIt)
 app.put(`/api/description/:id`, update);
 app.put(`/api/timestamp/:id`, updateTime);
-app.put(`/api/description/:id`, updateSend);
+
+// redux endpoints
+app.put(`/api/username`, createProfile)
+// app.put(`/api/biography`, createProfile);
+// app.put(`/api/location`, createProfile);
+
 app.put(`/api/rating/:id`, createRating)
 
 app.delete(`/api/table/:id`, deleteRouteFromJournal);

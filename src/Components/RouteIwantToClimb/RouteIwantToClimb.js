@@ -7,31 +7,41 @@ export default class RouteIwantToClimb extends Component{
         super();
 
         this.state = {
-            rating: 0
+            display: true,
+            description: ''
         }
 
         
     }
 
     changeRating = ( newRating, name) => {
-        const {rating} = this.state
-        this.setState({rating: newRating});
-        console.log('this.props', this.props)
-        // console.log('this.state', this.state)
         axios.put(`/api/rating/${this.props.elem.id_of_route}`, {newRating})
     }
 
+    handleClickPut = (id) => {
+        axios.put(`/api/description/${id}`, {description: this.state.description}).then(res => {
+            this.setState({
+                display: false
+            })
+        })
+        axios.put(`/api/timestamp/${id}`)
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            description: e
+        })  
+    }
+
         render(){
-            console.log(this.state)
             return (
-                <div className='everything'>
+                <div className={this.state.display ? 'everything' : 'nothing'}>
                     <img className='journalImg' 
                         src={this.props.route_img}
                         alt="text"></img>
-                    <p className="routeName">
-                    {this.props.route_name} { } {this.props.route_grade}</p>
-                    <textarea id='logInput' onChange={(e) => this.props.handleChange(e.target.value)}></textarea>
-                    <button id='logButton' onClick={() => this.props.handleClickPut(this.props.elem.route_id)}>Log</button>
+                    <p className="routeName">{this.props.route_name} { } {this.props.route_grade}</p>
+                    <textarea id='logInput' onChange={(e) => this.handleChange(e.target.value)}></textarea>
+                    <button id='logButton' onClick={() => this.handleClickPut(this.props.elem.route_id)}>Log</button>
                     <button id='sendButton' onClick={() => this.props.handleClickSend(this.props.elem.route_id)}>Send</button>
                     <button id='deleteButton' onClick={() => this.props.handleClickDel(this.props.elem.route_id)}>Delete</button>
                     <StarRatings className='stars'
@@ -42,6 +52,9 @@ export default class RouteIwantToClimb extends Component{
                         name='rating'
                         starDimension="16px"
                         starSpacing="1px"
+                        starEmptyColor="white"
+                        starHoverColor="rgb(243, 236, 186)"
+                        
                         />
                     
                 </div>
@@ -49,15 +62,3 @@ export default class RouteIwantToClimb extends Component{
         }
     }
     
-
- 
-// class Foo extends Component {
-
- 
-//     render() {
-//       // rating = 2;
-//       return (
-
-//       );
-//     }
-// }

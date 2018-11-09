@@ -13,7 +13,7 @@
 .profilePic {
     left: 3vw;
     position: absolute;
-    top: -4vh;
+    top: 4vh;
     width: 8vw;
     height: 15vh;
     margin-bottom: 2vh;
@@ -35,21 +35,27 @@
 
 .userName {
     position: absolute;
-    top: 12vh;
-    left: 3vw;
-    font-size: 35px;
+    top: 2vh;
+    left: 15vw;
 }
 
 .biography {
     position: absolute;
-    top: 19vh;
-    left: 3vw;
+    top: 10vh;
+    left: 15vw;
 }
 
 .location {
     position: absolute;
-    left: 3vw;
-    top: 24vh;
+    left: 15vw;
+    top: 19vh;
+}
+
+.makeProfile {
+    position: absolute;
+    top: 27vh;
+    left: 22vw;
+    border: 1px solid black;
 }
 
 .profileData {
@@ -101,13 +107,30 @@
 
 #profileRouteDescription {
     text-align: center;
+    
 }
 
 #profileRouteTimeStamp {
-    text-align: center;
-    bottom: 0;
+    text-align: right;
+    top: 0;
+    right: 1vw;
     margin: 0;
     color: grey;
+    position: absolute;
     
 }
+
+#checkmark {
+    font: Wingdings;
+    position: absolute;
+    right: 0;
+    top: -2vh;
+    color: greenyellow;
+}
+
+#trady {
+    display: none;
+}
+
+
 
