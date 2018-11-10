@@ -111,6 +111,14 @@ const createProfile = (req, res, next) => {
             res.status(500).send(err)})
 }
 
+const getUser = (req, res, next) => {
+    req.app
+        .get('db')
+        .get_user(req.user.id)
+        .then(response => res.status(200).send(response))
+        .catch(err => res.status(500).send(err))
+};
+
 
 module.exports = {
     getCoordinate,
@@ -123,5 +131,6 @@ module.exports = {
     createRating,
     iGotIt,
     getEveryonesDescription,
-    createProfile
+    createProfile,
+    getUser
 };

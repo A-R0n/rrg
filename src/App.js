@@ -28,7 +28,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Header title="Red River Gorge"  profile="Profile" plan="Search" journal='Reviews' />
+            <Header title="Red River Gorge"  profile="Profile" plan="Routes" journal='Cart' />
             {routes}
             <div>{mapper}</div>
           </div>

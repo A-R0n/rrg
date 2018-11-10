@@ -97,10 +97,9 @@
 }
 
 #profileRouteName {
-    top: 0;
-    left: 0;
     padding: 0;
     margin-top: 0;
+    margin-left: 1.5vw;
     color: white;
 
 }
@@ -123,13 +122,17 @@
 #checkmark {
     font: Wingdings;
     position: absolute;
-    right: 0;
+    left: 0vw;
     top: -2vh;
     color: greenyellow;
 }
 
 #trady {
     display: none;
+}
+
+#greeting {
+    
 }
 
 

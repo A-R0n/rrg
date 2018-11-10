@@ -24,7 +24,7 @@ const {
   getTable,
   iGotIt,
   getEveryonesDescription,
-  
+  getUser,
   createProfile
 } = require("./Controllers/mainCtrl");
 
@@ -114,7 +114,7 @@ app.get(`/api/weather`, getCoordinate);
 app.get(`/api/routes`, getRoutes);
 app.get(`/api/table`, getTable);
 app.get(`/api/everyone`, getEveryonesDescription)
-
+app.get(`/api/user`, getUser)
 
 app.post(`/api/test/:id`, addRoute);
 

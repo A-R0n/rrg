@@ -10,15 +10,10 @@
     height: 24vh;
     width: 15vw;
     position: absolute;
-    left: 39.8vw;
+    right: 17.6vw;
     top: 16.5vh;
 }
 
-
-.michaela {
-    width: 90%;
-    height: 90%;
-}
 
 #login, #logout {
    position: absolute;
@@ -29,11 +24,17 @@
 }
 
 #login {
-   right: 11vw; 
+   right: 35.5vw; 
+   top: 35.5vh;
+   background: black;
+   font-weight: bold;
 }
 
 #logout {
-    right: 6vw;
+    top: 62.5vh;
+    right: 39.5vw;
+    background: black;
+    font-weight: bold;
 }
 
 
