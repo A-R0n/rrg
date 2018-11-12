@@ -101,10 +101,10 @@ const iGotIt = (req, res, next) => {
 
 
 const createProfile = (req, res, next) => {
-    const {userName, biography, location} = req.body.val
+    const {userName, biography, location, image} = req.body.val
     req.app
         .get('db')
-        .updateProfile([userName, biography, location, req.user.id])
+        .updateProfile([userName, biography, location, image, req.user.id])
         .then(response => res.status(200).send(response) )
         .catch(err => {
             console.log(err)
@@ -112,12 +112,25 @@ const createProfile = (req, res, next) => {
 }
 
 const getUser = (req, res, next) => {
+    console.log('in the process of getting user info for profile')
     req.app
         .get('db')
         .get_user(req.user.id)
         .then(response => res.status(200).send(response))
         .catch(err => res.status(500).send(err))
 };
+
+const addImage = (req, res, next) => {
+    console.log('boooooody',req.body)
+    const {imageUrl} = req.body
+    req.app
+        .get('db')
+        .add_image([imageUrl, req.user.id])
+        .then(response => res.status(200).send(response))
+        .catch(err => res.status(500).send(err))
+};
+
+
 
 
 module.exports = {
@@ -132,5 +145,6 @@ module.exports = {
     iGotIt,
     getEveryonesDescription,
     createProfile,
-    getUser
+    getUser,
+    addImage
 };

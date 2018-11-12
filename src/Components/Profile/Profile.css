@@ -11,15 +11,13 @@
 }
 
 .profilePic {
-    left: 3vw;
+    height: 100%;
+    
+}
+
+.TheDropper {
     position: absolute;
-    top: 4vh;
-    width: 8vw;
-    height: 15vh;
-    margin-bottom: 2vh;
-    background: grey;
-    border-radius: 50%;
-    align-content: center;
+    left: 4vw;
 }
 
 .editProfileButton {
@@ -36,31 +34,31 @@
 .userName {
     position: absolute;
     top: 2vh;
-    left: 15vw;
+    left: 30vw;
 }
 
 .biography {
     position: absolute;
     top: 10vh;
-    left: 15vw;
+    left: 30vw;
 }
 
 .location {
     position: absolute;
-    left: 15vw;
+    left: 30vw;
     top: 19vh;
 }
 
 .makeProfile {
     position: absolute;
     top: 27vh;
-    left: 22vw;
+    left: 38vw;
     border: 1px solid black;
 }
 
 .profileData {
     position: absolute;
-    top: 30.5vh;
+    top: 50vh;
     display: flex;
     justify-content: center;
     
@@ -131,8 +129,8 @@
     display: none;
 }
 
-#greeting {
-    
+#noTextInDropzone {
+    display: none;
 }
 
 

@@ -1,39 +1,33 @@
 .header {
     background: rgb(145, 165, 145);
     height: 12vh;
-    width: 100%;
-    display: flex;
-    position: relative;
-    
+    width: 100vw;
+    display: flex;  
 }
-#homebutton, #searchbutton, #profilebutton, #journalbutton {
+
+.rightSideOfHeader {
+    width: 35%;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 3vw;
+    align-items: center;
+}
+
+.homebutton, .searchbutton, .profilebutton, .journalbutton {
     font-weight: bold;
     color: rgb(65, 34, 34);
-    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
-    position: absolute;
-    top: 2.5vh;   
+    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);  
 }
 
-#homebutton {
-    right: 20vw;   
-}
-
-#searchbutton {
-    right: 15vw;
-}
-
-#profilebutton {
-    right: 4.5vw;
-}
-
-#journalbutton {
-    right: 9.5vw;
-}
 
 #head {
     color: rgb(65, 34, 34);
     text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
-    
+    width: 65%;
+    margin-left: 3vw;
+    display: flex;
+    align-items: center;
+    align-content: center
 }
 
 

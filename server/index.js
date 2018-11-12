@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-// const { SESSION_SECRET: secret, CONNECTION_STRING} = process.env
 const { json } = require("body-parser");
 const cors = require("cors");
 const massive = require("massive");
@@ -8,7 +7,8 @@ const session = require("express-session");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const authCtrl = require("./Controllers/auth0ctrl");
-const { DOMAIN, CLIENT_ID, CLIENT_SECRET, REACT_APP_CLIENT } = process.env;
+const AWS = require("aws-sdk");
+const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECRET_ACCESS_KEY } = process.env;
 
 const app = express();
 
@@ -25,7 +25,8 @@ const {
   iGotIt,
   getEveryonesDescription,
   getUser,
-  createProfile
+  createProfile,
+  addImage
 } = require("./Controllers/mainCtrl");
 
 const port = 3001;
@@ -42,6 +43,20 @@ app.use(
     cookie: {
       maxAge: 14 * 24 * 60 * 60 * 1000
     }
+  })
+);
+
+AWS.config.update({
+    accessKeyId: AS3_ACCESS_KEY_ID,
+    secretAccessKey: AS3_SECRET_ACCESS_KEY 
+});
+app.use(
+  "/s3",
+  require("react-s3-uploader/s3router")({
+    bucket: S3_BUCKET,
+    region: "us-east-1",
+    headers: { "Access-Control_Allow-Origin": "*" },
+    ACL: "public-read"
   })
 );
 
@@ -118,16 +133,12 @@ app.get(`/api/user`, getUser)
 
 app.post(`/api/test/:id`, addRoute);
 
+app.put(`/api/image`, addImage);
 app.put(`/api/iGotIt/:id`, iGotIt)
 app.put(`/api/description/:id`, update);
 app.put(`/api/timestamp/:id`, updateTime);
-
-// redux endpoints
-app.put(`/api/username`, createProfile)
-// app.put(`/api/biography`, createProfile);
-// app.put(`/api/location`, createProfile);
-
 app.put(`/api/rating/:id`, createRating)
+app.put(`/api/username`, createProfile)
 
 app.delete(`/api/table/:id`, deleteRouteFromJournal);
 

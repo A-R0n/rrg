@@ -1,0 +1,15 @@
+{
+    "Id": "Policy1541959032016",
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "Stmt1541959024671",
+        "Action": [
+          "s3:GetObject"
+        ],
+        "Effect": "Allow",
+        "Resource": "arn:aws:s3:::rrg-climbing-pics",
+        "Principal": "*"
+      }
+    ]
+  }

@@ -3,13 +3,15 @@ import axios from "axios";
 const initialState = {
   userName: '',
   biography: '',
-  location: ''
+  location: '',
+  image_: ''
 };
 
 const UPDATE_USERNAME = "UPDATE_USERNAME";
 const UPDATE_PROFILE = "UPDATE_PROFILE";
 const UPDATE_BIOGRAPHY = "UPDATE_BIOGRAPHY";
 const UPDATE_LOCATION = "UPDATE_LOCATION";
+const ADD_IMAGE = 'ADD_IMAGE';
 
 function reducer(state = initialState, action) {
   // console.log("action: ", action);
@@ -20,8 +22,10 @@ function reducer(state = initialState, action) {
       return Object.assign({}, state, {userName: action.payload})
       case UPDATE_BIOGRAPHY:
       return Object.assign({}, state, {biography: action.payload})
+      case ADD_IMAGE:
+      return Object.assign( {}, state, {image_: action.payload});
       case UPDATE_LOCATION:
-      return Object.assign({}, state, {location: action.payload})
+      return Object.assign({}, state, {location: action.payload}) 
     default:
       return state;
   }
@@ -53,5 +57,13 @@ export function updateProfile(val) {
     payload: axios.put("/api/username", {val})
   };
 }
+
+export const addImage = imageUrl => {
+  console.log('imageUrl reducer', imageUrl)
+  return {
+    type: ADD_IMAGE,
+    payload: axios.put("/api/image", { imageUrl })
+  };
+};
 
 export default reducer;
