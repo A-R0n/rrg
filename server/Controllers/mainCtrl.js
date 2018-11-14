@@ -8,17 +8,21 @@ function getCoordinate (req, res, next) {
    .then(response => {
        console.log('weather resp', response.data.weather[0].main)
        if(response.data.weather[0].main == "Clouds"){
-           response.data.weather[0].image = 'https://pixfeeds.com/images/14/388569/1200-497100312-cumulus-clouds.jpg'
+           response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/131/131043.svg'
        }
        else if(response.data.weather[0].main == "Clear"){
-           response.data.weather[0].image = "https://ak9.picdn.net/shutterstock/videos/880219/thumb/1.jpg"
+           response.data.weather[0].image = "https://image.flaticon.com/icons/svg/1163/1163661.svg"
        }
        else if(response.data.weather[0].main == "Rain"){
-        response.data.weather[0].image = "https://i.ytimg.com/vi/J5OSRpRyl6g/maxresdefault.jpg"
+        response.data.weather[0].image = "https://image.flaticon.com/icons/svg/1200/1200426.svg"
         }
         else if(response.data.weather[0].main == "Mist"){
         response.data.weather[0].image = "https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
         }
+        else if(response.data.weather[0].main == "Snow"){
+            response.data.weather[0].image = "https://image.flaticon.com/icons/svg/642/642000.svg"
+            }
+        
 
        coord = response.data
        res.status(200).json(response.data)

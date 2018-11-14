@@ -8,8 +8,8 @@
     height: 10vh;
     width: 7.5vw;
     position: absolute;
-    right: 30vw;
-    top: 23vh;
+    right: 27vw;
+    top: 35vh;
     border-radius: 50%;
     animation: animate 20px linear infinite;
 }
