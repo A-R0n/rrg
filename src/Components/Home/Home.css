@@ -1,17 +1,17 @@
 .homeImg {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    height: 87.5vh;
+   display: flex;
+   margin-right: 0vw;
+   justify-content: center;
 }
 
 .currentWeatherMiddle {
-    height: 24vh;
-    width: 15vw;
+    height: 10vh;
+    width: 7.5vw;
     position: absolute;
-    right: 17.6vw;
-    top: 16.5vh;
+    right: 30vw;
+    top: 23vh;
+    border-radius: 50%;
+    animation: animate 20px linear infinite;
 }
 
 
@@ -24,15 +24,15 @@
 }
 
 #login {
-   right: 35.5vw; 
-   top: 35.5vh;
+   right: 15vw; 
+   top: 45vh;
    background: black;
    font-weight: bold;
 }
 
 #logout {
-    top: 62.5vh;
-    right: 39.5vw;
+    top: 50vh;
+    right: 14.2vw;
     background: black;
     font-weight: bold;
 }

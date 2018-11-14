@@ -15,7 +15,7 @@
 .journalImg {
     height: 24vh;
     width: 18vw;
-    position: relative;
+    /* position: relative; */
     margin-left: 3vw;
     margin-top: 5vh;
     margin-bottom: 3vh;
@@ -23,18 +23,20 @@
 
 .routeName {
     position: absolute;
-    top: -1vh;
+    top: 0;
     left: 8.9vw;
     color: rgb(46, 46, 95);;
     border: 1px solid;
     font-size: 10px;
     background: rgb(237, 237, 252);
-    height: 3.1vh;
+    height: 3vh;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 11.7vw;
     padding: 2px;
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold;
 }
 
 #logInput {
@@ -45,6 +47,7 @@
     right: 0;
     bottom: 0;
     background: rgb(220, 220, 231);
+    font-family: 'Indie Flower', cursive;
 }
 
 #logButton {
@@ -55,7 +58,9 @@
     width: 4.9vw;
     background: green;
     color: white;
-    border: 1px solid black
+    border: 1px solid black;
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold;
 }
 
 #sendButton {
@@ -66,18 +71,21 @@
     background: rgb(186, 241, 200);
     height: 3.5vh;
     border: 1px solid black;
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold;
     
 }
 
 #deleteButton {
     position: absolute;
     left: 3vw;
-    top: 1.5vh;
+    top: 1.2vh;
     width: 5.8vw;
-    height: 3.5vh;
+    height: 3.8vh;
     background: black;
     color: white;
     font-weight: bold;
+    
 }
 
 .stars {

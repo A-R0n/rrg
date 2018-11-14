@@ -1,65 +1,62 @@
 .everythingPlan {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    width: 82vw;
+    justify-content: space-evenly;
+    width: 95vw;
     margin-left: 1.5vw;
     margin-top: 4vh;
     
 }
 
+#magGlass {
+    position: absolute;
+    top: 12vh;
+    left: 40.5vw;
+    height: 3.7vh;
+}
+
+#find_route {
+    position: absolute;
+    top: 12vh;
+    height: 3.5vh;
+    border: 1px solid black;
+    font-size: 12px;
+}
+
+#routeNameInSearch {
+    font-weight: bold;
+}
 
 .routeDisplay {
     background: #dedede;
-    margin-top: 1vh;
     margin-right: .15vw;
     border: 2px solid rgb(9, 73, 9);
-    max-height: 26vh;
-    position: relative;
-    width: 20vw;
-}
-
-#find_route, #find_crag, #find_grade, #find_type {
-    height: 8vh;
-    right: 2vw;
-    position: absolute;
-    border: 1px solid black;
-    font-size: 14px;
-}
-
-#find_route {  
-    top: 17vh; 
-}
-
-#find_grade {
-    top: 28vh;
-}
-
-#find_type {
-    top: 39vh;
-}
-
-#find_crag {
-    top: 50vh;  
-}
-
-.container {
+    max-height: 23vh;
     display: flex;
-    width: 20vw;
-    margin: 1%;
-    border-radius: 10%;
+    width: 30%;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
 }
 
-#text {
-    margin-left: .2vw;
-    font: 12px arial, sans-serif;
-    margin-top: -2vh;
+.laImage {
+    width: 55%;
+    height: 100%;
 }
 
 #routeImg {
-    height: 18vh;
-    width: 11vw;
-    
+    height: 100%;
+    width: 100%;
+}
+
+.text {
+    margin-left: .2vw;
+    font-size: 10px;
+    font-family: 'Inconsolata', monospace;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
 }
 
 #sport {
@@ -70,13 +67,60 @@
     color: red;
 }
 
-/* #rating {
-    color: rgb(247, 235, 77);
-    text-shadow: -.5px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    font-weight: bold;
-} */
 
 .Add, .dontAdd {
-    position: absolute;
-    bottom: 0;   
+    height: 10%; 
+    display: flex;
+}
+
+@media only screen and (max-width: 400px) {
+    .everythingPlan {
+        display: inline-block;
+        height: 100%;
+        width: 100%; 
+        margin-left: 5vw;
+        margin-right: 5vw;  
+    }
+    .routeDisplay {
+        background: #dedede;
+        border: 2px solid rgb(9, 73, 9);
+        max-height: 29vh;
+        margin-left: 15vw;
+    }
+    .text {
+        font-size: 10px;
+        font-family: 'Inconsolata', monospace;
+        display: flex;
+        justify-content: column;
+        flex-wrap: wrap;
+        margin-bottom: 0;
+        position: absolute;
+        color: black;
+        font-weight: bold;
+    }
+    .laImage {
+        width: 100vw;
+        height: 20vh;
+        z-index: -.5;
+    }
+    #find_route {
+        position: absolute;
+        top: 10vh;
+        right: 3.7vw;
+        height: 3.5vh;
+        border: 1px solid black;
+        font-size: 12px;
+    }
+
+    #sport, #grade, #routeNameInSearch, #crag, #trad, #rating {
+        margin-left: 0vw;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: column;
+        text-align: left;
+        z-index: 1;
+    }
 }

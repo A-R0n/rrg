@@ -34,14 +34,11 @@ class Profile extends Component {
             <div className="entireProfile">
                 <div className="topHalf">
                     <Upload />
-                    <button className="editProfileButton">Edit Profile </button>
+                    <div className='whatTheUserFillsIn'>
                     <textarea className="userName" placeholder="User Name" onChange={(e) => updateUserName(e.target.value)}></textarea>
                     <textarea className="biography" placeholder="Biography" onChange={(e) => updateBiography(e.target.value)}></textarea>
                     <textarea className="location" placeholder="Location" onChange={(e) => updateLocation(e.target.value)}></textarea>
                     <button className= 'makeProfile' onClick={() => updateProfile(this.props)}>submit</button>
-                    <div className="profileData">
-                        <button id="one">Journal</button>
-                        <button id="two">Media</button>
                     </div>
                 </div> 
                 <div className="bottomHalf">

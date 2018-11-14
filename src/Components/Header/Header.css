@@ -9,14 +9,16 @@
     width: 35%;
     display: flex;
     justify-content: space-between;
-    margin-right: 3vw;
+    margin-right: 17vw;
     align-items: center;
+    
 }
 
 .homebutton, .searchbutton, .profilebutton, .journalbutton {
     font-weight: bold;
     color: rgb(65, 34, 34);
-    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);  
+    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
+    font-family: 'Montserrat', sans-serif;  
 }
 
 
@@ -27,7 +29,21 @@
     margin-left: 3vw;
     display: flex;
     align-items: center;
-    align-content: center
+    align-content: center;
+    font-family: 'KoHo', sans-serif;
+}
+
+@media only screen and (max-width: 400px) {
+    #head {
+        color: rgb(65, 34, 34);
+        text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
+        width: 65%;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        font-family: 'KoHo', sans-serif;
+    }
 }
 
 

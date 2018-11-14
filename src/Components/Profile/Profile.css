@@ -8,6 +8,14 @@
     height: 38vh;
     display: flex;
     background: rgb(233, 214, 180);
+    
+}
+
+.whatTheUserFillsIn {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 7%;
 }
 
 .profilePic {
@@ -18,47 +26,36 @@
 .TheDropper {
     position: absolute;
     left: 4vw;
+    border-radius: 50%;
+    margin-top: 2vh;
 }
 
-.editProfileButton {
-    position: absolute;
-    right: 5vw;;
-    top: 2vh;
-    color: blue;
-    border-radius: 25%;
-    font-size: 20px;
-    border: 1px solid blue;
-    padding: 10px;
-}
+
 
 .userName {
-    position: absolute;
-    top: 2vh;
-    left: 30vw;
+    display:flex;
+    height: 10%;
 }
 
 .biography {
-    position: absolute;
-    top: 10vh;
-    left: 30vw;
+    height: 10%;
 }
 
 .location {
-    position: absolute;
-    left: 30vw;
-    top: 19vh;
+    height: 10%;
 }
 
 .makeProfile {
-    position: absolute;
-    top: 27vh;
-    left: 38vw;
     border: 1px solid black;
+    width: 40%;
+    display: flex;
+    justify-content: center;
 }
 
 .profileData {
     position: absolute;
-    top: 50vh;
+    top: 30.5vh;
+    left: 50vw;
     display: flex;
     justify-content: center;
     
@@ -131,6 +128,11 @@
 
 #noTextInDropzone {
     display: none;
+}
+
+.uploadImg {
+    margin-top: 2vh;
+    border-radius: 50%;
 }
 
 

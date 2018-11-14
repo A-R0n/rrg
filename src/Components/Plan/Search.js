@@ -30,6 +30,7 @@ export default class Search extends Component {
                 isSelected: !this.state.isSelected
             })
         })
+        console.log(this.state.isSelected)
     }
 
     handleChange = (filter) => {
@@ -67,19 +68,18 @@ export default class Search extends Component {
             return (
             
             <div key={index} className="routeDisplay">
-                <div className='container'>
-                    <img id="routeImg" src={elem.route_img} alt='text'></img>
-                    <div id="text">
+                    <div className='laImage'>
+                        <img id="routeImg" src={elem.route_img} alt='text' onClick={() => this.handleClick(elem.route_id)}></img>
+                    </div>
+                    <div className="text">
                         <Link key={index} to={`/routes/${elem.route_name}`}>
-                            <p>Route: {elem.route_name}</p>
+                            <p id='routeNameInSearch'>Route: {elem.route_name}</p>
                         </Link>
-                        <p>Grade: {elem.route_grade}</p>
+                        <p id='grade'>Grade: {elem.route_grade}</p>
                         <p id={elem.route_type === 'sport' ? 'sport' : 'trad'}>Type: {elem.route_type}</p>
-                        <p>Crag: {elem.crag}</p>
+                        <p id='crag'>Crag: {elem.crag}</p>
                         <p id='rating'>Rating: {elem.MP_rating}</p>
                     </div>
-                </div> 
-                <button className={this.state.isSelected === true ? 'Add' : 'dontAdd'}onClick={() => this.handleClick(elem.route_id)}>+</button>
             </div>
             )
             
@@ -129,24 +129,9 @@ export default class Search extends Component {
 
         return (
             <div className='everythingPlan'>
-            
-            <input id="find_route" onChange={(e) => this.handleChange(e.target.value)} type="text"  placeholder="Search Route"/>
-            
-            {routeToDisplay}
-
-            {/* <input id="find_grade" onChange={(e) => this.handleChange(e.target.value)} type="text"  placeholder="Search Grade"/>
-            
-            {gradeToDisplay}
-
-            <input id="find_type" onChange={(e) => this.handleChange(e.target.value)} type="text"  placeholder="Search Type"/>
-            
-            {typeToDisplay}
-            
-            
-            <input id="find_crag" onChange={(e) => this.handleChange(e.target.value)} type="text"  placeholder="Search Crag"/>
-            
-            {cragToDisplay} */}
-            
+            <img id="magGlass" src='https://www.shareicon.net/data/128x128/2016/01/10/701311_magnifying-glass_512x512.png'></img>
+                <input id="find_route" onChange={(e) => this.handleChange(e.target.value)} type="text"  placeholder="Search Route"/>
+                {routeToDisplay}
             </div>
         )
     }

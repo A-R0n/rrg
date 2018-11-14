@@ -15,7 +15,10 @@ function getCoordinate (req, res, next) {
        }
        else if(response.data.weather[0].main == "Rain"){
         response.data.weather[0].image = "https://i.ytimg.com/vi/J5OSRpRyl6g/maxresdefault.jpg"
-    }
+        }
+        else if(response.data.weather[0].main == "Mist"){
+        response.data.weather[0].image = "https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
+        }
 
        coord = response.data
        res.status(200).json(response.data)

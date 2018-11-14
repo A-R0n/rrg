@@ -37,7 +37,7 @@ export default class Home extends Component {
             <div>
             <div className='homeImg'>
             {mapWeather}
-            <img  className="michaela" src='https://outdoorgearlab-mvnab3pwrvp3t0.stackpathdns.com/photos/15/81/279616_31645_L2.jpg' alt='text'></img>
+            <img  className="michaela" src='https://static1.squarespace.com/static/51f68fe5e4b01da70d04b6eb/5419e4e9e4b0ca2f107f5ccc/5a64acc20d92971507930352/1531519018763/rrg-aerials-0095-web.jpg' ></img>
             <a id='login' href={`${process.env.REACT_APP_SERVER}/login`}>Login</a>
             <a id='logout' href={`${process.env.REACT_APP_SERVER}/logout`}>Logout</a>
             </div>
