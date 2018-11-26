@@ -49,6 +49,7 @@ class Routes extends Component {
                 </div>
                 <p id='routeReviewType'>({elem.route_type})</p>
                 <p id='routeReviewDescription'>{elem.description_}</p>
+                <p id='author'></p>
                 <p id='routeReviewRating'>Stars: {elem.rating}</p>
                 <p id='routeReviewSent'>{elem.sent_}</p>
                 <p id='routeReviewTimeStamp'>{moment(elem.time_stamp).calendar()}</p>

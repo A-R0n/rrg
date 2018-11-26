@@ -30,7 +30,9 @@
     "react-s3-uploader": "^4.8.0",
     "react-s3-uploader-multipart": "^4.8.0",
     "react-scripts": "2.0.5",
+    "react-sketch": "^0.4.4",
     "react-star-ratings": "^2.3.0",
+    "react-thermometer-component": "^1.0.1",
     "redux": "^4.0.1",
     "redux-promise": "^0.6.0"
   },

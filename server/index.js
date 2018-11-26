@@ -87,7 +87,7 @@ passport.use(
 
 passport.serializeUser((user, done) => {
   const db = app.get("db");
-  console.log('user currently logged in', user)
+  // console.log('user currently logged in', user)
   db.climbers
     .get_climber_by_authid([user.id])
     .then(response => {
@@ -122,12 +122,13 @@ app.get("/logout", function(req, res) {
 
 // Endpoints
 app.get("/api/user", (req, res) => {
-  console.log('sessss', req.user)
+  // console.log('sessss', req.user)
   res.status(200).json(req.session);
 });
 app.get(`/api/weather`, getCoordinate);
 app.get(`/api/routes`, getRoutes);
 app.get(`/api/table`, getTable);
+app.get(`/api/carte`, getTable); //i added this as a test
 app.get(`/api/everyone`, getEveryonesDescription)
 app.get(`/api/user`, getUser)
 

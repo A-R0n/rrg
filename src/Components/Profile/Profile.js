@@ -6,6 +6,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { updateUserName, updateBiography, updateLocation, updateProfile } from '../../redux/reducer';
 import Upload from '../Upload.js';
+// import {SketchField, Tools} from 'react-sketch';
 
 class Profile extends Component {
     constructor(){
@@ -34,6 +35,11 @@ class Profile extends Component {
             <div className="entireProfile">
                 <div className="topHalf">
                     <Upload />
+                    {/* <SketchField width='1024px' 
+                         height='768px' 
+                         tool={Tools.Pencil} 
+                         lineColor='black'
+                         lineWidth={3}/> */}
                     <div className='whatTheUserFillsIn'>
                     <textarea className="userName" placeholder="User Name" onChange={(e) => updateUserName(e.target.value)}></textarea>
                     <textarea className="biography" placeholder="Biography" onChange={(e) => updateBiography(e.target.value)}></textarea>

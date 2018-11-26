@@ -2,7 +2,8 @@
     background: rgb(145, 165, 145);
     height: 12vh;
     width: 100vw;
-    display: flex;  
+    display: flex; 
+    z-index: -1; 
 }
 
 .rightSideOfHeader {
@@ -30,8 +31,9 @@
     display: flex;
     align-items: center;
     align-content: center;
-    font-family: 'KoHo', sans-serif;
+    font: 300 50px/1.0 'Just Another Hand', Helvetica, sans-serif;
 }
+
 
 @media only screen and (max-width: 400px) {
     #head {

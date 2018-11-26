@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Reviews.css';
 import RouteIwantToClimb from '../RouteIwantToClimb/RouteIwantToClimb';
+import Upload from '../Upload.js';
+import {connect} from 'react-redux';
 
 export default class Journal extends Component {
     constructor(){
@@ -15,12 +17,7 @@ export default class Journal extends Component {
             
         }
         
-        
-        this.handleClickDelete = this.handleClickDelete.bind(this);
-        this.handleClickSend = this.handleClickSend.bind(this);
     }
-
-
       componentDidMount(){
           axios.get('/api/table').then(results => {
               this.setState({
@@ -29,7 +26,7 @@ export default class Journal extends Component {
           })
       }
 
-      handleClickSend(id){
+      handleClickSend = (id) => {
         axios.put(`/api/iGotIt/${id}`).then(res => {
             this.setState({
                 sent: !this.state.sent
@@ -38,7 +35,7 @@ export default class Journal extends Component {
         
     }
 
-      handleClickDelete(e){
+      handleClickDelete = (e) => {
         axios.delete(`/api/table/${e}`).then()
         axios.get('/api/table').then(results => {
             this.setState({
@@ -56,11 +53,23 @@ export default class Journal extends Component {
             handleChange = {this.handleChange}
             handleClickPut = {this.handleClickPut}
             handleClickDel = {this.handleClickDelete}
-            handleClickSend = {this.handleClickSend}/>      
+            handleClickSend = {this.handleClickSend}/>
+            
         })
 
         return (
-            <div className='journal'>{thirdMap}</div>
+            <div>
+                <div className='lengthOfCart'>{this.state.secondCart.length}</div>
+                <div className='journal'>{thirdMap}</div>
+            </div>
         )
     }
 }
+
+// const mapStateToProps = state => {
+//     return {
+//       cart: state.cart
+//     };
+//   };
+  
+//   export default connect(mapStateToProps)(Journal);

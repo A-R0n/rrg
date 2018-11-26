@@ -1,41 +1,107 @@
-.homeImg {
-   display: flex;
-   margin-right: 0vw;
-   justify-content: center;
+
+
+.noPlaceLikeHome {
+    width: 100%;
+    height: 100%;
+}
+.homeImg{
+    height: 25%;
+    width: 16%;
+    position: absolute;
+    left: 1vw;
+    top: 14vh;
+    /* border: 3.3px solid black; */
+    /* border-radius: 50%; */
 }
 
-.currentWeatherMiddle {
-    height: 10vh;
-    width: 7.5vw;
+.currentWeather {
+    position: relative;
+}
+
+#home {
+    position: relative;
+}
+
+#pic {
+    height: 70%;
+    width: 50%;
+    z-index: -1;
+    margin-top: 7vh;
+    margin-left: 2vw;
+}
+
+#noTemp {
+    display: none;
+}
+
+.thermo {
     position: absolute;
-    right: 27vw;
-    top: 35vh;
-    border-radius: 50%;
-    animation: animate 20px linear infinite;
+    left: 20vw;
+}
+
+#temp {
+    z-index: 1;
+    position: absolute;
+    top: -2vh;
+    left: 3.5vw;
+    color: white;
+    width: 5vw;
+    background: blue;
+    /* opacity: .3; */
+    font-size: 30px;
+    border: 1px solid black;
+    
+}
+
+#temp2 {
+    z-index: 0.5;
+    position: absolute;
+    top: -2vh;
+    left: 3.5vw;
+    width: 5vw;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    color: white;
+    background: blue;
+    /* opacity: .3; */
+    font-size: 30px;
+    border: 1px solid black;
+}
+
+#convertTemp {
+    position: absolute;
+    top: 3.1vh;
+    width: 5.3vw;
+    height: 5vh;
+    left: 3.45vw;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 
 
 #login, #logout {
-   position: absolute;
+   position: fixed;
    text-decoration: none;
    color: white;
-   top: 17vh;
-   
-}
-
-#login {
-   right: 15vw; 
-   top: 45vh;
    background: black;
+   top: 12vh;
    font-weight: bold;
 }
 
-#logout {
-    top: 50vh;
-    right: 14.2vw;
-    background: black;
-    font-weight: bold;
+#login {
+   right: 7.5vw; 
 }
+
+#logout {
+    right: 1vw; 
+}
+
+
+
 
 
 

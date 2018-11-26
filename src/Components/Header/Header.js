@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import { viewCart } from '../../redux/reducer';
 import axios from 'axios';
 
 class Header extends Component {
@@ -31,7 +32,7 @@ class Header extends Component {
 
         <Link to ='/'><p className='homebutton'>Home</p></Link>
         <Link to = '/plan'><p className='searchbutton'>{this.props.plan}</p></Link>
-        <Link to ='/journal'><p className='journalbutton'>{this.props.journal}</p></Link>
+        <Link to ='/journal'><p className='journalbutton'>{this.props.journal}{this.props.viewCart}</p></Link>
         <Link to ='/profile'><p className='profilebutton'>{this.props.profile}</p></Link>
             </div>
     </div>
@@ -39,10 +40,8 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {
-      userName: state.userName
-    };
-  };
-  
-  export default connect(mapStateToProps)(Header);
+const mapStateToProps = state => state;
+export default connect(
+  mapStateToProps,
+  { viewCart }
+)(Header);

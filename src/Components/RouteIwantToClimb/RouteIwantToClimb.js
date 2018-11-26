@@ -8,7 +8,8 @@ export default class RouteIwantToClimb extends Component{
 
         this.state = {
             display: true,
-            description: ''
+            description: '',
+            rating: 0
             
         }
 
@@ -16,6 +17,9 @@ export default class RouteIwantToClimb extends Component{
     }
 
     changeRating = ( newRating, name) => {
+        this.setState({
+            rating: newRating
+        })
         axios.put(`/api/rating/${this.props.elem.id_of_route}`, {newRating})
     }
 
@@ -31,7 +35,7 @@ export default class RouteIwantToClimb extends Component{
     handleChange = (e) => {
         this.setState({
             description: e
-        })  
+        }) 
     }
 
         render(){
@@ -55,7 +59,7 @@ export default class RouteIwantToClimb extends Component{
                         starSpacing="1px"
                         starEmptyColor="white"
                         starHoverColor="rgb(243, 236, 186)"
-                        
+                        isSelectable='true'
                         />
                     
                 </div>

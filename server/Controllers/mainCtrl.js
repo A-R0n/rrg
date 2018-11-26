@@ -6,7 +6,7 @@ var coord = []
 function getCoordinate (req, res, next) {
    axios.get(`https://openweathermap.org/data/2.5/weather?lat=38&lon=-84&${process.env.WEATHER_API}`)
    .then(response => {
-       console.log('weather resp', response.data.weather[0].main)
+       console.log('weather resp', response.data)
        if(response.data.weather[0].main == "Clouds"){
            response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/131/131043.svg'
        }
@@ -14,14 +14,16 @@ function getCoordinate (req, res, next) {
            response.data.weather[0].image = "https://image.flaticon.com/icons/svg/1163/1163661.svg"
        }
        else if(response.data.weather[0].main == "Rain"){
-        response.data.weather[0].image = "https://image.flaticon.com/icons/svg/1200/1200426.svg"
+        response.data.weather[0].image = "https://image.flaticon.com/icons/svg/704/704832.svg"
         }
         else if(response.data.weather[0].main == "Mist"){
         response.data.weather[0].image = "https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
         }
         else if(response.data.weather[0].main == "Snow"){
-            response.data.weather[0].image = "https://image.flaticon.com/icons/svg/642/642000.svg"
+            response.data.weather[0].image = "https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
             }
+
+            // https://image.flaticon.com/icons/svg/642/642000.svg
         
 
        coord = response.data
@@ -119,7 +121,7 @@ const createProfile = (req, res, next) => {
 }
 
 const getUser = (req, res, next) => {
-    console.log('in the process of getting user info for profile')
+    // console.log('in the process of getting user info for profile')
     req.app
         .get('db')
         .get_user(req.user.id)
@@ -128,7 +130,7 @@ const getUser = (req, res, next) => {
 };
 
 const addImage = (req, res, next) => {
-    console.log('boooooody',req.body)
+    // console.log('boooooody',req.body)
     const {imageUrl} = req.body
     req.app
         .get('db')
