@@ -2,9 +2,6 @@
     border: 1px solid black;
 }
 
-/* .header {
-    display: none;
-} */
 
 .routeReviews {
     align-items: center;
@@ -20,9 +17,6 @@
 
 #routeReviewName {
     margin-right: 1vw;
-    /* position: absolute;
-    left: 2vw;
-    top: 1vh; */
 }
 
 #routeReviewTimeStamp {
@@ -32,14 +26,17 @@
     margin-top: 0;
 }
 
-#routeReviewDescription {
-    text-align: center;
+.userReview {
+    display: flex;
     justify-content: center;
-    align-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 5vh;
-    left: 20vw;
+}
+
+#routeReviewDescription {
+    
+}
+
+#author {
+    align-content: flex-start;
 }
 
 #routeReviewType {
@@ -51,5 +48,10 @@
 .topPortion {
     height: 25vh;
     border-bottom: 1px solid black;
+}
+
+.stars {
+    position: absolute;
+    right: 0;
 }
 

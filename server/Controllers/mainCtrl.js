@@ -20,7 +20,7 @@ function getCoordinate (req, res, next) {
         response.data.weather[0].image = "https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
         }
         else if(response.data.weather[0].main == "Snow"){
-            response.data.weather[0].image = "https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
+            response.data.weather[0].image = "https://image.flaticon.com/icons/svg/642/642000.svg"
             }
 
             // https://image.flaticon.com/icons/svg/642/642000.svg
@@ -95,7 +95,7 @@ const deleteRouteFromJournal = (req, res, next) => {
 const createRating = (req, res, next) => {
     req.app
         .get('db')
-        .star(req.params.id, req.body.newRating)
+        .star(req.params.id, req.body.newRating, req.user.id)
         .then(response => res.status(200).send(response) )
         .catch(err => res.status(500).send(err))
 }
@@ -139,6 +139,16 @@ const addImage = (req, res, next) => {
         .catch(err => res.status(500).send(err))
 };
 
+const routePic = (req, res, next) => {
+    console.log('boooooody',req.body)
+    const {imageUrl} = req.body
+    req.app
+        .get('db')
+        .changeRoutePic([req.user.id, imageUrl])
+        .then(response => res.status(200).send(response))
+        .catch(err => res.status(500).send(err))
+};
+
 
 
 
@@ -155,5 +165,6 @@ module.exports = {
     getEveryonesDescription,
     createProfile,
     getUser,
-    addImage
+    addImage,
+    routePic
 };

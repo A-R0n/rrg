@@ -59,7 +59,7 @@ export default class Journal extends Component {
 
         return (
             <div>
-                <div className='lengthOfCart'>{this.state.secondCart.length}</div>
+                {/* <div className='lengthOfCart'>{this.state.secondCart.length}</div> */}
                 <div className='journal'>{thirdMap}</div>
             </div>
         )

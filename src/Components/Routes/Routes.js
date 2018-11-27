@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import './Routes.css';
+import StarRatings from 'react-star-ratings';
 
 class Routes extends Component {
   constructor() {
@@ -12,6 +13,7 @@ class Routes extends Component {
         amountOfReviews: [],
         average: '',
         arrToBeAveraged: '',
+        user: {}
         
     };
 
@@ -32,6 +34,9 @@ class Routes extends Component {
             })
         })
     })
+    axios.get("/api/user").then(results => {
+        this.setState({user: results.data.passport.user});
+      });
 }
 
 
@@ -48,9 +53,30 @@ class Routes extends Component {
                     <p>{elem.route_grade}</p>     
                 </div>
                 <p id='routeReviewType'>({elem.route_type})</p>
-                <p id='routeReviewDescription'>{elem.description_}</p>
-                <p id='author'></p>
-                <p id='routeReviewRating'>Stars: {elem.rating}</p>
+                <div className="userReview">
+                    <p id='routeReviewDescription'>{elem.description_}</p>
+
+
+
+
+                    <p id='author'>-{elem.username}</p>
+
+
+
+
+
+
+                </div>
+                <div className={this.state.average.length > 0 ? 'starr' : null}>
+                <StarRatings className='stars'
+                        rating={elem.rating}
+                        starRatedColor="yellow"
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="16px"
+                        starSpacing="1px"
+                        />
+                        </div>
                 <p id='routeReviewSent'>{elem.sent_}</p>
                 <p id='routeReviewTimeStamp'>{moment(elem.time_stamp).calendar()}</p>
             </div>
@@ -62,6 +88,14 @@ class Routes extends Component {
         <div className='topPortion'>
             <div>amount of reviews: {arrToBeAveraged}</div>
             <div>average stars: {average}</div>
+           { this.state.average !== '' ? <StarRatings 
+                        rating={this.state.average}
+                        starRatedColor="yellow"
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="16px"
+                        starSpacing="1px"
+                        /> : null}
         </div>
         {route}
       </div>

@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import './Header.css';
 import {Link} from 'react-router-dom';
-import {connect} from 'react-redux';
-import { viewCart } from '../../redux/reducer';
+// import {connect} from 'react-redux';
+// import { viewCart } from '../../redux/reducer';
 import axios from 'axios';
 
-class Header extends Component {
+export default class Header extends Component {
     constructor(){
         super();
 
         this.state = {
-            clientName: []
+            clientName: [],
+            number: ''
         }
     }
     componentDidMount(){
@@ -21,8 +22,20 @@ class Header extends Component {
             })
         })
     }
+
+    seeCart = incomingObject => {
+    
+        this.props
+          .viewCart(incomingObject)
+          .then(
+            this.setState({
+              number: Object.assign({}, this.state.number, { image_url: incomingObject })
+            })
+          );
+      };
     render(){
-        console.log(this.state)
+        // console.log('props',this.props);
+        // console.log('state', this.state);
     return (
         <div className="header">
             <h1 id="head">{this.props.title}</h1>
@@ -32,7 +45,8 @@ class Header extends Component {
 
         <Link to ='/'><p className='homebutton'>Home</p></Link>
         <Link to = '/plan'><p className='searchbutton'>{this.props.plan}</p></Link>
-        <Link to ='/journal'><p className='journalbutton'>{this.props.journal}{this.props.viewCart}</p></Link>
+        <Link to ='/journal'><p className='journalbutton'>{this.props.journal}</p></Link>
+        {/* <div>{this.state.number.length}</div> */}
         <Link to ='/profile'><p className='profilebutton'>{this.props.profile}</p></Link>
             </div>
     </div>
@@ -40,8 +54,8 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = state => state;
-export default connect(
-  mapStateToProps,
-  { viewCart }
-)(Header);
+// const mapStateToProps = state => state;
+// export default connect(
+//   mapStateToProps,
+//   { viewCart }
+// )(Header);

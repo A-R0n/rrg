@@ -31,6 +31,8 @@ class Profile extends Component {
 
         })
         const {updateUserName, updateBiography, updateLocation, updateProfile} = this.props;
+        // console.log(this.props.match.params);
+        // console.log(this.state);
         return (
             <div className="entireProfile">
                 <div className="topHalf">

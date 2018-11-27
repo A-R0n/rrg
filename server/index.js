@@ -26,7 +26,8 @@ const {
   getEveryonesDescription,
   getUser,
   createProfile,
-  addImage
+  addImage,
+  routePic
 } = require("./Controllers/mainCtrl");
 
 const port = 3001;
@@ -109,7 +110,7 @@ passport.deserializeUser((user, done) => done(null, user));
 app.get(
   "/login",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/profile",
+    successRedirect: "http://localhost:3000/plan",
     failureRedirect: "/login"
   })
 );
@@ -128,13 +129,13 @@ app.get("/api/user", (req, res) => {
 app.get(`/api/weather`, getCoordinate);
 app.get(`/api/routes`, getRoutes);
 app.get(`/api/table`, getTable);
-app.get(`/api/carte`, getTable); //i added this as a test
 app.get(`/api/everyone`, getEveryonesDescription)
 app.get(`/api/user`, getUser)
 
 app.post(`/api/test/:id`, addRoute);
 
 app.put(`/api/image`, addImage);
+app.put(`/api/routePic`, routePic);
 app.put(`/api/iGotIt/:id`, iGotIt)
 app.put(`/api/description/:id`, update);
 app.put(`/api/timestamp/:id`, updateTime);

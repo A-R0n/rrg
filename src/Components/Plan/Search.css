@@ -54,13 +54,12 @@
 #routeImg {
     height: 100%;
     width: 66%;
-    opacity: .8;
+    
 }
 
 #routeImgSelected {
     height: 100%;
     width: 100%;
-    opacity: .8;
     z-index: 0;
 }
 

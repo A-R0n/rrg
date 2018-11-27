@@ -39,7 +39,7 @@ export default class Home extends Component {
     render(){
         const {corrd, tempInF, tempInC, tempIsInC} = this.state
         let mapWeather = corrd.map((val) => {
-            return <div className={'currentWeather'}>
+            return <div className='currentWeather'>
             <img id='pic' src={val.image} alt=''></img>
             <div id={tempIsInC === true ? 'noTemp' : 'temp'}>{Math.round(tempInF)}°F</div>
             <div id='temp2'>{Math.round(tempInC)}°C</div>

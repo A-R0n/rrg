@@ -38,15 +38,10 @@ class Upload extends Component {
   }
 
   handleFinishedUpload = info => {
-    console.log("File uploaded with filename", info.filename);
-    console.log("Access it on s3 at", info.fileUrl);
     this.updateImage(info.fileUrl);
-    // await console.log(this.props.main.image);
-    // await this.setState({ image: this.props.main.image });
   };
 
   updateImage = imageUrl => {
-    console.log("updateImage props", this.props);
     this.props
       .addImage(imageUrl)
       .then(
@@ -63,13 +58,12 @@ class Upload extends Component {
   };
 
   render() {
-    console.log(this.props);
     const uploadOptions = {
       server: process.env.REACT_APP_SERVER,
       signingUrlQueryParams: { uploadType: "avatar" }
     };
     const s3Url = `http://rrg-climbing-pics.s3-website-us-east-1.amazonaws.com/`;
-    console.log(this.state.user);
+    
     return (
       <DropzoneS3Uploader
         className="TheDropper"
