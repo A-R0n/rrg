@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import StarRatings from 'react-star-ratings';
 import axios from 'axios';
-import { connect } from "react-redux";
-import { routePic } from "../../redux/reducer";
-// import DropzoneS3Uploader from "react-dropzone-s3-uploader";
+// import { connect } from "react-redux";
+// import { routePic } from "../../redux/reducer";
+import DropzoneS3Uploader from "react-dropzone-s3-uploader";
 
-class RouteIwantToClimb extends Component{
+export default class RouteIwantToClimb extends Component{
     constructor(){
         super();
 
@@ -32,15 +32,16 @@ class RouteIwantToClimb extends Component{
         this.updateImage(info.fileUrl);
       };
     
-      updateImage = imageUrl => {
-        this.props
-          .routePic(imageUrl)
+      updateImage = (imageUrl) => {
+          console.log(imageUrl)
+
+          axios.put(`/api/routePic/${this.props.elem.id_of_route}/${this.state.user.id}`, { imageUrl })
           .then(
             this.setState({
-              user: Object.assign({}, this.state.user, { route_img: imageUrl })
+              user: Object.assign({}, this.state.user, { picture_of_route: imageUrl })
             })
           );
-      };
+      }
 
 
 
@@ -77,14 +78,14 @@ class RouteIwantToClimb extends Component{
                 signingUrlQueryParams: { uploadType: "avatar" }
               };
               const s3Url = `http://rrg-climbing-pics.s3-website-us-east-1.amazonaws.com/`;
-              console.log(this.state.user.route_img)
+              console.log(this.state.user)
             return (
                 <div className={this.state.display ? 'everything' : 'nothing'}>
                     <img className='journalImg' 
                         src={this.props.route_img}
                         alt="text">
                     </img>
-                    {/* <DropzoneS3Uploader
+                    <DropzoneS3Uploader
                         onFinish={this.handleFinishedUpload}
                         s3Url={s3Url}
                         maxSize={1024 * 1024 * 5}
@@ -92,12 +93,12 @@ class RouteIwantToClimb extends Component{
                         id="imageUploader">
                     <img
                         className="profilePic"
-                        src={this.state.user.route_img}
+                        src={this.state.user.picture_of_route}
                         alt="text"/>
                     <p id={this.state.user.length === 0 ? "textInDropzone" : "noTextInDropzone"}>
                     Try dropping some files here, or click to select files to upload.
                     </p>
-                    </DropzoneS3Uploader> */}
+                    </DropzoneS3Uploader>
                     <p className="routeName">{this.props.route_name} { } {this.props.route_grade}</p>
                     <textarea id='logInput' onChange={(e) => this.handleChange(e.target.value)}></textarea>
                     <button id='logButton' onClick={() => this.handleClickPut(this.props.elem.route_id)}>Log</button>
@@ -120,10 +121,4 @@ class RouteIwantToClimb extends Component{
             )
         }
     }
-
-    const mapStateToProps = state => state;
-    export default connect(
-      mapStateToProps,
-      { routePic }
-    )(RouteIwantToClimb);
     

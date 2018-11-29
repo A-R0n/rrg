@@ -13,8 +13,7 @@ export default class Journal extends Component {
             secondCart: [],
             description: '',
             display: true,
-            sent: false
-            
+            sent: false   
         }
         
     }

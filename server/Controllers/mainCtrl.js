@@ -22,8 +22,6 @@ function getCoordinate (req, res, next) {
         else if(response.data.weather[0].main == "Snow"){
             response.data.weather[0].image = "https://image.flaticon.com/icons/svg/642/642000.svg"
             }
-
-            // https://image.flaticon.com/icons/svg/642/642000.svg
         
 
        coord = response.data
@@ -141,12 +139,16 @@ const addImage = (req, res, next) => {
 
 const routePic = (req, res, next) => {
     console.log('boooooody',req.body)
+    console.log('params',req.params)
     const {imageUrl} = req.body
     req.app
         .get('db')
-        .changeRoutePic([req.user.id, imageUrl])
+        .changeRoutePic([req.params.id, req.params.userid, imageUrl])
         .then(response => res.status(200).send(response))
-        .catch(err => res.status(500).send(err))
+        .catch(err => {
+            console.log(err)
+            res.status(500).send(err)})
+        
 };
 
 

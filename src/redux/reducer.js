@@ -74,7 +74,7 @@ export const routePic = imageUrl => {
   console.log('route pic', imageUrl)
   return {
     type: ROUTE_PIC,
-    payload: axios.put("/api/routePic", { imageUrl })
+    payload: axios.put(`/api/routePic/${this.props.elem.id_of_route}`, { imageUrl })
   };
 }
 

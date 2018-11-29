@@ -135,5 +135,13 @@
     border-radius: 50%;
 }
 
+#smallPic {
+    height: 12vh;
+    width: 8vw;
+    position: absolute;
+    right: 1vw;
+    top: 3vh;
+}
+
 
 

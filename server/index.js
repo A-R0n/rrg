@@ -12,7 +12,7 @@ const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECR
 
 const app = express();
 
-// Require functions from controller
+// Require functions from main controller
 const {
   createRating,
   updateTime,
@@ -135,7 +135,7 @@ app.get(`/api/user`, getUser)
 app.post(`/api/test/:id`, addRoute);
 
 app.put(`/api/image`, addImage);
-app.put(`/api/routePic`, routePic);
+app.put(`/api/routePic/:id/:userid`, routePic);
 app.put(`/api/iGotIt/:id`, iGotIt)
 app.put(`/api/description/:id`, update);
 app.put(`/api/timestamp/:id`, updateTime);
