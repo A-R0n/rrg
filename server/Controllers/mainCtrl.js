@@ -6,7 +6,7 @@ var coord = []
 function getCoordinate (req, res, next) {
    axios.get(`https://openweathermap.org/data/2.5/weather?lat=38&lon=-84&${process.env.WEATHER_API}`)
    .then(response => {
-       console.log('weather resp', response.data)
+       console.log('weather resp', response.data.weather)
        if(response.data.weather[0].main == "Clouds"){
            response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/131/131043.svg'
        }
@@ -29,6 +29,59 @@ function getCoordinate (req, res, next) {
    }).catch(err => res.status(500).json(err))
 };
 
+const addImage = (req, res, next) => {
+    const {imageUrl} = req.body
+    req.app
+        .get('db')
+        .add_image([imageUrl, req.user.id])
+        .then(response => res.status(200).send(response))
+        .catch(err => res.status(500).send(err))
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+const routePic = (req, res, next) => {
+    const {imageUrl} = req.body
+    req.app
+        .get('db')
+        .changeRoutePic([req.params.id, req.params.userid, imageUrl])
+        .then(response => res.status(200).send(response))
+        .catch(err => {
+            res.status(500).send(err)})
+        
+};
+
+const deleteRouteFromJournal = (req, res, next) => {
+    req.app
+        .get('db')
+        .delete_(req.params.id)
+        .then(response => res.status(200).send(response) )
+        .catch(err => res.status(500).send(err))
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const getRoutes = (req, res, next) => {
     req.app
         .get('db')
@@ -37,17 +90,12 @@ const getRoutes = (req, res, next) => {
         .catch(err => res.status(500).send(err))
 };
 
-
-const addRoute = (req, res, next) => {
+const getUser = (req, res, next) => {
     req.app
         .get('db')
-        .post_route([req.params.id, req.session.passport.user.id])
-        .then(response => 
-            res
-                .status(200)
-                .send(response)
-        )
-        .catch(e => res.status(500).send(e))
+        .get_user(req.user.id)
+        .then(response => res.status(200).send(response))
+        .catch(err => res.status(500).send(err))
 };
 
 const getTable = (req, res, next) => {
@@ -66,6 +114,47 @@ const getEveryonesDescription = (req, res, next) => {
         .catch(err => res.status(500).send(err))
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+const addRoute = (req, res, next) => {
+    req.app
+        .get('db')
+        .post_route([req.params.id, req.session.passport.user.id])
+        .then(response => 
+            res
+                .status(200)
+                .send(response)
+        )
+        .catch(e => res.status(500).send(e))
+};
+
+
+const iGotIt = (req, res, next) => {
+    req.app
+        .get('db')
+        .sent_(req.params.id)
+        .then(response => res.status(200).send(response) )
+        .catch(err => res.status(500).send(err))
+}
+
+const createRating = (req, res, next) => {
+    req.app
+        .get('db')
+        .star(req.params.id, req.body.newRating, req.user.id)
+        .then(response => res.status(200).send(response) )
+        .catch(err => res.status(500).send(err))
+}
+
 const update = ( req, res, next ) => {
     req.app
         .get('db')
@@ -82,31 +171,6 @@ const updateTime = ( req, res, next ) => {
         .catch(err => res.status(500).send(err))
 };
 
-const deleteRouteFromJournal = (req, res, next) => {
-    req.app
-        .get('db')
-        .delete_(req.params.id)
-        .then(response => res.status(200).send(response) )
-        .catch(err => res.status(500).send(err))
-};
-
-const createRating = (req, res, next) => {
-    req.app
-        .get('db')
-        .star(req.params.id, req.body.newRating, req.user.id)
-        .then(response => res.status(200).send(response) )
-        .catch(err => res.status(500).send(err))
-}
-
-const iGotIt = (req, res, next) => {
-    req.app
-        .get('db')
-        .sent_(req.params.id)
-        .then(response => res.status(200).send(response) )
-        .catch(err => res.status(500).send(err))
-}
-
-
 const createProfile = (req, res, next) => {
     const {userName, biography, location, image} = req.body.val
     req.app
@@ -114,42 +178,13 @@ const createProfile = (req, res, next) => {
         .updateProfile([userName, biography, location, image, req.user.id])
         .then(response => res.status(200).send(response) )
         .catch(err => {
-            console.log(err)
             res.status(500).send(err)})
 }
 
-const getUser = (req, res, next) => {
-    // console.log('in the process of getting user info for profile')
-    req.app
-        .get('db')
-        .get_user(req.user.id)
-        .then(response => res.status(200).send(response))
-        .catch(err => res.status(500).send(err))
-};
 
-const addImage = (req, res, next) => {
-    // console.log('boooooody',req.body)
-    const {imageUrl} = req.body
-    req.app
-        .get('db')
-        .add_image([imageUrl, req.user.id])
-        .then(response => res.status(200).send(response))
-        .catch(err => res.status(500).send(err))
-};
 
-const routePic = (req, res, next) => {
-    console.log('boooooody',req.body)
-    console.log('params',req.params)
-    const {imageUrl} = req.body
-    req.app
-        .get('db')
-        .changeRoutePic([req.params.id, req.params.userid, imageUrl])
-        .then(response => res.status(200).send(response))
-        .catch(err => {
-            console.log(err)
-            res.status(500).send(err)})
-        
-};
+
+
 
 
 
