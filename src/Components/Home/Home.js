@@ -16,16 +16,16 @@ export default class Home extends Component {
         }
         
     }
-    componentDidMount() {
-        axios.get('/api/weather').then(results => {
-          this.setState({
-            corrd: results.data.weather,
-            tempInC: results.data.main.temp,
-            tempInF: results.data.main.temp * (9/5) + 32
-          })
-          console.log(this.state)
-        })
-      }
+    // componentDidMount() {
+    //     axios.get('/api/weather').then(results => {
+    //       this.setState({
+    //         corrd: results.data.weather,
+    //         tempInC: results.data.main.temp,
+    //         tempInF: results.data.main.temp * (9/5) + 32
+    //       })
+    //       console.log(this.state)
+    //     })
+    //   }
 
       handleClick = () => {
           this.setState({
