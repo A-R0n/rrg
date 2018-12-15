@@ -6,7 +6,7 @@ const massive = require("massive");
 const session = require("express-session");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-const authCtrl = require("./Controllers/auth0ctrl");
+// const authCtrl = require("./Controllers/auth0ctrl");
 const AWS = require("aws-sdk");
 const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECRET_ACCESS_KEY } = process.env;
 
