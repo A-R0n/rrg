@@ -1,5 +1,5 @@
 
-.everything {
+.display_route {
     position: relative;
     display: inline-block;
     margin-right: 2vw;
@@ -8,7 +8,7 @@
     
 }
 
-.nothing {
+.dont_display_route {
     display: none;
 }
 
