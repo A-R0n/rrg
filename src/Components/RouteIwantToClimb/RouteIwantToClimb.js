@@ -43,13 +43,6 @@ export default class RouteIwantToClimb extends Component{
           );
       }
 
-
-
-
-
-
-
-
     changeRating = ( newRating) => {
         this.setState({
             rating: newRating

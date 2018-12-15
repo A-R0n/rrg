@@ -3,66 +3,68 @@ import axios from 'axios';
 import './Reviews.css';
 import RouteIwantToClimb from '../RouteIwantToClimb/RouteIwantToClimb';
 import Upload from '../Upload.js';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 export default class Journal extends Component {
-    constructor(){
-        super();
+  constructor() {
+    super();
 
-        this.state = {
-            secondCart: [],
-            description: '',
-            display: true,
-            sent: false   
-        }
-        
-    }
-      componentDidMount(){
-          axios.get('/api/table').then(results => {
-              this.setState({
-                  secondCart: results.data,
-              })
-          })
-      }
+    this.state = {
+      myCart: [],
+      description: '',
+      display: true,
+      sent: false
+    };
+  }
+  componentDidMount = () => {
+    this.getRoutes();
+  }
 
-      handleClickSend = (id) => {
-        axios.put(`/api/iGotIt/${id}`).then(res => {
-            this.setState({
-                sent: !this.state.sent
-            })
-        })
-        
-    }
+  handleClickSend = async id => {
+    await axios.put(`/api/iGotIt/${id}`);
+    await this.setState({
+      sent: !this.state.sent
+    });
+  };
 
-      handleClickDelete = (e) => {
-        axios.delete(`/api/table/${e}`).then()
-        axios.get('/api/table').then(results => {
-            this.setState({
-                secondCart: results.data,
-            })
-        })
-    }
+  getRoutes = () => {
+    axios.get('/api/table').then(results => {
+      this.setState({
+        myCart: results.data
+      });
+    });
+  };
 
-    render(){
+  handleClickDelete = async id => {
+    await axios.delete(`/api/table/${id}`);
+    await this.getRoutes();
+  };
 
-        var thirdMap = this.state.secondCart.map((elem, i) => {
-            return <RouteIwantToClimb key={i} route_img = {elem.route_img}
-            route_name = {elem.route_name} route_grade = {elem.route_grade} elem={elem} display = {this.state.display}
-            descript={this.state.description} 
-            handleChange = {this.handleChange}
-            handleClickPut = {this.handleClickPut}
-            handleClickDel = {this.handleClickDelete}
-            handleClickSend = {this.handleClickSend}/>
-            
-        })
+  render() {
+    var a_list_of_my_routes = this.state.myCart.map((elem, i) => {
+      return (
+        <RouteIwantToClimb
+          key={i}
+          route_img={elem.route_img}
+          route_name={elem.route_name}
+          route_grade={elem.route_grade}
+          elem={elem}
+          display={this.state.display}
+          descript={this.state.description}
+          handleChange={this.handleChange}
+          handleClickPut={this.handleClickPut}
+          handleClickDel={this.handleClickDelete}
+          handleClickSend={this.handleClickSend}
+        />
+      );
+    });
 
-        return (
-            <div>
-                {/* <div className='lengthOfCart'>{this.state.secondCart.length}</div> */}
-                <div className='journal'>{thirdMap}</div>
-            </div>
-        )
-    }
+    return (
+      <div>
+        <div className='journal'>{a_list_of_my_routes}</div>
+      </div>
+    );
+  }
 }
 
 // const mapStateToProps = state => {
@@ -70,5 +72,5 @@ export default class Journal extends Component {
 //       cart: state.cart
 //     };
 //   };
-  
+
 //   export default connect(mapStateToProps)(Journal);
