@@ -107,9 +107,9 @@ export default class RouteIwantToClimb extends Component {
             upload={uploadOptions}
           >
             <img
-              id='user_route_pic'
+              id={!this.props.picture_of_route ? 'no_user_route_pic' : 'user_route_pic' }
               src={this.props.picture_of_route}
-              alt='text'
+              alt='--- Add an image here ---'
             />
           </DropzoneS3Uploader>
         </div>

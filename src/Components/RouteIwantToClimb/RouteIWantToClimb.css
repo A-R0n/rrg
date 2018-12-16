@@ -7,10 +7,17 @@
   font-family: 'harryp';
   src: url('../../HARRYP__.TTF') format('truetype');
 }
+
 @font-face {
   font-family: 'cartoon';
   src: url('../../Sketch\ 3D.woff') format('woff');
 }
+
+@font-face {
+    font-family: 'F25';
+    src: url('../../F25_Bank_Printer.ttf') format('truetype');
+  }
+
 
 .display_route {
   margin-top: 5vh;
@@ -36,9 +43,9 @@
   border: 1px solid rgba(26, 25, 25, 0.753);
   font-family: 'harryp';
   font-size: 1.5em;
-  margin-left: 0.5vw;
+  margin-left: 0.75vw;
   padding: 0;
-  margin-top: 0.5vh;
+  margin-top: 0.75vh;
 }
 
 #deleteButton:hover {
@@ -77,9 +84,18 @@
   margin-right: 0.2vw;
 }
 
-#user_route_pic {
+#user_route_pic, #no_user_route_pic {
   width: 100%;
   height: 100%;
+  color: white;
+  font-family: 'F25';
+  font-size: .9em;
+}
+
+#no_user_route_pic {
+    margin-top: 33%;
+    text-align: center;
+    padding: 1.5vw;
 }
 
 #logInput {
@@ -92,8 +108,8 @@
 
 #logButton {
   position: absolute;
-  right: 1.5vw;
-  bottom: 2vh;
+  right: 1vw;
+  bottom: 1vh;
   display: flex;
   height: 10%;
   width: 66px;
@@ -108,13 +124,13 @@
   z-index: 1;
 }
 
-#logButton:hover, #logButton:active {
+#logButton:hover, #logButton:active, #deleteButton:hover {
     transition: all .1s ease-in;
     transform: scale(1.25);
 }
 
 #logButton:active {
-    background: red;
+    border: 1px solid red;
 }
 
 .bottom_nav {
