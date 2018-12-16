@@ -1,0 +1,116 @@
+@font-face {
+  font-family: 'lumos';
+  src: url('../../MyHandwritingSucks.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'harryp';
+  src: url('../../HARRYP__.TTF') format('truetype');
+}
+@font-face {
+  font-family: 'cartoon';
+  src: url('../../Sketch\ 3D.woff') format('woff');
+}
+
+.display_route {
+  background: rgba(26, 25, 25, 0.753);
+  display: flex;
+  border: 5px solid white;
+  width: 49%;
+  flex-wrap: wrap;
+  margin-bottom: 1vh;
+}
+
+.dont_display_route {
+  display: none;
+}
+
+#deleteButton {
+  background: rgba(26, 25, 25, 0.753);
+  color: white;
+  font-weight: bold;
+  border: 1px solid black;
+  font-family: 'harryp';
+  font-size: 1.8em;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  height: 6%;
+}
+
+#deleteButton:hover {
+  color: red;
+}
+
+.routeName {
+  width: 46%;
+  height: 3%;
+  display: flex;
+  margin-left: 1vw;
+  font-size: 1.5em;
+  font-family: 'cartoon';
+  color: white;
+}
+
+.bottom_nav {
+  width: 100%;
+}
+
+.journalImg,
+#imageUploader {
+  margin-top: -3.5vh;
+}
+
+.journalImg {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 38%;
+  height: 40%;
+}
+
+.could_drop{
+  height: 10%;
+}
+
+#user_route_pic {
+  width: 100%;
+  height: 100%;
+  background: orange;
+}
+
+#logInput {
+  margin-top: -1vh;
+  width: 100%;
+  background: rgba(238, 229, 229, 0.753);
+  height: 37%;
+  font-family: 'lumos';
+  font-size: 2em;
+}
+
+#logButton {
+  text-align: center;
+  margin-bottom: -2.5vh;
+  margin-top: -2.5vh;
+  background: green;
+  width: 100%;
+  height: 8%;
+  color: white;
+  border: 1px solid black;
+  font-family: 'Inconsolata', monospace;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+/* #sendButton {
+  background: rgb(186, 241, 200);
+  border: 1px solid black;
+  font-family: 'Inconsolata', monospace;
+  font-weight: bold;
+} */
+
+.star-ratings {
+  padding-top: 3.5vh;
+  width: 13%;
+  margin-right: 3vw;
+}

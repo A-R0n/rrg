@@ -1,77 +1,12 @@
-
-
-
-
-
-
-
-
-
-/* .lengthOfCart {
-    position: absolute;
-    right: 20vw;
-    
-    z-index: 1;
-} */
-
-
-
-.routeName {
-    /* position: absolute; */
-    
-    color: rgb(46, 46, 95);;
-    border: 1px solid;
-    font-size: 10px;
-    background: rgb(237, 237, 252);
-    height: 3vh;
+.journal {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 11.7vw;
-    padding: 2px;
-    font-family: 'Inconsolata', monospace;
-    font-weight: bold;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 
 
-#logInput {
-    height: 24vh;
-    width: 18vw;
-    margin-bottom: 3vh;
-    background: rgb(220, 220, 231);
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 14px;
-}
 
-#logButton {
 
-    height: 3vh;
-    width: 4.9vw;
-    background: green;
-    color: white;
-    border: 1px solid black;
-    font-family: 'Inconsolata', monospace;
-    font-weight: bold;
-}
-
-#sendButton {
-    margin-left: .5vw;
-    background: rgb(186, 241, 200);
-    height: 3.5vh;
-    border: 1px solid black;
-    font-family: 'Inconsolata', monospace;
-    font-weight: bold;
-    
-}
-
-#deleteButton {
-    width: 5.8vw;
-    height: 3.8vh;
-    background: black;
-    color: white;
-    font-weight: bold;
-    border: 1px solid black;
-}
 
 
