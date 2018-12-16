@@ -6,7 +6,6 @@
     "aws-sdk": "^2.353.0",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
-    "cloudinary-react": "^1.0.6",
     "concurrently": "^4.1.0",
     "cors": "^2.8.4",
     "d3-geo": "^1.11.3",
