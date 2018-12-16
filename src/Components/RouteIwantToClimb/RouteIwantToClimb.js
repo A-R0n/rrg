@@ -3,10 +3,11 @@ import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import './RouteIWantToClimb.scss';
+require('dotenv').config();
 
 export default class RouteIwantToClimb extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       display: true,
@@ -26,21 +27,16 @@ export default class RouteIwantToClimb extends Component {
     this.updateImage(info.fileUrl);
   };
 
-  updateImage = imageUrl => {
-    console.log(imageUrl);
-
-    axios
-      .put(
-        `/api/routePic/${this.props.elem.id_of_route}/${this.state.user.id}`,
-        { imageUrl }
-      )
-      .then(
-        this.setState({
-          user: Object.assign({}, this.state.user, {
-            picture_of_route: imageUrl
-          })
-        })
-      );
+  updateImage = async imageUrl => {
+    await axios.put(
+      `/api/routePic/${this.props.elem.id_of_route}/${this.state.user.id}`,
+      { imageUrl }
+    );
+    // await this.setState({
+    //   user: Object.assign({}, this.state.user, {
+    //     picture_of_route: imageUrl
+    //   })
+    // });
   };
 
   changeRating = newRating => {
@@ -50,15 +46,14 @@ export default class RouteIwantToClimb extends Component {
     axios.put(`/api/rating/${this.props.elem.id_of_route}`, { newRating });
   };
 
-  log_Route = id => {
-    axios
-      .put(`/api/description/${id}`, { description: this.state.description })
-      .then(res => {
-        this.setState({
-          display: false
-        });
-      });
-    axios.put(`/api/timestamp/${id}`);
+  log_Route = async id => {
+    await axios.put(`/api/description/${id}`, {
+      description: this.state.description
+    });
+    await this.setState({
+      display: false
+    });
+    await axios.put(`/api/timestamp/${id}`);
   };
 
   handleChange = e => {
@@ -73,9 +68,11 @@ export default class RouteIwantToClimb extends Component {
       signingUrlQueryParams: { uploadType: 'avatar' }
     };
     const s3Url = `http://rrg-climbing-pics.s3-website-us-east-1.amazonaws.com/`;
-    console.log(this.state.user);
+
     return (
-      <div className={this.state.display ? 'display_route' : 'dont_display_route'}>
+      <div
+        className={this.state.display ? 'display_route' : 'dont_display_route'}
+      >
         <img className='journalImg' src={this.props.route_img} alt='routeImg' />
         <div className='Dropzone_Img'>
           <DropzoneS3Uploader

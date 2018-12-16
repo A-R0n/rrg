@@ -8,7 +8,7 @@ export default class RouteLog extends Component{
                         <p id={this.props.sent ? 'checkmark' : 'trady'}>✔</p>
                         <p id="profileRouteDescription">{this.props.description_}</p>
                         <p id="profileRouteTimeStamp">{this.props.timestamp_}</p>
-                        <img id='smallPic'src={this.props.picture_of_route} />
+                        <img id='smallPic'src={this.props.picture_of_route} alt='pic of route'/>
                 </div>
             )
         }

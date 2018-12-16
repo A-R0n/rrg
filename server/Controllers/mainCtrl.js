@@ -51,6 +51,7 @@ const addImage = (req, res, next) => {
 
 
 const routePic = (req, res, next) => {
+    console.log(req.params)
     const {imageUrl} = req.body
     req.app
         .get('db')

@@ -100,6 +100,7 @@ export default class Search extends Component {
         <img
           id='magGlass'
           src='https://www.shareicon.net/data/128x128/2016/01/10/701311_magnifying-glass_512x512.png'
+          alt='classic routes'
         />
         <input
           id='find_route'

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Reviews.css';
 import RouteIwantToClimb from '../RouteIwantToClimb/RouteIwantToClimb';
-import Upload from '../Upload.js';
-import { connect } from 'react-redux';
+// import Upload from '../Upload.js';
+// import { connect } from 'react-redux';
+import WorldMap from '../WorldMap/WorldMap'
 
 export default class Journal extends Component {
   constructor() {
@@ -62,15 +63,8 @@ export default class Journal extends Component {
     return (
       <div>
         <div className='journal'>{a_list_of_my_routes}</div>
+        <WorldMap />
       </div>
     );
   }
 }
-
-// const mapStateToProps = state => {
-//     return {
-//       cart: state.cart
-//     };
-//   };
-
-//   export default connect(mapStateToProps)(Journal);
