@@ -79,6 +79,7 @@ export default class RouteIwantToClimb extends Component {
             : 'dont_display_route'
         }
       >
+      <div className='top_of_all_routes'>
         <button
           id='deleteButton'
           onClick={() => this.props.handleClickDel(this.props.elem.route_id)}
@@ -101,6 +102,7 @@ export default class RouteIwantToClimb extends Component {
           starHoverColor='yellow'
           isSelectable='true'
         />
+        </div>
         <img className='journalImg' src={this.props.route_img} alt='routeImg' />
         <div className='could_drop'>
           <DropzoneS3Uploader

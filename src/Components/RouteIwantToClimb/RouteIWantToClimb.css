@@ -14,10 +14,9 @@
 }
 
 @font-face {
-    font-family: 'F25';
-    src: url('../../F25_Bank_Printer.ttf') format('truetype');
-  }
-
+  font-family: 'F25';
+  src: url('../../F25_Bank_Printer.ttf') format('truetype');
+}
 
 .display_route {
   margin-top: 5vh;
@@ -29,24 +28,31 @@
   height: 80vh;
   flex-wrap: wrap;
   flex-direction: space-between;
-  position: relative;
 }
 
 .dont_display_route {
   display: none;
 }
 
+.top_of_all_routes {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  border-bottom: 1px solid white;
+  width: 100%;
+  height: 12%;
+}
+
 #deleteButton {
   background: rgba(26, 25, 25, 0.753);
-  height: 6%;
+  height: 45%;
+  width: 10%;
   color: white;
   font-weight: bold;
   border: 1px solid rgba(26, 25, 25, 0.753);
   font-family: 'harryp';
   font-size: 1.5em;
-  margin-left: 0.75vw;
-  padding: 0;
-  margin-top: 0.75vh;
+  margin-top: 1vh;
 }
 
 #deleteButton:hover {
@@ -54,25 +60,20 @@
 }
 
 .routeName {
-  width: 65%;
-  height: 5%;
+  width: 74%;
   display: flex;
-  margin-left: 0.7vw;
+  justify-content: center;
+  align-items: center;
   font-size: 1.5em;
   font-family: 'cartoon';
   color: white;
 }
 
 .star-ratings {
-  padding-top: 3.5vh;
-  width: 21.5%;
+  padding-top: 3.8vh;
+  width: 25%;
   margin-top: 0vh;
-  margin-left: 1vw;
-}
-
-.journalImg,
-.could_drop {
-  margin-top: 0vh;
+  height: 75%;
 }
 
 .journalImg {
@@ -81,28 +82,29 @@
   align-content: center;
   align-items: center;
   width: 50%;
-  height: 38.5%;
+  height: 205px;
   margin-right: 0.2vw;
 }
 
-#user_route_pic, #no_user_route_pic {
+#user_route_pic,
+#no_user_route_pic {
   width: 100%;
   height: 100%;
   color: white;
   font-family: 'F25';
-  font-size: .9em;
+  font-size: 0.9em;
 }
 
 #no_user_route_pic {
-    margin-top: 33%;
-    text-align: center;
-    padding: 1.5vw;
+  margin-top: 33%;
+  text-align: center;
+  padding: 1.5vw;
 }
 
 #logInput {
   width: 100%;
   background-image: url('https://wallpapertag.com/wallpaper/full/2/6/9/135073-large-papyrus-background-1920x1080.jpg');
-  height: 46%;
+  height: 350px;
   font-family: 'lumos';
   font-size: 2em;
 }
@@ -125,13 +127,15 @@
   z-index: 1;
 }
 
-#logButton:hover, #logButton:active, #deleteButton:hover {
-    transition: all .1s ease-in;
-    transform: scale(1.25);
+#logButton:hover,
+#logButton:active,
+#deleteButton:hover {
+  transition: all 0.1s ease-in;
+  transform: scale(1.25);
 }
 
 #logButton:active {
-    border: 1px solid red;
+  border: 1px solid red;
 }
 
 .bottom_nav {
