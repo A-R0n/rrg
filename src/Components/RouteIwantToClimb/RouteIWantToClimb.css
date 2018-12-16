@@ -13,12 +13,15 @@
 }
 
 .display_route {
+  margin-top: 5vh;
+  margin-bottom: 2vh;
   background: rgba(26, 25, 25, 0.753);
   display: flex;
-  border: 5px solid white;
-  width: 49%;
+  border: 2px solid white;
+  width: 29.5%;
   flex-wrap: wrap;
-  margin-bottom: 1vh;
+  flex-direction: space-between;
+  position: relative;
 }
 
 .dont_display_route {
@@ -27,14 +30,15 @@
 
 #deleteButton {
   background: rgba(26, 25, 25, 0.753);
+  height: 6%;
   color: white;
   font-weight: bold;
-  border: 1px solid black;
+  border: 1px solid rgba(26, 25, 25, 0.753);
   font-family: 'harryp';
-  font-size: 1.8em;
-  margin-top: 2vh;
-  margin-left: 1vw;
-  height: 6%;
+  font-size: 1.5em;
+  margin-left: 0.5vw;
+  padding: 0;
+  margin-top: 0.5vh;
 }
 
 #deleteButton:hover {
@@ -42,22 +46,25 @@
 }
 
 .routeName {
-  width: 46%;
-  height: 3%;
+  width: 65%;
+  height: 5%;
   display: flex;
-  margin-left: 1vw;
+  margin-left: 0.7vw;
   font-size: 1.5em;
   font-family: 'cartoon';
   color: white;
 }
 
-.bottom_nav {
-  width: 100%;
+.star-ratings {
+  padding-top: 3.5vh;
+  width: 21.5%;
+  margin-top: 0vh;
+  margin-left: 1vw;
 }
 
 .journalImg,
-#imageUploader {
-  margin-top: -3.5vh;
+.could_drop {
+  margin-top: 0vh;
 }
 
 .journalImg {
@@ -65,52 +72,51 @@
   justify-content: center;
   align-content: center;
   align-items: center;
-  width: 38%;
-  height: 40%;
-}
-
-.could_drop{
-  height: 10%;
+  width: 50%;
+  height: 44.5%;
+  margin-right: 0.2vw;
 }
 
 #user_route_pic {
   width: 100%;
   height: 100%;
-  background: orange;
 }
 
 #logInput {
-  margin-top: -1vh;
   width: 100%;
-  background: rgba(238, 229, 229, 0.753);
-  height: 37%;
+  background-image: url('https://wallpapertag.com/wallpaper/full/2/6/9/135073-large-papyrus-background-1920x1080.jpg');
+  height: 39%;
   font-family: 'lumos';
   font-size: 2em;
 }
 
 #logButton {
+  position: absolute;
+  right: 1.5vw;
+  bottom: 2vh;
+  display: flex;
+  height: 10%;
+  width: 66px;
   text-align: center;
-  margin-bottom: -2.5vh;
-  margin-top: -2.5vh;
-  background: green;
-  width: 100%;
-  height: 8%;
+  background-image: url('https://img.pokemondb.net/artwork/vector/geodude-alolan.png');
+  background-repeat: no-repeat;
+  background-size: 90%;
+  background-position: absolute;
   color: white;
-  border: 1px solid black;
   font-family: 'Inconsolata', monospace;
-  font-size: 2em;
   font-weight: bold;
+  z-index: 1;
 }
 
-/* #sendButton {
-  background: rgb(186, 241, 200);
-  border: 1px solid black;
-  font-family: 'Inconsolata', monospace;
-  font-weight: bold;
-} */
+#logButton:hover, #logButton:active {
+    transition: all .1s ease-in;
+    transform: scale(1.25);
+}
 
-.star-ratings {
-  padding-top: 3.5vh;
-  width: 13%;
-  margin-right: 3vw;
+#logButton:active {
+    background: red;
+}
+
+.bottom_nav {
+  width: 100%;
 }
