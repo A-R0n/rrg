@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Reviews.css';
 import RouteIwantToClimb from '../RouteIwantToClimb/RouteIwantToClimb';
-// import Upload from '../Upload.js';
-// import { connect } from 'react-redux';
-import WorldMap from '../WorldMap/WorldMap'
+// import WorldMap from '../WorldMap/WorldMap';
 
 export default class Journal extends Component {
   constructor() {
@@ -17,7 +15,7 @@ export default class Journal extends Component {
       sent: false
     };
   }
-  componentDidMount = () => {
+  componentDidMount() {
     this.getRoutes();
   }
 
@@ -42,13 +40,14 @@ export default class Journal extends Component {
   };
 
   render() {
-    var a_list_of_my_routes = this.state.myCart.map((elem, i) => {
+    const a_list_of_my_routes = this.state.myCart.map((elem, i) => {
       return (
         <RouteIwantToClimb
           key={i}
           route_img={elem.route_img}
           route_name={elem.route_name}
           route_grade={elem.route_grade}
+          picture_of_route={elem.picture_of_route}
           elem={elem}
           display={this.state.display}
           descript={this.state.description}
@@ -63,7 +62,7 @@ export default class Journal extends Component {
     return (
       <div>
         <div className='journal'>{a_list_of_my_routes}</div>
-        <WorldMap />
+        {/* <WorldMap /> */}
       </div>
     );
   }

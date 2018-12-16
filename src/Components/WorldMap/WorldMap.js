@@ -155,7 +155,7 @@ class WorldMap extends Component {
   }
 
   componentDidMount() {
-    fetch('/world-110m.json').then(response => {
+    fetch('https://unpkg.com/world-atlas@1/world/110m.json').then(response => {
       if (response.status !== 200) {
         console.log(`There was a problem: ${response.status}`);
         return;

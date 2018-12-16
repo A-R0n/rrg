@@ -2,41 +2,47 @@ import React, { Component } from 'react';
 import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
-import './RouteIWantToClimb.scss';
+// import './RouteIWantToClimb.scss';
+import RouteLog from '../RouteLog/RouteLog.js';
 require('dotenv').config();
 
+
 export default class RouteIwantToClimb extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       display: true,
       description: '',
       rating: 0,
-      user: {}
+      user: {},
+      myCart: [],
+      user_climbing_image: null
     };
   }
 
-  componentDidMount() {
-    axios.get('/api/user').then(results => {
-      this.setState({ user: results.data.passport.user });
+  componentDidMount = async () => {
+    await axios.get('/api/user').then(results => {
+      console.log(results.data)
+      this.setState({ user: results.data.passport.user,
+      myCart: results.data})
+      
     });
-  }
+  };
 
   handleFinishedUpload = info => {
     this.updateImage(info.fileUrl);
   };
 
-  updateImage = async imageUrl => {
-    await axios.put(
-      `/api/routePic/${this.props.elem.id_of_route}/${this.state.user.id}`,
-      { imageUrl }
-    );
-    // await this.setState({
-    //   user: Object.assign({}, this.state.user, {
-    //     picture_of_route: imageUrl
-    //   })
-    // });
+  updateImage = async (imageUrl) => {
+    await axios
+      .put(
+        `/api/routePic/${this.props.elem.id_of_route}/${this.state.user.id}`,
+        { imageUrl }
+      )
+      .then(results => {
+        this.setState({ user_climbing_image: results.data.picture_of_route });
+      });
   };
 
   changeRating = newRating => {
@@ -68,7 +74,7 @@ export default class RouteIwantToClimb extends Component {
       signingUrlQueryParams: { uploadType: 'avatar' }
     };
     const s3Url = `http://rrg-climbing-pics.s3-website-us-east-1.amazonaws.com/`;
-
+    
     return (
       <div
         className={this.state.display ? 'display_route' : 'dont_display_route'}
@@ -83,8 +89,8 @@ export default class RouteIwantToClimb extends Component {
             id='imageUploader'
           >
             <img
-              className='profilePic'
-              src={this.state.user.picture_of_route}
+              className='user_route_pic'
+              src={this.props.picture_of_route}
               alt='text'
             />
             <p
@@ -140,3 +146,4 @@ export default class RouteIwantToClimb extends Component {
     );
   }
 }
+

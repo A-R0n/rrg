@@ -1,37 +1,24 @@
 
-.display_route {
-    position: relative;
-    display: inline-block;
-    margin-right: 2vw;
-    margin-left: 3vw;
-    width: 40vw;
-    
-}
 
-.dont_display_route {
-    display: none;
-}
 
-.journalImg {
-    height: 24vh;
-    width: 18vw;
-    /* position: relative; */
-    margin-left: 3vw;
-    margin-top: 5vh;
-    margin-bottom: 3vh;
-}
 
-.lengthOfCart {
+
+
+
+
+
+/* .lengthOfCart {
     position: absolute;
     right: 20vw;
     
     z-index: 1;
-}
+} */
+
+
 
 .routeName {
-    position: absolute;
-    top: 0;
-    left: 8.9vw;
+    /* position: absolute; */
+    
     color: rgb(46, 46, 95);;
     border: 1px solid;
     font-size: 10px;
@@ -46,22 +33,19 @@
     font-weight: bold;
 }
 
+
+
 #logInput {
     height: 24vh;
     width: 18vw;
     margin-bottom: 3vh;
-    position: absolute;
-    right: 0;
-    bottom: 0;
     background: rgb(220, 220, 231);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 14px;
 }
 
 #logButton {
-    position: absolute;
-    right: 0;
-    bottom: 3vh;
+
     height: 3vh;
     width: 4.9vw;
     background: green;
@@ -72,9 +56,6 @@
 }
 
 #sendButton {
-    position: absolute;
-    top: 1.5vh;
-    width: 18.5vw;
     margin-left: .5vw;
     background: rgb(186, 241, 200);
     height: 3.5vh;
@@ -85,9 +66,6 @@
 }
 
 #deleteButton {
-    position: absolute;
-    left: 3vw;
-    top: 1.2vh;
     width: 5.8vw;
     height: 3.8vh;
     background: black;

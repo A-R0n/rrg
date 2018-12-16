@@ -1,0 +1,26 @@
+.display_route {
+    background: red;
+    display: flex;
+    flex-direction: column;
+}
+
+.dont_display_route {
+    display: none;
+}
+
+.user_route_pic{
+    display:flex;
+    width: 100%;
+    height: 100%;
+}
+
+
+.journalImg {
+    height: 200px;
+    width: 200px;
+}
+
+.Dropzone_Img {
+    display: flex;
+    justify-content: space-between;
+}
