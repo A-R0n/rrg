@@ -32,14 +32,13 @@ export default class RouteIwantToClimb extends Component {
   };
 
   updateImage = async imageUrl => {
-    await axios
-      .put(
-        `/api/routePic/${this.props.elem.id_of_route}/${this.state.user.id}`,
-        { imageUrl }
-      )
-      this.componentDidUpdate = (results) => {
-        this.setState({ user_climbing_image: results.data.picture_of_route });
-      }
+    await axios.put(
+      `/api/routePic/${this.props.elem.id_of_route}/${this.state.user.id}`,
+      { imageUrl }
+    );
+    this.componentDidUpdate = results => {
+      this.setState({ user_climbing_image: results.data.picture_of_route });
+    };
   };
 
   changeRating = newRating => {
@@ -50,11 +49,11 @@ export default class RouteIwantToClimb extends Component {
   };
 
   log_Route = async id => {
-    await axios.put(`/api/description/${id}`, {
-      description: this.state.description
-    });
     await this.setState({
       display: false
+    });
+    await axios.put(`/api/description/${id}`, {
+      description: this.state.description
     });
     await axios.put(`/api/timestamp/${id}`);
   };
@@ -74,7 +73,11 @@ export default class RouteIwantToClimb extends Component {
 
     return (
       <div
-        className={this.state.display ? 'display_route' : 'dont_display_route'}
+        className={
+          !this.props.elem.description_ && this.state.display
+            ? 'display_route'
+            : 'dont_display_route'
+        }
       >
         <button
           id='deleteButton'
@@ -107,7 +110,11 @@ export default class RouteIwantToClimb extends Component {
             upload={uploadOptions}
           >
             <img
-              id={!this.props.picture_of_route ? 'no_user_route_pic' : 'user_route_pic' }
+              id={
+                !this.props.picture_of_route
+                  ? 'no_user_route_pic'
+                  : 'user_route_pic'
+              }
               src={this.props.picture_of_route}
               alt='--- Add an image here ---'
             />

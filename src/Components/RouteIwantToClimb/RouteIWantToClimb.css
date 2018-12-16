@@ -26,6 +26,7 @@
   display: flex;
   border: 2px solid white;
   width: 29.5%;
+  height: 80vh;
   flex-wrap: wrap;
   flex-direction: space-between;
   position: relative;
@@ -80,7 +81,7 @@
   align-content: center;
   align-items: center;
   width: 50%;
-  height: 44.5%;
+  height: 38.5%;
   margin-right: 0.2vw;
 }
 
@@ -101,7 +102,7 @@
 #logInput {
   width: 100%;
   background-image: url('https://wallpapertag.com/wallpaper/full/2/6/9/135073-large-papyrus-background-1920x1080.jpg');
-  height: 39%;
+  height: 46%;
   font-family: 'lumos';
   font-size: 2em;
 }
