@@ -28,6 +28,7 @@
   height: 80vh;
   flex-wrap: wrap;
   flex-direction: space-between;
+  position: relative;
 }
 
 .dont_display_route {
