@@ -30,7 +30,7 @@ const {
   routePic
 } = require("./Controllers/mainCtrl");
 
-const port = process.env.SERVER_PORT;
+const port = process.env.SERVER_PORT || 3001;
 
 app.use(json());
 app.use(cors());
