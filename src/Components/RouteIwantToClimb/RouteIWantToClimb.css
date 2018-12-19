@@ -102,6 +102,11 @@
   padding: 1.5vw;
 }
 
+.react-dropzone-s3-uploader {
+  height: 1000px;
+  width: 100%;
+}
+
 #logInput {
   width: 100%;
   background-image: url('https://wallpapertag.com/wallpaper/full/2/6/9/135073-large-papyrus-background-1920x1080.jpg');

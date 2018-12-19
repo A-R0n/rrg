@@ -1,5 +1,3 @@
-
-
 .noPlaceLikeHome {
     width: 100%;
     height: 100%;
@@ -10,8 +8,6 @@
     position: absolute;
     left: 1vw;
     top: 14vh;
-    /* border: 3.3px solid black; */
-    /* border-radius: 50%; */
 }
 
 .currentWeather {
@@ -48,7 +44,6 @@
     width: 5vw;
     background: blue;
     border-radius: 10%;
-    /* opacity: .3; */
     font-size: 30px;
     border: 1px solid black;
     
@@ -67,7 +62,6 @@
     color: white;
     background: blue;
     border-radius: 10%;
-    /* opacity: .3; */
     font-size: 30px;
     border: 1px solid black;
 }

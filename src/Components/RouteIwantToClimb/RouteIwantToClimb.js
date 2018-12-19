@@ -3,7 +3,6 @@ import StarRatings from 'react-star-ratings';
 import axios from 'axios';
 import DropzoneS3Uploader from 'react-dropzone-s3-uploader';
 import './RouteIWantToClimb.css';
-import RouteLog from '../RouteLog/RouteLog.js';
 require('dotenv').config();
 
 export default class RouteIwantToClimb extends Component {
@@ -103,7 +102,7 @@ export default class RouteIwantToClimb extends Component {
           isSelectable='true'
         />
         </div>
-        <img className='journalImg' src={this.props.route_img} alt='routeImg' />
+        <img className='journalImg' src={this.props.route_img} alt='route Img' />
         <div className='could_drop'>
           <DropzoneS3Uploader
             onFinish={this.handleFinishedUpload}
@@ -118,7 +117,7 @@ export default class RouteIwantToClimb extends Component {
                   : 'user_route_pic'
               }
               src={this.props.picture_of_route}
-              alt='--- Add an image here ---'
+              alt='--- Add here ---'
             />
           </DropzoneS3Uploader>
         </div>

@@ -6,8 +6,8 @@ const massive = require("massive");
 const session = require("express-session");
 const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
-// const authCtrl = require("./Controllers/auth0ctrl");
 const AWS = require("aws-sdk");
+const path = require('path');
 const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECRET_ACCESS_KEY } = process.env;
 
 const app = express();
@@ -30,7 +30,7 @@ const {
   routePic
 } = require("./Controllers/mainCtrl");
 
-const port = 3001;
+const port = 3010;
 
 app.use(json());
 app.use(cors());
@@ -69,6 +69,7 @@ massive(process.env.CONNECTION_STRING)
 
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use( express.static( `${__dirname}/../build/` ) );
 
 passport.use(
   new Auth0Strategy(
@@ -120,6 +121,10 @@ app.get("/logout", function(req, res) {
   req.session.destroy();
   res.redirect("http://localhost:3000/");
 });
+
+// app.get('*', (req, res)=>{
+//   res.sendFile(path.join(__dirname, '../dist/index.html'));
+// });
 
 // Endpoints
 app.get("/api/user", (req, res) => {

@@ -38,18 +38,6 @@ const addImage = (req, res, next) => {
         .catch(err => res.status(500).send(err))
 };
 
-
-
-
-
-
-
-
-
-
-
-
-
 const routePic = (req, res, next) => {
     console.log(req.params)
     const {imageUrl} = req.body
@@ -69,19 +57,6 @@ const deleteRouteFromJournal = (req, res, next) => {
         .then(response => res.status(200).send(response) )
         .catch(err => res.status(500).send(err))
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const getRoutes = (req, res, next) => {
     req.app
@@ -114,18 +89,6 @@ const getEveryonesDescription = (req, res, next) => {
         .then(response => res.status(200).send(response))
         .catch(err => res.status(500).send(err))
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 const addRoute = (req, res, next) => {
     req.app
@@ -181,14 +144,6 @@ const createProfile = (req, res, next) => {
         .catch(err => {
             res.status(500).send(err)})
 }
-
-
-
-
-
-
-
-
 
 module.exports = {
     getCoordinate,
