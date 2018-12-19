@@ -122,13 +122,6 @@ app.get("/logout", function(req, res) {
   res.redirect('http://localhost:3000/');
 });
 
-// app.get('*', (req, res)=>{
-//   res.sendFile(path.join(__dirname, '../dist/index.html'));
-// });
-app.get('*', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../build/index.html'));
-});
-
 // Endpoints
 app.get("/api/user", (req, res) => {
   // console.log('sessss', req.user)
