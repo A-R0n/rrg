@@ -69,7 +69,7 @@ massive(process.env.CONNECTION_STRING)
 
 app.use(passport.initialize());
 app.use(passport.session());
-// app.use( express.static( `${__dirname}/../build/` ) );
+app.use( express.static( `${__dirname}/../build/` ) );
 
 passport.use(
   new Auth0Strategy(
@@ -125,6 +125,9 @@ app.get("/logout", function(req, res) {
 // app.get('*', (req, res)=>{
 //   res.sendFile(path.join(__dirname, '../dist/index.html'));
 // });
+app.get('*', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 // Endpoints
 app.get("/api/user", (req, res) => {
