@@ -8,7 +8,7 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const AWS = require("aws-sdk");
 const path = require('path');
-const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECRET_ACCESS_KEY } = process.env;
+const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECRET_ACCESS_KEY, REACT_APP_SERVER, REACT_APP_CLIENT, SUCCESS_REDIRECT } = process.env;
 
 const app = express();
 
@@ -30,7 +30,7 @@ const {
   routePic
 } = require("./Controllers/mainCtrl");
 
-const port = 3010;
+const port = 3011;
 
 app.use(json());
 app.use(cors());
@@ -111,7 +111,7 @@ passport.deserializeUser((user, done) => done(null, user));
 app.get(
   "/login",
   passport.authenticate("auth0", {
-    successRedirect: "http://localhost:3000/plan",
+    successRedirect: 'http://localhost:3000/plan',
     failureRedirect: "/login"
   })
 );
@@ -119,7 +119,7 @@ app.get(
 app.get("/logout", function(req, res) {
   req.logout();
   req.session.destroy();
-  res.redirect("http://localhost:3000/");
+  res.redirect('http://localhost:3000/');
 });
 
 // app.get('*', (req, res)=>{
@@ -151,6 +151,10 @@ app.put(`/api/rating/:id`, createRating)
 app.put(`/api/username`, createProfile)
 
 app.delete(`/api/table/:id`, deleteRouteFromJournal);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../build/index.html'));
+});
 
 app.listen(port, () => {
   console.log(`All the wayyyy upppp: ${port}`);
