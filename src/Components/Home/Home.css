@@ -16,32 +16,37 @@
 }
 
 .weather_box {
-  width: 25%;
+
+  min-width: 20%;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin-left: 100px;
+  border: 2px solid black;
 }
 
 #currentWeather {
   border: 1px solid black;
-  margin-left: 100px;
-  height: 100%;
+  height: 90%;
+  width: 90%;
   min-width: 30%;
   justify-content: center;
   display: flex;
   flex-direction: column;
+  background: rgba(255, 255, 255, 0.74);
 }
 
 #pic {
+  margin-top: -30px;
+  margin-left: 20px;
   z-index: 2;
   width: 250px;
   height: 200px;
   display: flex;
   justify-content: center;
-  align-content: center;
   align-items: center;
 }
 
@@ -49,11 +54,12 @@
 #display_celcius {
   margin-top: -20px;
   color: white;
-  margin-left: 55px;
-  width: 50%;
+  margin-left: 80px;
+  width: 90px;
+  height: 90px;
   background: blue;
-  border-radius: 10%;
-  font-size: 3em;
+  border-radius: 50%;
+  font-size: 2.5em;
   border: 1px solid black;
   display: flex;
   justify-content: center;
@@ -82,9 +88,11 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-  border-radius: 10%;
   width: 50%;
+  height: 30px;
+  margin-top: 15px;
   margin-left: 55px;
+  border: 1px solid black;
 }
 
 .login_logout {
@@ -112,27 +120,49 @@
   border: 1px solid white;
 }
 
-
-@media only screen and (max-width: 415px) {
+@media only screen and (max-width: 413px) {
   .home_information {
     justify-content: space-between;
   }
+  .weather_box {
+    margin-left: 0;
+    width: 66%;
+  }
+
+  #pic {
+    margin-left: 60px;
+    width: 100px;
+  }
   .login_logout {
     flex-direction: column;
-    width: 45%;
+    width: 23%;
     height: 70%;
-    margin-right: 0;
+    margin-right: 30px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: flex-end;
   }
 
+  #display_farenheit,
+#display_celcius {
+  margin-left: 75px;
+  margin-top: -50px;
+  width: 70px;
+  height: 70px;
+  font-size: 2em;
+}
+
   #login {
     margin-right: 0;
   }
-  
-  #login, #logout {
+
+  #logout {
+    margin-top: -100px;
+  }
+
+  #login,
+  #logout {
     font-size: 1.5em;
   }
 }

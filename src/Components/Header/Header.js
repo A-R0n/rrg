@@ -34,7 +34,7 @@ export default class Header extends Component {
     render(){
     return (
         <div className="header">
-            <h1 id="head">{this.props.title}</h1>
+            <h1 id="rrg_climb">{this.props.title}</h1>
             {this.state.clientName.length !== 0 &&
             <p> Hi {this.state.clientName}</p>}
             <div className='rightSideOfHeader'>

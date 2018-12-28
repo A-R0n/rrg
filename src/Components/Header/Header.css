@@ -6,13 +6,23 @@
     z-index: -1; 
 }
 
+#rrg_climb {
+    color: rgb(65, 34, 34);
+    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
+    width: 25%;
+    margin-left: 3vw;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    font: 300 50px/1.0 'Just Another Hand', Helvetica, sans-serif;
+}
+
 .rightSideOfHeader {
     width: 35%;
     display: flex;
     justify-content: space-between;
-    margin-right: 17vw;
     align-items: center;
-    
+    margin-left: 400px;
 }
 
 .homebutton, .searchbutton, .profilebutton, .journalbutton {
@@ -23,28 +33,30 @@
 }
 
 
-#head {
-    color: rgb(65, 34, 34);
-    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
-    width: 65%;
-    margin-left: 3vw;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    font: 300 50px/1.0 'Just Another Hand', Helvetica, sans-serif;
-}
+
 
 
 @media only screen and (max-width: 400px) {
-    #head {
+    .rightSideOfHeader {
+        width: 80%;
+        margin-top: 30px;
+        margin-left: 0;
+        margin-right: 30px;
+    }
+    #rrg_climb {
         color: rgb(65, 34, 34);
         text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
-        width: 65%;
+        width: 15%;
+        height: 100%;
         font-size: 14px;
         display: flex;
-        align-items: center;
-        align-content: center;
-        font-family: 'KoHo', sans-serif;
+        align-items: stretch;
+        font-size: 1em;
+        margin-left: 0;
+    }
+
+    .homebutton, .searchbutton, .profilebutton, .journalbutton {
+        border: 1px solid black;
     }
 }
 

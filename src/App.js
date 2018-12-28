@@ -28,7 +28,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div className="App">
-            <Header title="Red River Gorge"  profile="Profile" plan={'All Routes' } journal='My Routes' viewCart={this.props.viewCart} />
+            <Header title="RRG Climb"  profile="Profile" plan={'All Routes' } journal='My Routes' viewCart={this.props.viewCart} />
             {routes}
             <div>{mapper}</div>
           </div>
