@@ -19,6 +19,9 @@ function getCoordinate (req, res, next) {
         else if(response.data.weather[0].main == "Mist"){
         response.data.weather[0].image = "https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
         }
+        else if(response.data.weather[0].main == "Drizzle"){
+            response.data.weather[0].image = "https://image.flaticon.com/icons/svg/1281/1281211.svg"
+            }
         else if(response.data.weather[0].main == "Snow"){
             response.data.weather[0].image = "https://image.flaticon.com/icons/svg/642/642000.svg"
             }

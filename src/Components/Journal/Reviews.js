@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Reviews.css';
 import RouteIwantToClimb from '../RouteIwantToClimb/RouteIwantToClimb';
-// import WorldMap from '../WorldMap/WorldMap';
+import WorldMap from '../WorldMap/WorldMap';
 
 export default class Journal extends Component {
   constructor() {
@@ -62,7 +62,7 @@ export default class Journal extends Component {
     return (
       <div>
         <div className='journal'>{a_list_of_my_routes}</div>
-        {/* <WorldMap /> */}
+        <WorldMap />
       </div>
     );
   }

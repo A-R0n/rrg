@@ -1,104 +1,138 @@
-.noPlaceLikeHome {
-    width: 100%;
-    height: 100%;
-}
-.homeImg{
-    height: 25%;
-    width: 16%;
-    position: absolute;
-    left: 1vw;
-    top: 14vh;
+.home {
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background-image: url('https://static1.squarespace.com/static/51f68fe5e4b01da70d04b6eb/5419e4e9e4b0ca2f107f5ccc/5a64acc20d92971507930352/1531519018763/rrg-aerials-0095-web.jpg');
+  background-size: cover;
+  background-position: center;
 }
 
-.currentWeather {
-    position: relative;
+.home_information {
+  display: flex;
+  flex-wrap: wrap;
+  z-index: 2;
+  justify-content: space-between;
+  height: 35vh;
 }
 
-#home {
-    position: relative;
+.weather_box {
+  width: 25%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+
+#currentWeather {
+  border: 1px solid black;
+  margin-left: 100px;
+  height: 100%;
+  min-width: 30%;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
 }
 
 #pic {
-    height: 80%;
-    width: 70%;
-    z-index: -1;
-    margin-top: 18vh;
-    margin-left: 0vw;
+  z-index: 2;
+  width: 250px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
-#noTemp {
-    display: none;
+#display_farenheit,
+#display_celcius {
+  margin-top: -20px;
+  color: white;
+  margin-left: 55px;
+  width: 50%;
+  background: blue;
+  border-radius: 10%;
+  font-size: 3em;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
-.thermo {
-    position: absolute;
-    left: 20vw;
+#dont_dislay_celcius {
+  display: none;
 }
 
-#temp {
-    z-index: 1;
-    position: absolute;
-    top: 5vh;
-    left: 3.5vw;
-    color: white;
-    width: 5vw;
-    background: blue;
-    border-radius: 10%;
-    font-size: 30px;
-    border: 1px solid black;
-    
+#dont_display_farenheit {
+  display: none;
 }
 
-#temp2 {
-    z-index: 0.5;
-    position: absolute;
-    top: 5vh;
-    left: 3.5vw;
-    width: 5vw;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    display: flex;
-    color: white;
-    background: blue;
-    border-radius: 10%;
-    font-size: 30px;
-    border: 1px solid black;
+#display_farenheit {
+  z-index: 5;
+}
+
+#display_celcius {
+  z-index: 1;
 }
 
 #convertTemp {
-    position: absolute;
-    top: 12vh;
-    width: 5vw;
-    height: 3.5vh;
-    left: 3.45vw;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    border-radius: 10%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 10%;
+  width: 50%;
+  margin-left: 55px;
 }
 
-
-#login, #logout {
-   position: fixed;
-   text-decoration: none;
-   color: white;
-   background: black;
-   top: 12vh;
-   font-weight: bold;
+.login_logout {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 50px;
+  z-index: 2;
+  height: 20%;
+  width: 215px;
+  border: 1px solid green;
+  /* margin-left: 0; */
 }
 
 #login {
-   right: 7.5vw; 
+  margin-right: 20px;
 }
 
+#login,
 #logout {
-    right: 1vw; 
+  text-decoration: none;
+  color: white;
+  background: black;
+  font-weight: bold;
+  font-size: 2em;
+  border: 1px solid white;
 }
 
 
+@media only screen and (max-width: 415px) {
+  .home_information {
+    justify-content: space-between;
+  }
+  .login_logout {
+    flex-direction: column;
+    width: 45%;
+    height: 70%;
+    margin-right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: flex-end;
+  }
 
-
-
-
+  #login {
+    margin-right: 0;
+  }
+  
+  #login, #logout {
+    font-size: 1.5em;
+  }
+}

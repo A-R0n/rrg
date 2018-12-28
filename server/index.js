@@ -8,7 +8,7 @@ const passport = require("passport");
 const Auth0Strategy = require("passport-auth0");
 const AWS = require("aws-sdk");
 const path = require('path');
-const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECRET_ACCESS_KEY, REACT_APP_SERVER, REACT_APP_CLIENT, SUCCESS_REDIRECT } = process.env;
+const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECRET_ACCESS_KEY} = process.env;
 
 const app = express();
 
@@ -112,7 +112,8 @@ app.get(
   "/login",
   passport.authenticate("auth0", {
     // successRedirect: 'http://localhost:3000/plan',
-    successRedirect: 'http://68.183.125.227:8080/plan/',
+    // successRedirect: 'http://68.183.125.227:8080/plan/',
+    successRedirect: 'http:www.rrgclimb/plan/',
     failureRedirect: "/login"
   })
 );
@@ -121,7 +122,8 @@ app.get("/logout", function(req, res) {
   req.logout();
   req.session.destroy();
   // res.redirect('http://localhost:3000/');
-  res.redirect('http://68.183.125.227:8080/');
+  // res.redirect('http://68.183.125.227:8080/');
+  res.redirect('http://rrgclimb.com/');
 });
 
 // Endpoints
