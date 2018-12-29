@@ -67,21 +67,27 @@
   background-size: 95px 55px;
 }
 
+.route_name_and_stars {
+  /* background: pink; */
+  display: flex;
+  width: 76%;
+  align-content: center;
+  align-items: center;
+}
+
 .routeName {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.75em;
+  margin-right: 2%;
+  font-size: 2em;
   font-family: 'cartoon';
   color: white;
-  margin-right: 20px;
+  
 }
 
 .star-ratings {
-  margin-left: 10px;
-  padding-top: 15px;
-  height: 100%;
-  margin-right: 0;
+  /* margin-left: 10px; */
+ padding-top: 15px;
+ padding-left: -10px;
 }
 
 .journal_entry {
@@ -138,28 +144,43 @@
 
 
 
-/* #logButton:hover,
-#logButton:active {
+.logButton:hover,
+.logButton:active {
   transition: all 0.1s ease-in;
   transform: scale(1.25);
 }
 
-#logButton:active {
+.logButton:active {
   border: 1px solid red;
-} */
+}
 
 
 
 @media only screen and (max-width: 375px) {
   .display_route {
+    width: 95%;
+    margin-left: 2vw;
   }
 
   .routeName {
     font-size: 1em;
+    width: 60%;
   }
 
   .route_header {
-    height: 5%;
+    height: 10%;
+  }
+
+  .react-dropzone-s3-uploader {
+    max-height: 50px;
+    max-width: 50px;
+    background-size: 50px 50px;
+    color: transparent;
+    text-indent: -1000px;
+  }
+  
+  .react_star_rating {
+    display: flex;
   }
 
   .journal_entry {
@@ -167,10 +188,20 @@
     flex-direction: column;
   }
 
-  
-
   #logInput {
     font-size: 2em;
+    width: 98%;
+    height: 62vh;
+  }
+
+  .logButton {
+    min-width: 15vw;
+    min-height: 15vh;
+    margin-left: -7vw;
+    margin-top: -6vh;
+  
+    
+  
   }
 
 

@@ -99,25 +99,28 @@ export default class RouteIwantToClimb extends Component {
               }
               src={this.props.picture_of_route}
               placeholder={this.props.route_img}
-              alt='route pic'
+              alt='alternative'
             />
           </DropzoneS3Uploader>
-          <p className='routeName'>
-            {this.props.route_name} {} {this.props.route_grade}
-          </p>
-          <StarRatings
-            className='stars'
-            rating={this.state.rating}
-            starRatedColor='yellow'
-            changeRating={this.changeRating}
-            numberOfStars={5}
-            name='rating'
-            starDimension='2em'
-            starSpacing='1px'
-            starEmptyColor='white'
-            starHoverColor='yellow'
-            isSelectable='true'
-          />
+          <div className='route_name_and_stars'>
+            <p className='routeName'>
+              {this.props.route_name} {} {this.props.route_grade}
+            </p>
+            <StarRatings
+              className='stars'
+              rating={this.state.rating}
+              starRatedColor='yellow'
+              changeRating={this.changeRating}
+              numberOfStars={5}
+              name='rating'
+              starDimension='1em'
+              starSpacing='1px'
+              starEmptyColor='white'
+              starHoverColor='yellow'
+              isSelectable='true'
+            />
+            <button className='sent!' onClick={this.props.handleClickSend(this.props.elem.route_id)}>Sent!</button>
+          </div>
         </div>
         <div className='journal_entry'>
           <textarea
