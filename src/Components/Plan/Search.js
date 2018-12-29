@@ -112,9 +112,9 @@ export default class Search extends Component {
           />
           </div>
           <p id='lineOne'>
-            Add route to "My Routes" by clicking on the route image
+            Add route to "My Routes" by clicking on the route image.
           </p>
-          <p id='lineTwo'>Get reviews by clicking on the route name</p>
+          <p id='lineTwo'>Get reviews by clicking on the route name.</p>
         </div>
         <div className='all_routes'>{routeToDisplay}</div>
       </div>

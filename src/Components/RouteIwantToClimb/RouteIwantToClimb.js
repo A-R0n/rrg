@@ -78,32 +78,13 @@ export default class RouteIwantToClimb extends Component {
             : 'dont_display_route'
         }
       >
-      <div className='top_of_all_routes'>
-        <button
-          id='deleteButton'
-          onClick={() => this.props.handleClickDel(this.props.elem.route_id)}
-        >
-          X
-        </button>
-        <p className='routeName'>
-          {this.props.route_name} {} {this.props.route_grade}
-        </p>
-        <StarRatings
-          className='stars'
-          rating={this.state.rating}
-          starRatedColor='yellow'
-          changeRating={this.changeRating}
-          numberOfStars={5}
-          name='rating'
-          starDimension='1em'
-          starSpacing='1px'
-          starEmptyColor='white'
-          starHoverColor='yellow'
-          isSelectable='true'
-        />
-        </div>
-        <img className='journalImg' src={this.props.route_img} alt='route Img' />
-        <div className='could_drop'>
+        <div className='route_header'>
+          <button
+            id='deleteButton'
+            onClick={() => this.props.handleClickDel(this.props.elem.route_id)}
+          >
+            X
+          </button>
           <DropzoneS3Uploader
             onFinish={this.handleFinishedUpload}
             s3Url={s3Url}
@@ -117,20 +98,36 @@ export default class RouteIwantToClimb extends Component {
                   : 'user_route_pic'
               }
               src={this.props.picture_of_route}
-              alt='--- Add here ---'
+              placeholder={this.props.route_img}
+              alt='route pic'
             />
           </DropzoneS3Uploader>
+          <p className='routeName'>
+            {this.props.route_name} {} {this.props.route_grade}
+          </p>
+          <StarRatings
+            className='stars'
+            rating={this.state.rating}
+            starRatedColor='yellow'
+            changeRating={this.changeRating}
+            numberOfStars={5}
+            name='rating'
+            starDimension='2em'
+            starSpacing='1px'
+            starEmptyColor='white'
+            starHoverColor='yellow'
+            isSelectable='true'
+          />
         </div>
-        <textarea
-          id='logInput'
-          onChange={e => this.handleChange(e.target.value)}
-        />
-
-        <div
-          id='logButton'
-          onClick={() => this.log_Route(this.props.elem.route_id)}
-        >
-          ''
+        <div className='journal_entry'>
+          <textarea
+            id='logInput'
+            onChange={e => this.handleChange(e.target.value)}
+          />
+          <div
+            className='logButton'
+            onClick={() => this.log_Route(this.props.elem.route_id)}
+          />
         </div>
       </div>
     );

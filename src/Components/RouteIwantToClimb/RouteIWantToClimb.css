@@ -19,79 +19,113 @@
 }
 
 .display_route {
-  margin-top: 5vh;
-  margin-bottom: 2vh;
-  background: rgba(26, 25, 25, 0.753);
-  display: flex;
+  margin-top: 20px;
+  width: 48vw;
+  height: 70vh;
   border: 2px solid white;
-  width: 29.5%;
-  height: 80vh;
   flex-wrap: wrap;
-  flex-direction: space-between;
-  position: relative;
+  justify-content: flex-start;
 }
 
-.dont_display_route {
-  display: none;
-}
-
-.top_of_all_routes {
+.route_header {
   display: flex;
-  justify-content: space-between;
-  align-content: center;
   border-bottom: 1px solid white;
-  width: 100%;
-  height: 12%;
+  height: 7vh;
+  background: black;
 }
 
 #deleteButton {
-  background: rgba(26, 25, 25, 0.753);
-  height: 45%;
-  width: 10%;
+  background: black;
   color: white;
   font-weight: bold;
   border: 1px solid rgba(26, 25, 25, 0.753);
   font-family: 'harryp';
-  font-size: 1.5em;
-  margin-top: 1vh;
+  font-size: 2.5em;
+  border-bottom: 1px solid white;
+  border-left: 1px solid white;
+  border-top: 1px solid white;
+  width: 10%;
 }
 
 #deleteButton:hover {
   color: red;
 }
 
+.pic_and_route_name {
+  display: flex;
+  width: 75%;
+  justify-content: center;
+}
+
+.react-dropzone-s3-uploader {
+  margin-right: 10px;
+  max-height: 60px;
+  max-width: 100px;
+  background: rgba(255, 255, 255, 0.74);
+  z-index: 4;
+  background-image:url('https://image.flaticon.com/icons/svg/149/149098.svg');
+  background-size: 95px 55px;
+}
+
 .routeName {
-  width: 74%;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5em;
+  font-size: 1.75em;
   font-family: 'cartoon';
   color: white;
+  margin-right: 20px;
 }
 
 .star-ratings {
-  padding-top: 3.8vh;
-  width: 25%;
-  margin-top: 0vh;
-  height: 75%;
+  margin-left: 10px;
+  padding-top: 15px;
+  height: 100%;
+  margin-right: 0;
 }
 
-.journalImg {
+.journal_entry {
   display: flex;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  width: 50%;
-  height: 205px;
-  margin-right: 0.2vw;
+  align-items: flex-end;
+  z-index: 5;
+}
+
+#logInput {
+  min-width: 47.5vw;
+  height: 62vh;
+  background-image: url('https://wallpapertag.com/wallpaper/full/2/6/9/135073-large-papyrus-background-1920x1080.jpg');
+  background-size: cover;
+  font-family: 'lumos';
+  font-size: 3em;
+  z-index: 6;
+  
+}
+
+.logButton {
+  min-width: 7vw;
+  min-height: 7vh;
+  margin-left: -7vw;
+  margin-bottom: 1vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  align-content: flex-end;
+  background-image: url('https://img.pokemondb.net/artwork/vector/geodude-alolan.png');
+  background-repeat: no-repeat;
+  background-size: 90%;
+  z-index: 10;
+
+}
+
+.dont_display_route {
+  display: none;
 }
 
 #user_route_pic,
 #no_user_route_pic {
   width: 100%;
   height: 100%;
-  color: white;
+  color: black;
   font-family: 'F25';
   font-size: 0.9em;
 }
@@ -102,48 +136,42 @@
   padding: 1.5vw;
 }
 
-.react-dropzone-s3-uploader {
-  height: 1000px;
-  width: 100%;
-}
 
-#logInput {
-  width: 100%;
-  background-image: url('https://wallpapertag.com/wallpaper/full/2/6/9/135073-large-papyrus-background-1920x1080.jpg');
-  height: 350px;
-  font-family: 'lumos';
-  font-size: 3em;
-}
 
-#logButton {
-  position: absolute;
-  right: 1vw;
-  bottom: 1vh;
-  display: flex;
-  height: 10%;
-  width: 66px;
-  text-align: center;
-  background-image: url('https://img.pokemondb.net/artwork/vector/geodude-alolan.png');
-  background-repeat: no-repeat;
-  background-size: 90%;
-  background-position: absolute;
-  color: white;
-  font-family: 'Inconsolata', monospace;
-  font-weight: bold;
-  z-index: 1;
-}
-
-#logButton:hover,
-#logButton:active,
-#deleteButton:hover {
+/* #logButton:hover,
+#logButton:active {
   transition: all 0.1s ease-in;
   transform: scale(1.25);
 }
 
 #logButton:active {
   border: 1px solid red;
-}
+} */
 
-.bottom_nav {
-  width: 100%;
+
+
+@media only screen and (max-width: 375px) {
+  .display_route {
+  }
+
+  .routeName {
+    font-size: 1em;
+  }
+
+  .route_header {
+    height: 5%;
+  }
+
+  .journal_entry {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+
+  #logInput {
+    font-size: 2em;
+  }
+
+
 }

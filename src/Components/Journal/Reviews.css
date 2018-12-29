@@ -1,13 +1,7 @@
 .journal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background: rgba(0, 0, 0, 0.753);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: 1vw;
 }
-
-
-
-
-
-
 
