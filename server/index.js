@@ -27,7 +27,8 @@ const {
   getUser,
   createProfile,
   addImage,
-  routePic
+  routePic,
+  getRoutePic
 } = require("./Controllers/mainCtrl");
 
 const port = process.env.SERVER_PORT || 3001;
@@ -136,6 +137,7 @@ app.get(`/api/routes`, getRoutes);
 app.get(`/api/table`, getTable);
 app.get(`/api/everyone`, getEveryonesDescription)
 app.get(`/api/user`, getUser)
+app.get('/api/routePic:id', getRoutePic)
 
 app.post(`/api/test/:id`, addRoute);
 

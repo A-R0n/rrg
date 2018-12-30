@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Reviews.css';
 import RouteIwantToClimb from '../RouteIwantToClimb/RouteIwantToClimb';
+
 // import WorldMap from '../WorldMap/WorldMap';
 
 export default class Journal extends Component {
@@ -19,12 +20,10 @@ export default class Journal extends Component {
     this.getRoutes();
   }
 
-  handleClickSend = async id => {
-    await axios.put(`/api/iGotIt/${id}`);
-    await this.setState({
-      sent: !this.state.sent
-    });
-  };
+  handleClickSend = (id) => {
+    axios.put(`/api/iGotIt/${id}`)
+    
+  }
 
   getRoutes = () => {
     axios.get('/api/table').then(results => {

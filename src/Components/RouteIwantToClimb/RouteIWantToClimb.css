@@ -90,6 +90,25 @@
  padding-left: -10px;
 }
 
+#sent {
+  /* display: flex;
+  justify-content: center;
+  align-content: center;
+  align-content: center;
+  align-items: center; */
+  background: black;
+  color: white;
+  border: 1px solid rgba(26, 25, 25, 0.753);
+  font-family: 'harryp';
+  height: 95%;
+  font-size: 1em;
+  width: 10%;
+}
+
+#sent:hover {
+ color: green;
+}
+
 .journal_entry {
   display: flex;
   align-items: flex-end;
@@ -136,11 +155,11 @@
   font-size: 0.9em;
 }
 
-#no_user_route_pic {
+/* #no_user_route_pic {
   margin-top: 33%;
   text-align: center;
   padding: 1.5vw;
-}
+} */
 
 
 
@@ -157,14 +176,16 @@
 
 
 @media only screen and (max-width: 375px) {
+ 
   .display_route {
     width: 95%;
-    margin-left: 2vw;
+    margin-left: 2vw;  
   }
 
   .routeName {
     font-size: 1em;
-    width: 60%;
+    width: 42%;
+    margin-right: 0;
   }
 
   .route_header {
@@ -179,8 +200,25 @@
     text-indent: -1000px;
   }
   
-  .react_star_rating {
+  #sent {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-content: flex-end;
+    align-items: flex-end;
+    background: black;
+    color: white;
+    border: 1px solid rgba(26, 25, 25, 0.753);
+    font-family: 'harryp';
+    height: 75%;
+    font-size: 1em;
+    width: 10%;
+   
+  }
+
+  .star-ratings {
+    margin-left: 20px;
   }
 
   .journal_entry {

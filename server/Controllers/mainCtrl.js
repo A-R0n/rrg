@@ -42,7 +42,19 @@ const addImage = (req, res, next) => {
 };
 
 const routePic = (req, res, next) => {
-    console.log(req.params)
+    console.log('yes, so our test is hitting the route pic upload', req.params)
+    const {imageUrl} = req.body
+    req.app
+        .get('db')
+        .changeRoutePic([req.params.id, req.params.userid, imageUrl])
+        .then(response => res.status(200).send(response))
+        .catch(err => {
+            res.status(500).send(err)})
+        
+};
+
+const getRoutePic = (req, res, next) => {
+    console.log('fjaslfsjef yessssss eflijwefiew', req.params)
     const {imageUrl} = req.body
     req.app
         .get('db')
@@ -162,5 +174,6 @@ module.exports = {
     createProfile,
     getUser,
     addImage,
-    routePic
+    routePic,
+    getRoutePic
 };

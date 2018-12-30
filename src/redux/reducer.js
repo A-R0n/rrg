@@ -1,5 +1,6 @@
 import axios from "axios";
 
+
 const initialState = {
   userName: '',
   biography: '',
@@ -71,7 +72,7 @@ export const addImage = imageUrl => {
 }
 
 export const routePic = imageUrl => {
-  console.log('route pic', imageUrl)
+  console.log('propertiiiiiies for route pic', this)
   return {
     type: ROUTE_PIC,
     payload: axios.put(`/api/routePic/${this.props.elem.id_of_route}`, { imageUrl })

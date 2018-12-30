@@ -6,8 +6,8 @@ import './RouteIWantToClimb.css';
 require('dotenv').config();
 
 export default class RouteIwantToClimb extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       display: true,
@@ -19,25 +19,31 @@ export default class RouteIwantToClimb extends Component {
     };
   }
 
-  componentDidMount = async () => {
-    await axios.get('/api/user').then(results => {
-      console.log(results.data);
-      this.setState({ user: results.data.passport.user, myCart: results.data });
-    });
+  componentDidMount = () => {
+    this.getUser()
   };
+
+  getUser = () => {
+    axios.get('/api/user').then(results => {
+      this.setState({ user: results.data.passport.user, user_climbing_image: results.data });
+    });
+  }
+
 
   handleFinishedUpload = info => {
     this.updateImage(info.fileUrl);
   };
 
-  updateImage = async imageUrl => {
-    await axios.put(
+  updateImage = imageUrl => {
+    axios.put(
       `/api/routePic/${this.props.elem.id_of_route}/${this.state.user.id}`,
       { imageUrl }
+    ).then(
+      this.setState({
+        user: Object.assign({}, this.state.user, { picture_of_route: imageUrl })
+      })
     );
-    this.componentDidUpdate = results => {
-      this.setState({ user_climbing_image: results.data.picture_of_route });
-    };
+     
   };
 
   changeRating = newRating => {
@@ -70,6 +76,7 @@ export default class RouteIwantToClimb extends Component {
     };
     const s3Url = `http://rrg-climbing-pics.s3-website-us-east-1.amazonaws.com/`;
 
+console.log(this.state.user)
     return (
       <div
         className={
@@ -97,8 +104,9 @@ export default class RouteIwantToClimb extends Component {
                   ? 'no_user_route_pic'
                   : 'user_route_pic'
               }
-              src={this.props.picture_of_route}
-              placeholder={this.props.route_img}
+              src={this.state.user.picture_of_route || this.props.elem.picture_of_route}
+              // src={this.state.user_climbing_image}
+              placeholder={this.props.elem.picture_of_route}
               alt='alternative'
             />
           </DropzoneS3Uploader>
@@ -106,6 +114,8 @@ export default class RouteIwantToClimb extends Component {
             <p className='routeName'>
               {this.props.route_name} {} {this.props.route_grade}
             </p>
+            
+            <button id='sent' onClick={this.props.handleClickSend(this.props.elem.route_id)}>✔</button>
             <StarRatings
               className='stars'
               rating={this.state.rating}
@@ -119,7 +129,6 @@ export default class RouteIwantToClimb extends Component {
               starHoverColor='yellow'
               isSelectable='true'
             />
-            <button className='sent!' onClick={this.props.handleClickSend(this.props.elem.route_id)}>Sent!</button>
           </div>
         </div>
         <div className='journal_entry'>
