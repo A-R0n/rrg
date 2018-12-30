@@ -1,63 +1,88 @@
 .header {
-    background: rgba(0, 0, 0, 0.753);
-    height: 12vh;
-    width: 100vw;
-    display: flex; 
-    z-index: -1; 
+  background: rgba(0, 0, 0, 0.753);
+  height: 12vh;
+  width: 100vw;
+  display: flex;
+  z-index: -1;
 }
 
 #rrg_climb {
-    color: rgb(65, 34, 34);
-    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
-    width: 25%;
-    margin-left: 3vw;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    font: 300 50px/1.0 'Just Another Hand', Helvetica, sans-serif;
+  color: rgb(65, 34, 34);
+  text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67),
+    1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
+  width: 25%;
+  margin-left: 3vw;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  font: 300 50px/1 'Just Another Hand', Helvetica, sans-serif;
 }
 
 .rightSideOfHeader {
-    width: 35%;
+  width: 65%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 200px;
+  margin-right: 10vw;
+}
+
+.profilebutton,
+.journalbutton,
+.searchbutton {
+  margin-left: 50px;
+}
+
+.profilebutton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.homebutton,
+.searchbutton {
+  width: 50px;
+  height: 100%;
+}
+
+.journalbutton {
+  width: 50px;
+}
+
+@media only screen and (max-width: 375px) {
+
+  .rightSideOfHeader {
+    width: 75%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    margin-left: 70px;
     align-items: center;
-    margin-left: 400px;
+    margin-right: 10px;
+  }
+
+  .profilebutton,
+  .journalbutton,
+  .searchbutton {
+    margin-left: 0;
+  }
+
+  .profilebutton {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .homebutton,
+  .searchbutton {
+    width: 40px;
+    height: 100%;
+  }
+
+  .journalbutton {
+    width: 40px;
+  }
+
+  #rrg_climb {
+   width: 20%;
+  }
 }
-
-.homebutton, .searchbutton, .profilebutton, .journalbutton {
-    font-weight: bold;
-    color: rgb(65, 34, 34);
-    text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
-    font-family: 'Montserrat', sans-serif;  
-}
-
-
-
-
-
-@media only screen and (max-width: 400px) {
-    .rightSideOfHeader {
-        width: 80%;
-        margin-top: 30px;
-        margin-left: 0;
-        margin-right: 30px;
-    }
-    #rrg_climb {
-        color: rgb(65, 34, 34);
-        text-shadow: -1px 0 rgb(248, 130, 67), 0 1px rgb(248, 130, 67), 1px 0 rgb(248, 130, 67), 0 -1px rgb(248, 130, 67);
-        width: 15%;
-        height: 100%;
-        font-size: 14px;
-        display: flex;
-        align-items: stretch;
-        font-size: 1em;
-        margin-left: 0;
-    }
-
-    .homebutton, .searchbutton, .profilebutton, .journalbutton {
-        border: 1px solid black;
-    }
-}
-
-
