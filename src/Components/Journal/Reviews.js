@@ -20,10 +20,11 @@ export default class Journal extends Component {
     this.getRoutes();
   }
 
-  handleClickSend = (id) => {
-    axios.put(`/api/iGotIt/${id}`)
+  handleClickSend = async id => {
+    console.log(id);
+    await axios.put(`/api/iGotIt/${id}`);
     
-  }
+  };
 
   getRoutes = () => {
     axios.get('/api/table').then(results => {
@@ -34,6 +35,7 @@ export default class Journal extends Component {
   };
 
   handleClickDelete = async id => {
+    console.log('yoooo boy');
     await axios.delete(`/api/table/${id}`);
     await this.getRoutes();
   };

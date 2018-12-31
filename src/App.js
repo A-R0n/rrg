@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Header from './Components/Header/Header';
 import './App.css';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import routes from './routes';
+import axios from 'axios';
 
 class App extends Component {
   constructor() {
@@ -12,23 +13,23 @@ class App extends Component {
 
     this.state = {
       corrd: []
-    }
-    
+    };
   }
 
 
   render() {
-   
-    let mapper = this.state.corrd.map((val) => {
-      return <div key={val.id}>
-      <p>{val.main}</p>
-      </div>
-    })
+    let mapper = this.state.corrd.map(val => {
+      return (
+        <div key={val.id}>
+          <p>{val.main}</p>
+        </div>
+      );
+    });
     return (
       <Provider store={store}>
         <Router>
-          <div className="App">
-            <Header title="RRG Climb"  profile="Profile" plan={'All Routes' } journal='My Routes' viewCart={this.props.viewCart} />
+          <div className='App'>
+            <Header/>
             {routes}
             <div>{mapper}</div>
           </div>

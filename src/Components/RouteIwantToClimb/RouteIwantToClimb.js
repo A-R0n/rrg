@@ -76,7 +76,6 @@ export default class RouteIwantToClimb extends Component {
     };
     const s3Url = `http://rrg-climbing-pics.s3-website-us-east-1.amazonaws.com/`;
 
-console.log(this.state.user)
     return (
       <div
         className={
@@ -115,7 +114,7 @@ console.log(this.state.user)
               {this.props.route_name} {} {this.props.route_grade}
             </p>
             
-            <button id='sent' onClick={this.props.handleClickSend(this.props.elem.route_id)}>✔</button>
+            <button id='sent' onClick={() => this.props.handleClickSend(this.props.elem.route_id)}>✔</button>
             <StarRatings
               className='stars'
               rating={this.state.rating}

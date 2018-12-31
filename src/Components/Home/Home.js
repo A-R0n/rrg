@@ -33,15 +33,29 @@ export default class Home extends Component {
     const { corrd, tempInF, tempInC, tempIsInC } = this.state;
     let mapWeather = corrd.map(val => {
       return (
-        <div id='currentWeather'>
+        <div className='currentWeather'>
           <img id='pic' src={val.image} alt='current weather icon' />
-          <div id={tempIsInC === true ? 'dont_display_farenheit' : 'display_farenheit'}>
-            {Math.round(tempInF)}°F
+          <div className='temp_and_button'>
+            <div
+              id={
+                tempIsInC === true
+                  ? 'dont_display_farenheit'
+                  : 'display_farenheit'
+              }
+            >
+              {Math.round(tempInF)}°F
+            </div>
+            <div
+              id={
+                tempIsInC === true ? 'display_celcius' : 'dont_dislay_celcius'
+              }
+            >
+              {Math.round(tempInC)}°C
+            </div>
+            <button id={'convertTemp'} onClick={this.handleClick}>
+              Convert{' '}
+            </button>
           </div>
-          <div id={tempIsInC === true ? 'display_celcius' : 'dont_dislay_celcius'}>{Math.round(tempInC)}°C</div>
-          <button id={'convertTemp'} onClick={this.handleClick}>
-            Convert{' '}
-          </button>
         </div>
       );
     });

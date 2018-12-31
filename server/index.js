@@ -129,7 +129,6 @@ app.get("/logout", function(req, res) {
 
 // Endpoints
 app.get("/api/user", (req, res) => {
-  // console.log('sessss', req.user)
   res.status(200).json(req.session);
 });
 app.get(`/api/weather`, getCoordinate);

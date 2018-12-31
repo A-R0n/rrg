@@ -40,7 +40,6 @@ export default class Search extends Component {
   };
 
   render() {
-    console.log(this.state.routeNameString);
     let { routeNameString } = this.state;
 
     let routeToDisplay = this.state.allTheRoutes

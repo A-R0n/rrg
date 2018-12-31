@@ -13,7 +13,7 @@
   margin-left: 15vw;
   margin-top: 2vh;
   border: 1px solid black;
-  /* background: rgba(51, 36, 19, 0.616); */
+  background: rgba(219, 215, 210, 0.616);
 }
 
 .find_with_mag {
@@ -110,6 +110,7 @@
   display: flex;
   flex-wrap: wrap;
   text-align: left;
+  background: rgba(219, 215, 210, 0.918);
 }
 
 .textSelected {
@@ -199,7 +200,8 @@ a {
     margin: 2vh;
   }
   .text {
-    font-size: 10px;
+    min-height: 10vh;
+    font-size: 1em;
     font-family: 'Inconsolata', monospace;
     display: flex;
     flex-wrap: wrap;
@@ -209,7 +211,6 @@ a {
     font-weight: bold;
     color: white;
     padding: 1vh;
-    background-color: rgba(0, 0, 0, 0.3);
   }
   #routeImg {
     width: 100%;
@@ -223,21 +224,27 @@ a {
     width: 70%;
   }
 
-  #sport,
+ #grade, #crag, #rating {
+   color: black;
+ }
+
   #grade,
   #routeNameInSearch,
   #crag,
-  #trad,
-  #rating {
+  #rating,
+  #sport,
+  #trad {
     margin-left: 0vw;
     margin-top: 0;
     margin-bottom: 0;
     padding: 0;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: column;
     text-align: left;
     z-index: 1;
+    width: 100%;
+    
   }
 }
 #lineOne,

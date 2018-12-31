@@ -46,7 +46,8 @@
 }
 
 .journalbutton {
-  width: 50px;
+  width: 60px;
+  height: 70px;
 }
 
 @media only screen and (max-width: 375px) {

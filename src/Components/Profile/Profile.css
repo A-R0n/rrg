@@ -1,147 +1,186 @@
-.entireProfile {
-    position: relative;
-}
-
 .topHalf {
-    text-align: left;
-    width: 100vw;
-    height: 38vh;
-    display: flex;
-    background: rgb(233, 214, 180);
-    
+  text-align: left;
+  width: 100vw;
+  height: 38vh;
+  display: flex;
+  border-bottom: 2px solid black;
 }
 
 .whatTheUserFillsIn {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin-left: 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 7%;
 }
 
 .profilePic {
-    height: 100%;
-    
+  height: 100%;
+  border: 1px solid black;
 }
 
 .TheDropper {
-    position: absolute;
-    left: 4vw;
-    border-radius: 50%;
-    margin-top: 2vh;
+  margin-left: 40px;
+  margin-top: 30px;
+  display: flex;
+  background: white;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
-
-
 .userName {
-    display:flex;
-    height: 10%;
+  display: flex;
+  height: 10%;
 }
 
 .biography {
-    height: 10%;
+  height: 10%;
 }
 
 .location {
-    height: 10%;
+  height: 10%;
 }
 
 .makeProfile {
-    border: 1px solid black;
-    width: 40%;
-    display: flex;
-    justify-content: center;
+  border: 1px solid black;
+  width: 40%;
+  display: flex;
+  justify-content: center;
 }
 
-.profileData {
-    position: absolute;
-    top: 30.5vh;
-    left: 50vw;
-    display: flex;
-    justify-content: center;
-    
-}
-#one, #two, #three, #four {
-    width: 25vw;
-    height: 7.5vh;
-    background: rgb(233, 214, 180);
-    font-size: 14px;
-    font-weight: bold;
-    color: rgb(48, 34, 18);
-    opacity: 0.5;
-    
-}
-
-#one {
-    border-bottom: 1px solid rgb(48, 34, 18);
-    opacity: 1;
-}
 
 .allJournalEntries {
-    min-height: 50vh;
-    border: 1px solid black;
-    margin-left: 10vw;
-    margin-right: 10vw;
-    padding-top: 0;
+  width: 80vw;
+  /* min-height: 50vh; */
+  margin-left: 10vw;
+  margin-right: 10vw;
+  padding-top: 0;
 }
 
 .individualRoute {
-    border-bottom: 1px solid black;
-    height: 15vh;
-    width: 80vw;
-    position: relative;
+  min-height: 25vh;
+  max-width: 80vw;
+  border: 2px solid black;
+  margin-bottom: 1vh;
+}
+
+.route_name_and_checkmark {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  justify-content: space-between;
+  background: black;
 }
 
 #profileRouteName {
-    padding: 0;
-    margin-top: 0;
-    margin-left: 1.5vw;
-    color: white;
-
-}
-
-#profileRouteDescription {
-    text-align: center;
-    
-}
-
-#profileRouteTimeStamp {
-    text-align: right;
-    top: 0;
-    right: 1vw;
-    margin: 0;
-    color: grey;
-    position: absolute;
-    
+  margin-left: 1.5vw;
+  color: white;
+  font-weight: bold;
 }
 
 #checkmark {
-    font: Wingdings;
-    position: absolute;
-    left: 0vw;
-    top: -2vh;
-    color: greenyellow;
+  margin-left: 5px;
+  color: greenyellow;
 }
 
-#trady {
-    display: none;
+#no_checkmark {
+  display: none;
 }
 
-#noTextInDropzone {
-    display: none;
+#profileRouteTimeStamp {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+  margin-right: 10px;
 }
 
-.uploadImg {
-    margin-top: 2vh;
-    border-radius: 50%;
+.description_and_route_pic {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+#profileRouteDescription {
+  width: 60%;
+  word-wrap: break-word;
+  min-height: 100px;
+  background: #dededec0;
+  white-space: wrap;
+  text-indent: 20px;
+}
+
+.image_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 #smallPic {
-    height: 12vh;
-    width: 8vw;
-    position: absolute;
-    right: 1vw;
-    top: 3vh;
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
 }
 
+#no_smallPic {
+  display: none;
+}
 
+#noTextInDropzone {
+  display: none;
+}
 
+.uploadImg {
+  margin-top: 2vh;
+  border-radius: 50%;
+}
+
+@media only screen and (max-width: 375px) {
+.allJournalEntries {
+  margin-left: 1vw;
+  margin-right: 0vw;
+    /* background: pink; */
+    width: 95vw;
+    
+}
+
+.individualRoute {
+  border-bottom: 1px solid black;
+  min-height: 8vh;
+  max-width: 100vw;
+  
+  
+}
+
+.route_name_and_checkmark {
+    width: 95vw;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    justify-content: space-between;
+    background: black;
+}
+
+#profileRouteTimeStamp {
+  font-size: .75em;
+}
+
+#profileRouteDescription {
+  text-align: left;
+  margin-top: 0;
+  margin-right: 0;
+  width: 100%;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.description_and_route_pic {
+    justify-content: space-between;
+    min-width: 100%;
+}
+
+  #smallPic {
+    max-height: 300px;
+  }
+}

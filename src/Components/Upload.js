@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import { addImage } from '../redux/reducer';
 require('dotenv').config();
 
-
-
 class Upload extends Component {
   constructor() {
     super();
@@ -20,12 +18,18 @@ class Upload extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/user').then(results => {
-      this.setState({
-        user: results.data.passport.user
-      });
-    });
+    this.getUser();
   }
+
+  getUser = async () => {
+    axios.get(`/api/user`).then(results => {
+      if (results.data.passport) {
+        this.setState({
+          user: results.data.passport.user
+        });
+      }
+    });
+  };
 
   handleFinishedUpload = info => {
     this.updateImage(info.fileUrl);
@@ -51,7 +55,6 @@ class Upload extends Component {
       signingUrlQueryParams: { uploadType: 'avatar' }
     };
     const s3Url = `http://rrg-climbing-pics.s3-website-us-east-1.amazonaws.com/`;
-
     return (
       <DropzoneS3Uploader
         className='TheDropper'

@@ -2,33 +2,34 @@ import React, { Component } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { connect } from 'react-redux';
-import { addImage, updateProfile } from '../../redux/reducer';
-import Upload from '../Upload.js';
+// import { connect } from 'react-redux';
+// import { addImage, updateProfile } from '../../redux/reducer';
 
-class Header extends Component {
+export default class Header extends Component {
   constructor() {
     super();
 
     this.state = {
-      user: {},
-      number: ''
+      user_image: null,
+      user: {}
     };
   }
+
   componentDidMount() {
-    axios.get('/api/user').then(res => {
-        res.data.passport.user &&
+    axios.get(`/api/user`).then(results => {
+      if (results.data.passport) {
         this.setState({
-          user: res.data.passport.user
+          user_image: results.data.passport.user.image_url
         });
+      }
     });
   }
 
   render() {
-      console.log(this.props)
+    console.log(this.state);
     return (
       <div className='header'>
-        <h1 id='rrg_climb'>{this.props.title}</h1>
+        <h1 id='rrg_climb'>RRG Climb</h1>
         <div className='rightSideOfHeader'>
           <Link to='/'>
             <img
@@ -49,8 +50,13 @@ class Header extends Component {
             />
           </Link>
           <Link to='/profile'>
-            <img className='profilebutton' src={this.state.user.image_url || 'https://image.flaticon.com/icons/svg/149/149072.svg'}></img>
-            {/* <Upload /> */}
+            <img
+              className='profilebutton'
+              src={
+                this.state.user_image ||
+                'https://image.flaticon.com/icons/svg/149/149072.svg'
+              }
+            />
           </Link>
         </div>
       </div>
@@ -58,9 +64,8 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => state;
-export default connect(
-  mapStateToProps,
-  { addImage, updateProfile }
-)(Header);
-
+// const mapStateToProps = state => state;
+// export default connect(
+//   mapStateToProps,
+//   { addImage, updateProfile }
+// )(Header);
