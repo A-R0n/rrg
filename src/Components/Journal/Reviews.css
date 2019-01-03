@@ -1,7 +1,7 @@
 .journal {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  margin-right: 1vw;
+  justify-content: space-around;
+  /* margin-right: 1vw; */
 }
 

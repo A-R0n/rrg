@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import './Header.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-// import { connect } from 'react-redux';
-// import { addImage, updateProfile } from '../../redux/reducer';
 
 export default class Header extends Component {
   constructor() {
@@ -63,9 +61,3 @@ export default class Header extends Component {
     );
   }
 }
-
-// const mapStateToProps = state => state;
-// export default connect(
-//   mapStateToProps,
-//   { addImage, updateProfile }
-// )(Header);

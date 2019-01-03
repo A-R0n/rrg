@@ -75,7 +75,7 @@ export default class RouteIwantToClimb extends Component {
       signingUrlQueryParams: { uploadType: 'avatar' }
     };
     const s3Url = `http://rrg-climbing-pics.s3-website-us-east-1.amazonaws.com/`;
-
+console.log(this.props)
     return (
       <div
         className={
@@ -99,7 +99,7 @@ export default class RouteIwantToClimb extends Component {
           >
             <img
               id={
-                !this.props.picture_of_route
+                !this.props.elem.picture_of_route
                   ? 'no_user_route_pic'
                   : 'user_route_pic'
               }

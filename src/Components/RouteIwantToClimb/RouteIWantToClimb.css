@@ -68,7 +68,6 @@
 }
 
 .route_name_and_stars {
-  /* background: pink; */
   display: flex;
   width: 76%;
   align-content: center;
@@ -85,7 +84,6 @@
 }
 
 .star-ratings {
-  /* margin-left: 10px; */
  padding-top: 15px;
  padding-left: -10px;
 }
@@ -155,14 +153,6 @@
   font-size: 0.9em;
 }
 
-/* #no_user_route_pic {
-  margin-top: 33%;
-  text-align: center;
-  padding: 1.5vw;
-} */
-
-
-
 .logButton:hover,
 .logButton:active {
   transition: all 0.1s ease-in;
@@ -176,16 +166,19 @@
 
 
 @media only screen and (max-width: 375px) {
- 
+
   .display_route {
-    width: 95%;
-    margin-left: 2vw;  
+    width: 96%;
   }
 
   .routeName {
     font-size: 1em;
     width: 42%;
-    margin-right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 30px;
+    /* margin-right: 0; */
   }
 
   .route_header {

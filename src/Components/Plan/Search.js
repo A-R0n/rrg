@@ -97,7 +97,12 @@ export default class Search extends Component {
     return (
       <div className='allTheRoutes'>
         <div className='top_part'>
-        <div className='find_with_mag'>
+        
+          <p id='lineOne'>
+            Add route to Cart by clicking on the route image.
+          </p>
+          <p id='lineTwo'>Get reviews by clicking on the route name.</p>
+          <div className='find_with_mag'>
           <img
             id='magGlass'
             src='https://www.shareicon.net/data/128x128/2016/01/10/701311_magnifying-glass_512x512.png'
@@ -107,13 +112,9 @@ export default class Search extends Component {
             id='find_route'
             onChange={e => this.handleChange(e.target.value)}
             type='text'
-            placeholder='Search Route or Crag'
+            placeholder='Search'
           />
           </div>
-          <p id='lineOne'>
-            Add route to "My Routes" by clicking on the route image.
-          </p>
-          <p id='lineTwo'>Get reviews by clicking on the route name.</p>
         </div>
         <div className='all_routes'>{routeToDisplay}</div>
       </div>

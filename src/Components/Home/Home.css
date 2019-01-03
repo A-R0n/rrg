@@ -2,7 +2,9 @@
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  background-image: url('https://static1.squarespace.com/static/51f68fe5e4b01da70d04b6eb/5419e4e9e4b0ca2f107f5ccc/5a64acc20d92971507930352/1531519018763/rrg-aerials-0095-web.jpg');
+  /* background-image: url('https://static1.squarespace.com/static/51f68fe5e4b01da70d04b6eb/5419e4e9e4b0ca2f107f5ccc/5a64acc20d92971507930352/1531519018763/rrg-aerials-0095-web.jpg'); */
+  /* background-image: url('https://scontent-dfw5-2.cdninstagram.com/vp/9d02d8741a9fdc033fad2583c3d0e5ce/5CB36B0D/t51.2885-15/e35/41006762_235757757119089_8703327102690020511_n.jpg?_nc_ht=scontent-dfw5-2.cdninstagram.com'); */
+  background-image: url('https://scontent-dfw5-2.cdninstagram.com/vp/7f5a9eecd7aa571225203c9999c21ca3/5CD52914/t51.2885-15/e35/47032540_2741834819375196_6667107466059017578_n.jpg?_nc_ht=scontent-dfw5-2.cdninstagram.com');
   background-size: cover;
   background-position: center;
 }
@@ -101,33 +103,52 @@
 #convertTemp:hover {
   background: grey;
   color: white;
+  transition: all .4s;
 }
 
 .login_logout {
   display: flex;
-  justify-content: flex-end;
-  margin-right: 10vw;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-right: 35px;
+  margin-top: 10px;
   z-index: 2;
   height: 15%;
-  width: 215px;
-  border: 1px solid green;
+  width: 160px;
+  background: rgba(255, 255, 255, 0.74);
+  border: 2px solid black;
 }
 
 #login {
-  margin-right: 20px;
+  border-right: 1px dotted black;
 }
 
 #login,
 #logout {
-  text-decoration: none;
-  color: white;
+  color: black;
+  font-size: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  
+}
+
+#login:hover, #logout:hover {
   background: black;
-  font-weight: bold;
-  font-size: 2em;
-  border: 1px solid white;
+  color: rgba(255, 255, 255, 0.74);
+  transition:  all 0.3s;
+  transform: scale(1.1, 1.1);
 }
 
 @media only screen and (max-width: 413px) {
+
+  /* .home {
+    background-size: auto;
+    background-repeat: no-repeat;
+    
+  } */
   .home_information {
     justify-content: space-between;
   }
@@ -145,13 +166,13 @@
   }
   .login_logout {
     flex-direction: column;
-    width: 23%;
-    height: 70%;
+    width: 20%;
+    height: 23%;
     margin-right: 10px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    flex-direction: flex-end;
+   
   }
 
   #display_farenheit,
@@ -163,14 +184,17 @@
 
   #login {
     margin-right: 0;
+    border-right: none;
+    border-bottom: 1px dotted black;
+    width: 100%;
   }
 
   #logout {
-    margin-top: -100px;
+    width: 100%;
   }
 
   #login,
   #logout {
-    font-size: 1.5em;
+    font-size: 1em;
   }
 }

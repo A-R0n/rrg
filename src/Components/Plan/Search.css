@@ -6,11 +6,11 @@
 .top_part {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-content: center;
   align-items: center;
-  width: 70%;
-  margin-left: 15vw;
+  width: 50%;
+  margin-left: 25vw;
   margin-top: 2vh;
   border: 1px solid black;
   background: rgba(219, 215, 210, 0.616);
@@ -18,7 +18,6 @@
 
 .find_with_mag {
   margin-top: 1vh;
-  margin-bottom: -5vh;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -26,33 +25,11 @@
   align-items: center;
 }
 
-.all_routes {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 97.5vw;
-  margin-left: 1vw;
-  margin-right: 1vw;
-  margin-top: 4vh;
-  
-}
-
-#magGlass {
-  height: 4vh;
-  padding-right: 1vw;
-}
-
-#find_route {
-  width: 20%;
-  height: 5vh;
-  border: 1px solid black;
-  font-size: 1em;
-}
 #lineOne {
   text-align: center;
   font-family: OCR A Std, monospace;
   font-weight: bold;
-  margin-bottom: -5vh;
+  
 }
 
 #lineTwo {
@@ -61,8 +38,33 @@
   font-weight: bold;
 }
 
+.all_routes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#magGlass {
+  height: 4vh;
+  padding-right: 1vw;
+  margin-bottom: 15px;
+}
+
+#find_route {
+  width: 20%;
+  height: 5vh;
+  border: 1px solid black;
+  font-size: 1em;
+  margin-bottom: 15px;
+}
+
+
 #routeNameInSearch {
   font-weight: bold;
+}
+
+a {
+  width: 100%;
 }
 
 .routesNotSelected {
@@ -144,16 +146,13 @@
   align-content: center;
   align-items: center;
   text-align: center;
-  margin-left: 0.5vw;
-  margin-bottom: 0vh;
-  margin-right: 1vw;
   background: rgb(219, 198, 198);
   color: black;
 }
 
 #routeNameInSearch:hover {
   transition: all 0.1s ease-in;
-  transform: scale(1.1);
+  transform: scale(1.0, 1.6);
   color: rgb(219, 198, 198);
   background: black;
 }
@@ -186,6 +185,10 @@ a {
 }
 
 @media only screen and (max-width: 400px) {
+  .top_part {
+    width: 90%;
+    margin-left: 17px;
+  }
   .routeDisplay {
     background: #dedede;
     border: 2px solid rgb(9, 73, 9);
@@ -195,22 +198,37 @@ a {
   .routesNotSelected {
     border: 1px solid rgb(9, 73, 9);
     display: flex;
-    width: 95%;
+    width: 96%;
+    max-height: 50%;
+    margin: 2vh;
+  }
+
+  .routesSelected {
+    width: 96%;
     max-height: 50%;
     margin: 2vh;
   }
   .text {
-    min-height: 10vh;
     font-size: 1em;
-    font-family: 'Inconsolata', monospace;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    right: 6.5vw;
+    right: 4vw;
     color: black;
     font-weight: bold;
     color: white;
-    padding: 1vh;
+    border: 1px solid black;
+
+  }
+
+  .textSelected {
+    font-size: 1em;
+    position: absolute;
+    right: 0vw;
+    max-width: 55%;
+    background: #dedede;
+    z-index: 1;
   }
   #routeImg {
     width: 100%;
@@ -239,15 +257,11 @@ a {
     margin-bottom: 0;
     padding: 0;
     display: flex;
+    width: 100%;
     flex-wrap: nowrap;
-    justify-content: column;
     text-align: left;
     z-index: 1;
     width: 100%;
     
   }
-}
-#lineOne,
-#lineTwo {
-  margin-top: 10vh;
 }
