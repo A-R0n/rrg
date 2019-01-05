@@ -18,7 +18,11 @@ class Profile extends Component {
     super();
 
     this.state = {
-      iNeedToBringInRedux: []
+      iNeedToBringInRedux: [],
+      loc: '',
+      name: '',
+      bio: '',
+      user_exists: false
     };
   }
   componentDidMount() {
@@ -27,9 +31,27 @@ class Profile extends Component {
         iNeedToBringInRedux: results.data
       });
     });
+    axios.get(`/api/user`).then(results => {
+      this.setState({
+        user_exists: true,
+        loc: results.data.passport.user.location_,
+        name: results.data.passport.user.username,
+        bio: results.data.passport.user.biography
+      });
+    });
   }
 
+  edit_profile = () => {
+    this.setState({ user_exists: !this.state.user_exists });
+  };
+
+  update_profile_info = (id) => {
+    console.log(id)
+    // axios.put(`/api/username`)
+}
+
   render() {
+    console.log(this.state);
     let anotherMap = this.state.iNeedToBringInRedux.map((elem, i) => {
       return (
         <RouteLog
@@ -52,29 +74,62 @@ class Profile extends Component {
       <div className='entireProfile'>
         <div className='topHalf'>
           <Upload />
-          <div className='whatTheUserFillsIn'>
+          <div
+            className={
+              !this.state.user_exists
+                ? 'whatTheUserFillsIn'
+                : 'whatTheUserWontSee'
+            }
+          >
             <textarea
               className='userName'
               placeholder='User Name'
               onChange={e => updateUserName(e.target.value)}
+            />
+             <textarea
+              className='location'
+              placeholder='Location'
+              onChange={e => updateLocation(e.target.value)}
             />
             <textarea
               className='biography'
               placeholder='Biography'
               onChange={e => updateBiography(e.target.value)}
             />
-            <textarea
-              className='location'
-              placeholder='Location'
-              onChange={e => updateLocation(e.target.value)}
-            />
+           
             <button
-              className='makeProfile'
-              onClick={() => updateProfile(this.props)}
+              className='submitProfile'
+              // onClick={() => update_profile_info()}
             >
               submit
             </button>
           </div>
+          <div
+            className={
+              this.state.user_exists
+                ? 'nombre_and_location'
+                : 'whatTheUserWontSee'
+            }
+          >
+            <div
+              className={
+                this.state.user_exists ? 'nombre' : 'whatTheUserWontSee'
+              }
+            >
+              {this.state.name}
+            </div>
+            <div className={'location_info'}>
+              <img
+                className='user_loc_icon'
+                src='https://www.flaticon.com/premium-icon/icons/svg/450/450016.svg'
+              />
+              <div className='user_loc'>{this.state.loc}</div>
+              <div className='el_bio'>"{this.state.bio}"</div>
+            </div>
+          </div>
+          <button id='edit_profile' onClick={() => this.edit_profile()}>
+            Edit
+          </button>
         </div>
         <div className='bottomHalf'>
           <div className='allJournalEntries'>{anotherMap}</div>

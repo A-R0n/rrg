@@ -1,3 +1,3 @@
 UPDATE climber 
-SET username = $1, biography = $2, location_ = $3, image_url = $4
+SET username = $1, location_ = $2, biography = $3, image_url = $4
 WHERE id = $5;

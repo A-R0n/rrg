@@ -151,10 +151,10 @@ const updateTime = ( req, res, next ) => {
 };
 
 const createProfile = (req, res, next) => {
-    const {userName, biography, location, image} = req.body.val
+    const {userName, biography, location, image_} = req.body.val
     req.app
         .get('db')
-        .updateProfile([userName, biography, location, image, req.user.id])
+        .updateProfile([userName, location, biography, image_, req.user.id])
         .then(response => res.status(200).send(response) )
         .catch(err => {
             res.status(500).send(err)})

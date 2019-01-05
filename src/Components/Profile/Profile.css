@@ -1,78 +1,174 @@
+
+
 .topHalf {
   text-align: left;
-  width: 100vw;
   height: 38vh;
   display: flex;
   border-bottom: 2px solid black;
+  position: relative;
 }
 
 .whatTheUserFillsIn {
+  margin-top: 30px;
+  margin-left: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: 20vw;
+  height: 62%;
+  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.userName {
+  height: 15%;
+  margin-top: 10px;
+  font-size: 1.25em;
+  border-bottom: 1px solid black;
+}
+
+.location {
+  display: flex;
+  flex-wrap: wrap;
+  height: 20px;
+  margin-top: 10px;
+  border-bottom: 1px dotted black;
+  font-size: 1em;
+}
+
+.biography {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  margin-left: 7%;
+  margin-top: 20px;
+  width: 98%;
+  height: 70px;
+  font-style: italic;
+  font-size: 1em;
 }
 
 .profilePic {
   height: 100%;
-  border: 1px solid black;
+  
 }
 
 .TheDropper {
   margin-left: 40px;
   margin-top: 30px;
   display: flex;
-  background: white;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
-
-.userName {
-  display: flex;
-  height: 10%;
-}
-
-.biography {
-  height: 10%;
-}
-
-.location {
-  height: 10%;
-}
-
-.makeProfile {
-  border: 1px solid black;
-  width: 40%;
-  display: flex;
   justify-content: center;
+  background: white;
+  border: 1px solid black;
+}
+
+
+
+.userName,
+.location,
+.biography {
+  /* height: 10%; */
+}
+
+.submitProfile {
+  margin-left: 78%;
+  width: 20%;
+}
+
+
+
+
+
+.nombre_and_location {
+  margin-top: 30px;
+  margin-left: 5px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: 20vw;
+  height: 62%;
+  border: 1px solid black;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.nombre {
+  height: 15%;
+  margin-top: 10px;
+  font-size: 1.5em;
+  border-bottom: 1px solid black;
+}
+
+.location_info {
+  display: flex;
+  flex-wrap: wrap;
+  height: 20px;
+  margin-top: 10px;
+  border-bottom: 1px dotted black;
+}
+
+.user_loc_icon {
+  width: 20px;
+  height: 20px;
+}
+.user_loc {
+  margin-left: 5px;
+}
+
+.el_bio {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 50px;
+  width: 100%;
+  height: 70px;
+  font-style: italic;
+}
+
+#edit_profile {
+  background: rgba(221, 212, 224, 0.938);
+  width: 60px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgb(85, 28, 107);
+  font-size: 1em;
+  margin-left: 40%;
+  margin-top: 1%;
+  position: absolute;
+}
+
+#edit_profile:hover {
+  background: rgb(85, 28, 107);
+  color: rgba(221, 212, 224, 0.938);
+  transition: all .3s;
+}
+
+.submitProfile:hover {
+  border: 1px solid rgb(72, 184, 72);
 }
 
 
 .allJournalEntries {
   width: 80vw;
-  /* min-height: 50vh; */
   margin-left: 10vw;
   margin-right: 10vw;
-  padding-top: 0;
 }
 
 .individualRoute {
-  min-height: 25vh;
-  max-width: 80vw;
   border: 2px solid black;
-  margin-bottom: 1vh;
+  margin-bottom: 10px;
 }
 
-.route_name_and_checkmark {
+.post_header {
   display: flex;
-  flex-wrap: wrap;
-  margin-bottom: 0;
   justify-content: space-between;
   background: black;
 }
 
+.checkmark_and_routename {
+  width: 20%;
+  display: flex;
+}
+
 #profileRouteName {
-  margin-left: 1.5vw;
+  margin-left: 10px;
   color: white;
   font-weight: bold;
 }
@@ -95,18 +191,29 @@
   margin-right: 10px;
 }
 
+#dropdown_arrow {
+  margin-top: -15px;
+  position: absolute;
+  right: 10px;
+  font-size: 2em;
+  color: white;
+}
+
 .description_and_route_pic {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 
 #profileRouteDescription {
-  width: 60%;
+  margin-top: 2px;
+  margin-bottom: 0px;
+  width: 98%;
   word-wrap: break-word;
   min-height: 100px;
   background: #dededec0;
   white-space: wrap;
+  padding: 10px;
   text-indent: 20px;
 }
 
@@ -114,6 +221,8 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: 2px;
+  margin-bottom: 5px;
 }
 
 #smallPic {
@@ -136,49 +245,164 @@
   border-radius: 50%;
 }
 
+.whatTheUserWontSee {
+  display: none;
+}
 @media only screen and (max-width: 375px) {
-.allJournalEntries {
-  margin-left: 1vw;
-  margin-right: 0vw;
-    width: 95vw;  
-}
+  .topHalf {
+    flex-wrap: wrap;
+    /* background: yellow; */
+    position: relative;
+  }
 
-.individualRoute {
-  border-bottom: 1px solid black;
-  min-height: 8vh;
-  max-width: 100vw;
-}
+  
 
-.route_name_and_checkmark {
-    width: 95vw;
+
+  .nombre_and_location {
+    margin-top: 10px;
+    margin-left: 5px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    width: 42vw;
+    height: 33%;
+    border: 1px solid black;
+    background: rgba(255, 255, 255, 0.74);
+  }
+
+  .user_loc {
+    margin-left: 5px;
+  }
+
+  .location_info {
+    display: flex;
+    flex-wrap: wrap;
+    height: 20px;
+  }
+
+  .user_loc_icon {
+    height: 100%;
+    width: 20px;
+    /* background: yellow; */
+  }
+
+  .el_bio {
+    margin-top: 5px;
+    height: 6vh;
+    
+  }
+
+  .nombre {
+    height: 20%;
+    margin-top: 0;
+    font-size: 1.25em;
+    background: white;
+  }
+
+  #edit_profile {
+   margin-left: 0;
+   z-index: 10000000000000000;
+   position: absolute;
+   right: 10px;
+  }
+
+  .TheDropper {
+    margin-top: 10px;
+    margin-left: 5px;
+    max-height: 100px;
+    max-width: 125px;
+  }
+
+  .whatTheUserFillsIn {
+    height: 60%;
+    width: 70%;
+    margin-top: 0px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+
+  .userName,
+  .biography,
+  .location {
+    background: #dedede;
+    align-items: center;
+    justify-content: center;
+    font-size: 1em;
+    width: 98%;
+    height: 30px;
+  }
+
+  
+
+ 
+
+  .submitProfile {
+    width: 50px;
+    height: 30px;
+    border-radius: 33%;
+    margin-top: 10px;
+    border: 1px solid purple;
+  }
+
+ 
+
+  .allJournalEntries {
+    /* width: 98%; */
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+  }
+
+  .individualRoute {
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin-right: 0px;
+    max-width: 98vw;
+  }
+
+  .post_header {
+    /* width: 97.5vw; */
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 0;
-    justify-content: space-between;
+    justify-content: flex-start;
     background: black;
-}
+    position: relative;
+  }
 
-#profileRouteTimeStamp {
-  font-size: .75em;
-  color: rgba(255, 255, 255, 0.61);
-}
+  .checkmark_and_routename {
+    width: 50%;
+  }
 
-#profileRouteDescription {
-  text-align: left;
-  margin-top: 6px;
-  margin-right: 0;
-  width: 94%;
-  padding-top: 10px;
-  padding-left: 6px;
-  padding-right: 6px;
-  margin-bottom: 6px;
-}
+  #profileRouteTimeStamp {
+    font-size: 0.75em;
+    color: rgba(255, 255, 255, 0.61);
+    padding-right: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    position: absolute;
+    top: 10px;
+    right: 0;
+  }
 
-.description_and_route_pic {
+  #profileRouteDescription {
+    text-align: left;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 94%;
+    padding-top: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .description_and_route_pic {
     justify-content: center;
     align-items: center;
-    min-width: 100%;
-}
+  }
 
   #smallPic {
     max-height: 300px;

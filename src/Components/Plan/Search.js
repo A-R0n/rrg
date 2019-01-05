@@ -67,7 +67,7 @@ export default class Search extends Component {
                   : 'routeImgSelected'
               }
               src={elem.route_img}
-              alt=''
+              alt='route pic'
             />
             <button
               onClick={() => this.handleClick(elem.route_id)}
