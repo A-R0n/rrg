@@ -24,7 +24,6 @@ export default class Header extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className='header'>
         <h1 id='rrg_climb'>RRG Climb</h1>
@@ -33,26 +32,31 @@ export default class Header extends Component {
             <img
               className='homebutton'
               src='https://image.flaticon.com/icons/svg/609/609803.svg'
+              alt='home'
             />
           </Link>
           <Link to='/plan'>
             <img
               className='searchbutton'
               src='https://image.flaticon.com/icons/svg/167/167500.svg'
+              alt='allroutes'
             />
           </Link>
           <Link to='/journal'>
             <img
               className='journalbutton'
               src='https://image.flaticon.com/icons/svg/1088/1088149.svg'
+              alt='journal'
             />
           </Link>
           <Link to='/profile'>
             <img
               className='profilebutton'
+              alt='profile'
               src={
                 this.state.user_image ||
                 'https://image.flaticon.com/icons/svg/149/149072.svg'
+                
               }
             />
           </Link>

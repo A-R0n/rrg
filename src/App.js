@@ -5,7 +5,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 import routes from './routes';
-import axios from 'axios';
 
 class App extends Component {
   constructor() {

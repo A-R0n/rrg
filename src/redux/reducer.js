@@ -15,11 +15,14 @@ const UPDATE_BIOGRAPHY = "UPDATE_BIOGRAPHY";
 const UPDATE_LOCATION = "UPDATE_LOCATION";
 const ADD_IMAGE = 'ADD_IMAGE';
 const ROUTE_PIC = 'ROUTE_PIC';
+const UPDATE_PROFILE_TEXT = 'UPDATE_PROFILE_TEXT'
 
 function reducer(state = initialState, action) {
   
   switch(action.type){
     case UPDATE_PROFILE:
+      return Object.assign( {}, state );
+      case UPDATE_PROFILE_TEXT:
       return Object.assign( {}, state );
       case UPDATE_USERNAME:
       return Object.assign({}, state, {userName: action.payload})
@@ -60,6 +63,13 @@ export function updateProfile(val) {
   return {
     type: UPDATE_PROFILE,
     payload: axios.put("/api/username", {val})
+  };
+}
+export const update_profile_2 = val => {
+  console.log('redux page')
+  return {
+    type: UPDATE_PROFILE_TEXT,
+    payload: axios.put("/api/profile", {val})
   };
 }
 

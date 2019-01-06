@@ -28,7 +28,8 @@ const {
   createProfile,
   addImage,
   routePic,
-  getRoutePic
+  getRoutePic,
+  createNewProfile
 } = require("./Controllers/mainCtrl");
 
 const port = process.env.SERVER_PORT || 3001;
@@ -147,6 +148,7 @@ app.put(`/api/description/:id`, update);
 app.put(`/api/timestamp/:id`, updateTime);
 app.put(`/api/rating/:id`, createRating)
 app.put(`/api/username`, createProfile)
+app.put(`/api/profile`, createNewProfile)
 
 app.delete(`/api/table/:id`, deleteRouteFromJournal);
 

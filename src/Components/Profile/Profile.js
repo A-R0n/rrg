@@ -8,7 +8,8 @@ import {
   updateUserName,
   updateBiography,
   updateLocation,
-  updateProfile
+  updateProfile,
+  update_profile_2
 } from '../../redux/reducer';
 import Upload from '../Upload.js';
 // import {SketchField, Tools} from 'react-sketch';
@@ -18,41 +19,67 @@ class Profile extends Component {
     super();
 
     this.state = {
-      iNeedToBringInRedux: [],
+      routelog: [],
+      userroutelog: '',
       loc: '',
       name: '',
       bio: '',
-      user_exists: false
+      user_exists: false,
+      new_info_has_been_submitted: false,
+      user: {}
     };
   }
   componentDidMount() {
+    this.get_user_route_log();
+    this.get_user_personal_info();
+  }
+
+  get_user_route_log = () => {
     axios.get('/api/table').then(results => {
       this.setState({
-        iNeedToBringInRedux: results.data
+        routelog: results.data,
+        userroutelog: results.data.id
       });
     });
+  };
+
+  get_user_personal_info = () => {
     axios.get(`/api/user`).then(results => {
+      if(results.data.passport) {
       this.setState({
         user_exists: true,
         loc: results.data.passport.user.location_,
         name: results.data.passport.user.username,
         bio: results.data.passport.user.biography
       });
-    });
-  }
+    }});
+  
+  };
 
   edit_profile = () => {
     this.setState({ user_exists: !this.state.user_exists });
   };
 
-  update_profile_info = (id) => {
-    console.log(id)
-    // axios.put(`/api/username`)
-}
+  changeHandler = (e, name) => {
+    this.setState({ [name]: e.target.value });
+    console.log(e.target.value);
+  };
+
+
+
+  update_profile_info = () => {
+    this.props.update_profile_2(this.props)
+    .then(
+      this.setState({
+        user: Object.assign({}, this.state.user, { location_: this.props.location, biography: this.props.biography, username: this.props.userName }),
+        user_exists: true
+      })
+    );
+  }
 
   render() {
-    console.log(this.state);
-    let anotherMap = this.state.iNeedToBringInRedux.map((elem, i) => {
+    console.log(this.props);
+    let anotherMap = this.state.routelog.map((elem, i) => {
       return (
         <RouteLog
           key={i}
@@ -68,7 +95,7 @@ class Profile extends Component {
       updateUserName,
       updateBiography,
       updateLocation,
-      updateProfile
+      update_profile_2
     } = this.props;
     return (
       <div className='entireProfile'>
@@ -86,7 +113,7 @@ class Profile extends Component {
               placeholder='User Name'
               onChange={e => updateUserName(e.target.value)}
             />
-             <textarea
+            <textarea
               className='location'
               placeholder='Location'
               onChange={e => updateLocation(e.target.value)}
@@ -96,10 +123,10 @@ class Profile extends Component {
               placeholder='Biography'
               onChange={e => updateBiography(e.target.value)}
             />
-           
+
             <button
               className='submitProfile'
-              // onClick={() => update_profile_info()}
+              onClick={() => this.update_profile_info()}
             >
               submit
             </button>
@@ -116,15 +143,16 @@ class Profile extends Component {
                 this.state.user_exists ? 'nombre' : 'whatTheUserWontSee'
               }
             >
-              {this.state.name}
+              {this.props.userName || this.state.user.username}
             </div>
             <div className={'location_info'}>
               <img
                 className='user_loc_icon'
                 src='https://www.flaticon.com/premium-icon/icons/svg/450/450016.svg'
+                alt='pin'
               />
-              <div className='user_loc'>{this.state.loc}</div>
-              <div className='el_bio'>"{this.state.bio}"</div>
+              <div className='user_loc'>{this.props.location || this.state.loc}</div>
+              <div className='el_bio'>"{this.props.biography || this.state.bio}"</div>
             </div>
           </div>
           <button id='edit_profile' onClick={() => this.edit_profile()}>
@@ -154,5 +182,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { updateUserName, updateBiography, updateLocation, updateProfile }
+  { updateUserName, updateBiography, updateLocation,  update_profile_2 }
 )(Profile);

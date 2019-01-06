@@ -160,6 +160,17 @@ const createProfile = (req, res, next) => {
             res.status(500).send(err)})
 }
 
+const createNewProfile = (req, res, next) => {
+    console.log(req.body.val)
+    const {userName, biography, location} = req.body.val
+    req.app
+        .get('db')
+        .updateProfileAgain([userName, location, biography, req.user.id])
+        .then(response => res.status(200).send(response) )
+        .catch(err => {
+            res.status(500).send(err)})
+}
+
 module.exports = {
     getCoordinate,
     getRoutes,
@@ -175,5 +186,6 @@ module.exports = {
     getUser,
     addImage,
     routePic,
-    getRoutePic
+    getRoutePic,
+    createNewProfile
 };
