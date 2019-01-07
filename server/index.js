@@ -140,12 +140,12 @@ app.get(`/api/user`, getUser)
 app.get('/api/routePic:id', getRoutePic)
 
 app.post(`/api/test/:id`, addRoute);
+app.put(`/api/description/:id`, update);
 
 app.put(`/api/image`, addImage);
 app.put(`/api/routePic/:id/:userid`, routePic);
 app.put(`/api/iGotIt/:id`, iGotIt)
-app.put(`/api/description/:id`, update);
-app.put(`/api/timestamp/:id`, updateTime);
+app.put(`/api/timestamp/:id`, updateTime)
 app.put(`/api/rating/:id`, createRating)
 app.put(`/api/username`, createProfile)
 app.put(`/api/profile`, createNewProfile)

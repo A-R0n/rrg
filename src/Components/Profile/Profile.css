@@ -192,9 +192,9 @@
 }
 
 #dropdown_arrow {
-  margin-top: -15px;
+  margin-top: -20px;
   position: absolute;
-  right: 10px;
+  right: 150px;
   font-size: 2em;
   color: white;
 }
