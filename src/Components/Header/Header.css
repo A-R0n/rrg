@@ -50,7 +50,12 @@
   height: 70px;
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 413px) {
+
+  #rrg_climb {
+    padding-left: 10px;
+    font-size: 2.25em;
+  }
 
   .rightSideOfHeader {
     width: 75%;
