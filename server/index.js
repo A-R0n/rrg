@@ -113,19 +113,17 @@ passport.deserializeUser((user, done) => done(null, user));
 app.get(
   "/login",
   passport.authenticate("auth0", {
-    successRedirect: 'http://localhost:3000/plan',
-    // successRedirect: 'http://68.183.125.227:8080/plan/',
-    // successRedirect: 'http:www.rrgclimb/plan/',
-    failureRedirect: "/login"
+    // successRedirect: 'http://localhost:3000/plan',
+    successRedirect: 'http://www.rrgclimb.com/plan',
+    failureRedirect: '/login'
   })
 );
 
 app.get("/logout", function(req, res) {
   req.logout();
   req.session.destroy();
-  res.redirect('http://localhost:3000/');
-  // res.redirect('http://68.183.125.227:8080/');
-  // res.redirect('http://www.rrgclimb.com/');
+  // res.redirect('http://localhost:3000/');
+  res.redirect('http://www.rrgclimb.com/');
 });
 
 // Endpoints
