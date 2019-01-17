@@ -26,15 +26,10 @@ export default class Header extends Component {
   render() {
     return (
       <div className='header'>
-        <h1 id='rrg_climb'>RRG Climb</h1>
+        <Link to='/'>
+          <h1 id='rrg_climb'>RRG Climb</h1>
+        </Link>
         <div className='rightSideOfHeader'>
-          <Link to='/'>
-            <img
-              className='homebutton'
-              src='https://image.flaticon.com/icons/svg/609/609803.svg'
-              alt='home'
-            />
-          </Link>
           <Link to='/plan'>
             <img
               className='searchbutton'
@@ -56,7 +51,6 @@ export default class Header extends Component {
               src={
                 this.state.user_image ||
                 'https://image.flaticon.com/icons/svg/149/149072.svg'
-                
               }
             />
           </Link>
