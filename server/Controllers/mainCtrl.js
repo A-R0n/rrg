@@ -4,7 +4,7 @@ require('dotenv').config();
 var coord = []
 
 function getCoordinate (req, res, next) {
-   axios.get(`https://openweathermap.org/data/2.5/weather?lat=38&lon=-84&${process.env.WEATHER_API}`)
+   axios.get(`https://openweathermap.org/data/2.5/weather?lat=37.6539&lon=-83.7176&${process.env.WEATHER_API}`)
    .then(response => {
        console.log('weather resp', response.data.weather)
        if(response.data.weather[0].main == "Clouds"){
