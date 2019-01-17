@@ -23,9 +23,11 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin-left: 200px;
+  /* margin-left: 200px; */
   margin-right: 35px;
 }
+
+
 
 .profilebutton,
 .journalbutton,
