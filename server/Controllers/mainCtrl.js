@@ -6,24 +6,24 @@ var coord = []
 function getCoordinate (req, res, next) {
    axios.get(`https://openweathermap.org/data/2.5/weather?lat=37.6539&lon=-83.7176&${process.env.WEATHER_API}`)
    .then(response => {
-       console.log('weather resp', response.data.weather)
+       console.log('the current weather at the red river gorge is: ', response.data.weather[0].main)
        if(response.data.weather[0].main == "Clouds"){
            response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/131/131043.svg'
        }
        else if(response.data.weather[0].main == "Clear"){
-           response.data.weather[0].image = "https://image.flaticon.com/icons/svg/1163/1163661.svg"
+           response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/1163/1163661.svg'
        }
        else if(response.data.weather[0].main == "Rain"){
-        response.data.weather[0].image = "https://image.flaticon.com/icons/svg/704/704832.svg"
+        response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/704/704832.svg'
         }
         else if(response.data.weather[0].main == "Mist"){
-        response.data.weather[0].image = "https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d"
+        response.data.weather[0].image = 'https://c.pxhere.com/photos/85/d1/photo-33709.jpg!d'
         }
         else if(response.data.weather[0].main == "Drizzle"){
-            response.data.weather[0].image = "https://image.flaticon.com/icons/svg/1281/1281211.svg"
+            response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/1281/1281211.svg'
             }
         else if(response.data.weather[0].main == "Snow"){
-            response.data.weather[0].image = "https://image.flaticon.com/icons/svg/642/642000.svg"
+            response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/642/642000.svg'
             }
         
 

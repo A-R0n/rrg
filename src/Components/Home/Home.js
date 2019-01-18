@@ -7,7 +7,7 @@ export default class Home extends Component {
     super();
 
     this.state = {
-      corrd: [],
+      name_of_weather: [],
       tempInF: [],
       tempInC: [],
       tempIsInC: false
@@ -16,7 +16,7 @@ export default class Home extends Component {
   componentDidMount() {
     axios.get('/api/weather').then(results => {
       this.setState({
-        corrd: results.data.weather,
+        name_of_weather: results.data.weather[0].image,
         tempInC: results.data.main.temp,
         tempInF: results.data.main.temp * (9 / 5) + 32
       });
@@ -30,11 +30,13 @@ export default class Home extends Component {
   };
 
   render() {
-    const { corrd, tempInF, tempInC, tempIsInC } = this.state;
-    let mapWeather = corrd.map(val => {
-      return (
-        <div className='currentWeather'>
-          <img id='pic' src={val.image} alt='current weather icon' />
+    const { name_of_weather, tempInF, tempInC, tempIsInC } = this.state;
+    return (
+      <div className='home'>
+        <div className='home_information'>
+          <div className='weather_box'>
+          <div className='currentWeather'>
+          <img id='pic' src={name_of_weather} alt='current weather icon' />
           <div className='temp_and_button'>
             <div
               id={
@@ -57,13 +59,7 @@ export default class Home extends Component {
             </button>
           </div>
         </div>
-      );
-    });
-
-    return (
-      <div className='home'>
-        <div className='home_information'>
-          <div className='weather_box'>{mapWeather}</div>
+          </div>
           <div className='login_logout'>
             <a id='login' href={`${process.env.REACT_APP_SERVER}/login`}>
               Login
