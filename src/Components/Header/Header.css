@@ -17,7 +17,6 @@ padding-left: 10px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  /* margin-left: 200px; */
   margin-right: 35px;
 }
 
@@ -47,18 +46,20 @@ padding-left: 10px;
 @media only screen and (max-width: 413px) {
 
   #rrg_climb {
-    padding-bottom: 5px;
-    padding-left: 5px;
-    font-size: 2em;
+   margin: auto;
+   text-align: center;
+   height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
   }
 
   .rightSideOfHeader {
     width: 75%;
     display: flex;
     justify-content: space-evenly;
-    margin-left: 70px;
     align-items: center;
-    margin-right: 10px;
+    margin-right: 0px;
   }
 
   .profilebutton,
@@ -81,9 +82,5 @@ padding-left: 10px;
 
   .journalbutton {
     width: 40px;
-  }
-
-  #rrg_climb {
-   width: 20%;
   }
 }
