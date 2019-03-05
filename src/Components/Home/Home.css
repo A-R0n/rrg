@@ -2,8 +2,6 @@
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  /* background-image: url('https://static1.squarespace.com/static/51f68fe5e4b01da70d04b6eb/5419e4e9e4b0ca2f107f5ccc/5a64acc20d92971507930352/1531519018763/rrg-aerials-0095-web.jpg'); */
-  /* background-image: url('https://scontent-dfw5-2.cdninstagram.com/vp/9d02d8741a9fdc033fad2583c3d0e5ce/5CB36B0D/t51.2885-15/e35/41006762_235757757119089_8703327102690020511_n.jpg?_nc_ht=scontent-dfw5-2.cdninstagram.com'); */
   background-image: url('https://scontent-dfw5-2.cdninstagram.com/vp/7f5a9eecd7aa571225203c9999c21ca3/5CD52914/t51.2885-15/e35/47032540_2741834819375196_6667107466059017578_n.jpg?_nc_ht=scontent-dfw5-2.cdninstagram.com');
   background-size: cover;
   background-position: center;
@@ -44,6 +42,8 @@
 #pic {
   padding-top:0;
   z-index: 2;
+  width: 100px;
+  margin: auto;
   max-width: 288px;
   height: 45%;
   display: flex;

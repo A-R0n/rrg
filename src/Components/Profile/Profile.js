@@ -12,6 +12,7 @@ import {
   update_profile_2
 } from '../../redux/reducer';
 import Upload from '../Upload.js';
+import WorldMap from '../WorldMap/WorldMap.js';
 // import {SketchField, Tools} from 'react-sketch';
 
 class Profile extends Component {
@@ -101,6 +102,7 @@ class Profile extends Component {
       <div className='entireProfile'>
         <div className='topHalf'>
           <Upload />
+          
           <div
             className={
               !this.state.user_exists
@@ -160,6 +162,7 @@ class Profile extends Component {
           </button>
         </div>
         <div className='bottomHalf'>
+        <WorldMap />
           <div className='allJournalEntries'>{anotherMap}</div>
           <div className='allMedia' />
           <div className='allSends' />
