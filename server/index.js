@@ -40,7 +40,7 @@ app.use(cors());
 
 app.use(
   session({
-    secret: process.env.SESSION_SECRET,
+//    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -49,19 +49,19 @@ app.use(
   })
 );
 
-AWS.config.update({
-    accessKeyId: AS3_ACCESS_KEY_ID,
-    secretAccessKey: AS3_SECRET_ACCESS_KEY 
-});
-app.use(
-  "/s3",
-  require("react-s3-uploader/s3router")({
-    bucket: S3_BUCKET,
-    region: "us-east-1",
-    headers: { "Access-Control_Allow-Origin": "*" },
-    ACL: "public-read"
-  })
-);
+//AWS.config.update({
+//    accessKeyId: AS3_ACCESS_KEY_ID,
+//    secretAccessKey: AS3_SECRET_ACCESS_KEY 
+//});
+//app.use(
+//  "/s3",
+//  require("react-s3-uploader/s3router")({
+//    bucket: S3_BUCKET,
+//    region: "us-east-1",
+//    headers: { "Access-Control_Allow-Origin": "*" },
+//    ACL: "public-read"
+//  })
+//);
 
 massive(process.env.CONNECTION_STRING)
   .then(dbInstance => {
