@@ -6,42 +6,19 @@ import axios from 'axios';
 export default class Header extends Component {
   constructor() {
     super();
-
     this.state = {
       user_image: null,
-      user: {}
     };
   }
 
-  componentDidMount() {
-    axios.get(`/api/user`).then(results => {
+  async componentDidMount () {
+    await axios.get(`/api/user`).then(results => {
       if (results.data.passport) {
-        this.setState({
-          user_image: results.data.passport.user.image_url
-        });
-      }
+        this.setState({user_image: results.data.passport.user.image_url});
+      } 
     });
   }
 
-  getDefaultProps = () => {
-    return {
-      width: '50',
-      height: '50',
-      style_one: 'enable-background:new 0 0 512 512;',
-      style_two: '#B06328;',
-      style_three: "#B0C4D8;",
-      style_four: "#99B4CD;",
-      style_five: "#C4D7E5;",
-      style_six: "#70B7E5;",
-      style_seven: "#92C5EB;",
-      style_eight: "#4C9CD6;",
-      style_nine: "#B0C9DB;",
-      style_ten: "#E2E7F0;",
-      style_eleven: "#A35425;",
-      style_twelve: "#C97629;"
-
-    };
-  }
   render() {
     return (
       <div className='header'>

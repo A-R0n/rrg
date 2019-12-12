@@ -32,17 +32,25 @@ function getCoordinate (req, res, next) {
    }).catch(err => res.status(500).json(err))
 };
 
+const getMag = (req, res, next) => {
+    req.app
+        .get('db')
+        .mag()
+        .then(response => res.status(200).send(response) )
+        .catch(err => res.status(500).send(err))
+};
+
 const addImage = (req, res, next) => {
     const {imageUrl} = req.body
     req.app
-        .get('db')
+       $
         .add_image([imageUrl, req.user.id])
         .then(response => res.status(200).send(response))
         .catch(err => res.status(500).send(err))
 };
 
 const routePic = (req, res, next) => {
-    console.log('yes, so our test is hitting the route pic upload', req.params)
+    
     const {imageUrl} = req.body
     req.app
         .get('db')
@@ -54,7 +62,6 @@ const routePic = (req, res, next) => {
 };
 
 const getRoutePic = (req, res, next) => {
-    console.log('fjaslfsjef yessssss eflijwefiew', req.params)
     const {imageUrl} = req.body
     req.app
         .get('db')
@@ -187,5 +194,6 @@ module.exports = {
     addImage,
     routePic,
     getRoutePic,
-    createNewProfile
+    createNewProfile,
+    getMag
 };

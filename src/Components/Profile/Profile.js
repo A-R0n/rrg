@@ -79,7 +79,7 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.props);
+    console.log('props', this.props);
     let anotherMap = this.state.routelog.map((elem, i) => {
       return (
         <RouteLog

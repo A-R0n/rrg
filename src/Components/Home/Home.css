@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  background-image: url('https://scontent-dfw5-2.cdninstagram.com/vp/7f5a9eecd7aa571225203c9999c21ca3/5CD52914/t51.2885-15/e35/47032540_2741834819375196_6667107466059017578_n.jpg?_nc_ht=scontent-dfw5-2.cdninstagram.com');
+  background-image: url('https://51feetunder.files.wordpress.com/2012/04/amarillo_sunset_april2012_crop.jpg?w=1206&h=984');
   background-size: cover;
   background-position: center;
 }
@@ -143,11 +143,6 @@
 }
 
 @media only screen and (max-width: 413px) {
-  /* .home {
-    background-size: auto;
-    background-repeat: no-repeat;
-    
-  } */
   .home_information {
     justify-content: space-between;
   }

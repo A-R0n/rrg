@@ -30,7 +30,6 @@ export default class Search extends Component {
         isSelected: !this.state.isSelected
       });
     });
-    console.log(this.state.isSelected);
   };
 
   handleChange = filter => {
@@ -40,6 +39,7 @@ export default class Search extends Component {
   };
 
   render() {
+    console.log(this.state)
     let { routeNameString } = this.state;
 
     let routeToDisplay = this.state.allTheRoutes

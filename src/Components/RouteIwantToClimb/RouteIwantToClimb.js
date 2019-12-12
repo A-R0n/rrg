@@ -20,6 +20,7 @@ export default class RouteIwantToClimb extends Component {
   }
 
   componentDidMount = () => {
+    
     this.getUser()
   };
 

@@ -107,7 +107,6 @@ a {
 .text {
   margin-left: 0.2vw;
   font-size: 1.1em;
-  font-family: 'stein';
   width: 40%;
   display: flex;
   flex-wrap: wrap;
@@ -134,9 +133,13 @@ a {
 #crag,
 #trad,
 #rating {
-  margin-bottom: 0vh;
-  margin-left: 1vw;
-  margin-top: 0;
+ display: flex;
+ margin: auto;
+ text-align: center;
+}
+
+#rating {
+  margin-bottom: 50px;
 }
 
 #routeNameInSearch {
@@ -184,7 +187,7 @@ a {
   cursor: crosshair;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 500px) {
   .top_part {
     width: 90%;
     margin-left: 17px;
