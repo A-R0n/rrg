@@ -4,11 +4,11 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const massive = require("massive");
 const session = require("express-session");
-const passport = require("passport");
-const Auth0Strategy = require("passport-auth0");
-const AWS = require("aws-sdk");
+// const passport = require("passport");
+// const Auth0Strategy = require("passport-auth0");
+// const AWS = require("aws-sdk");
 const path = require('path');
-const { DOMAIN, CLIENT_ID, CLIENT_SECRET, S3_BUCKET, AS3_ACCESS_KEY_ID, AS3_SECRET_ACCESS_KEY} = process.env;
+// const { DOMAIN, CLIENT_ID, CLIENT_SECRET} = process.env;
 
 const app = express();
 
@@ -70,55 +70,55 @@ massive(process.env.CONNECTION_STRING)
   })
   .catch(err => console.log(err));
 
-app.use(passport.initialize());
-app.use(passport.session());
-app.use( express.static( `${__dirname}/../build/` ) );
+// app.use(passport.initialize());
+// app.use(passport.session());
 
-passport.use(
-  new Auth0Strategy(
-    {
-      domain: DOMAIN,
-      clientID: CLIENT_ID,
-      clientSecret: CLIENT_SECRET,
-      callbackURL: "/login",
-      scope: "openid"
-    },
-    (_, __, ___, profile, done) => {
-      // console.log('prof', profile)
-      done(null, profile);
-    }
-  )
-);
 
-passport.serializeUser((user, done) => {
-  const db = app.get("db");
-  // console.log('user currently logged in', user)
-  db.climbers
-    .get_climber_by_authid([user.id])
-    .then(response => {
-      if (!response[0]) {
-        db.climbers
-          .add_climber_by_authid([user.id])
-          .then(res => {
-            done(null, res[0]);
-          })
-          .catch(err => done(err, null));
-      } else {
-        return done(null, response[0]);
-      }
-    })
-    .catch(err => done(err, null));
-});
-passport.deserializeUser((user, done) => done(null, user));
+// passport.use(
+//   new Auth0Strategy(
+//     {
+//       domain: DOMAIN,
+//       clientID: CLIENT_ID,
+//       clientSecret: CLIENT_SECRET,
+//       callbackURL: "/login",
+//       scope: "openid"
+//     },
+//     (_, __, ___, profile, done) => {
+//       console.log('prof', profile)
+//       done(null, profile);
+//     }
+//   )
+// );
 
-app.get(
-  "/login",
-  passport.authenticate("auth0", {
-    // successRedirect: 'http://localhost:3000/plan',
-    successRedirect: 'http://www.rrgclimb.com/plan',
-    failureRedirect: '/login'
-  })
-);
+// passport.serializeUser((user, done) => {
+//   const db = app.get("db");
+//   // console.log('user currently logged in', user)
+//   db.climbers
+//     .get_climber_by_authid([user.id])
+//     .then(response => {
+//       if (!response[0]) {
+//         db.climbers
+//           .add_climber_by_authid([user.id])
+//           .then(res => {
+//             done(null, res[0]);
+//           })
+//           .catch(err => done(err, null));
+//       } else {
+//         return done(null, response[0]);
+//       }
+//     })
+//     .catch(err => done(err, null));
+// });
+// passport.deserializeUser((user, done) => done(null, user));
+
+// app.get(
+//   "/login",
+//   passport.authenticate("auth0", {
+//     // successRedirect: 'http://localhost:3000/plan',
+//     successRedirect: 'http://www.rrgclimb.com/plan',
+//     failureRedirect: '/login'
+//   })
+// );
 
 app.get("/logout", function(req, res) {
   req.logout();
@@ -152,6 +152,7 @@ app.put(`/api/profile`, createNewProfile)
 
 app.delete(`/api/table/:id`, deleteRouteFromJournal);
 
+app.use( express.static( `${__dirname}/../build/` ) );
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../build/index.html'));
 });
