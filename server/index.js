@@ -32,7 +32,7 @@ const {
   createNewProfile
 } = require("./Controllers/mainCtrl");
 
-const port = process.env.SERVER_PORT || 3001;
+const port = process.env.SERVER_PORT || 3333;
 
 app.use(json());
 app.use(cors());
