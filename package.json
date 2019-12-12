@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "aws-sdk": "^2.353.0",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
     "cors": "^2.8.4",
@@ -26,11 +26,11 @@
     "react-s3-uploader": "^4.8.0",
     "react-s3-uploader-multipart": "^4.8.0",
     "react-scripts": "2.0.5",
-    "react-sketch": "^0.4.4",
+    "react-sketch": "^0.5.1",
     "react-star-ratings": "^2.3.0",
     "redux": "^4.0.1",
     "redux-promise": "^0.6.0",
-    "sass": "^1.15.2",
+    "sass": "^1.23.7",
     "topojson-client": "^3.0.0"
   },
   "scripts": {
