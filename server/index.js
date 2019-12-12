@@ -39,16 +39,16 @@ app.use(json());
 app.use(cors());
 
 
-app.use(
-  session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 14 * 24 * 60 * 60 * 1000
-    }
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: {
+//       maxAge: 14 * 24 * 60 * 60 * 1000
+//     }
+//   })
+// );
 
 //AWS.config.update({
 //    accessKeyId: AS3_ACCESS_KEY_ID,
