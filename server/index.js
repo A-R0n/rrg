@@ -4,11 +4,12 @@ const { json } = require("body-parser");
 const cors = require("cors");
 const massive = require("massive");
 const session = require("express-session");
-// const passport = require("passport");
-// const Auth0Strategy = require("passport-auth0");
-// const AWS = require("aws-sdk");
+const passport = require("passport");
+const Auth0Strategy = require("passport-auth0");
+const AWS = require("aws-sdk");
 const path = require('path');
-// const { DOMAIN, CLIENT_ID, CLIENT_SECRET} = process.env;
+const { DOMAIN, CLIENT_ID, CLIENT_SECRET, AS3_ACCESS_KEY_ID, 
+  AS3_SECRET_ACCESS_KEY, S3_BUCKET} = process.env;
 
 const app = express();
 
@@ -39,30 +40,30 @@ app.use(json());
 app.use(cors());
 
 
-// app.use(
-//   session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: false,
-//     cookie: {
-//       maxAge: 14 * 24 * 60 * 60 * 1000
-//     }
-//   })
-// );
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 14 * 24 * 60 * 60 * 1000
+    }
+  })
+);
 
-//AWS.config.update({
-//    accessKeyId: AS3_ACCESS_KEY_ID,
-//    secretAccessKey: AS3_SECRET_ACCESS_KEY 
-//});
-//app.use(
-//  "/s3",
-//  require("react-s3-uploader/s3router")({
-//    bucket: S3_BUCKET,
-//    region: "us-east-1",
-//    headers: { "Access-Control_Allow-Origin": "*" },
-//    ACL: "public-read"
-//  })
-//);
+AWS.config.update({
+   accessKeyId: AS3_ACCESS_KEY_ID,
+   secretAccessKey: AS3_SECRET_ACCESS_KEY 
+});
+app.use(
+ "/s3",
+ require("react-s3-uploader/s3router")({
+   bucket: S3_BUCKET,
+   region: "us-east-1",
+   headers: { "Access-Control_Allow-Origin": "*" },
+   ACL: "public-read"
+ })
+);
 
 massive(process.env.CONNECTION_STRING)
   .then(dbInstance => {
@@ -70,61 +71,65 @@ massive(process.env.CONNECTION_STRING)
   })
   .catch(err => console.log(err));
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+  process.on('uncaughtException', function (err) {
+    console.log(err);
+}); 
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
-// passport.use(
-//   new Auth0Strategy(
-//     {
-//       domain: DOMAIN,
-//       clientID: CLIENT_ID,
-//       clientSecret: CLIENT_SECRET,
-//       callbackURL: "/login",
-//       scope: "openid"
-//     },
-//     (_, __, ___, profile, done) => {
-//       console.log('prof', profile)
-//       done(null, profile);
-//     }
-//   )
-// );
+passport.use(
+  new Auth0Strategy(
+    {
+      domain: DOMAIN,
+      clientID: CLIENT_ID,
+      clientSecret: CLIENT_SECRET,
+      callbackURL: "/login",
+      scope: "openid"
+    },
+    (_, __, ___, profile, done) => {
+      console.log('prof', profile)
+      done(null, profile);
+    }
+  )
+);
 
-// passport.serializeUser((user, done) => {
-//   const db = app.get("db");
-//   // console.log('user currently logged in', user)
-//   db.climbers
-//     .get_climber_by_authid([user.id])
-//     .then(response => {
-//       if (!response[0]) {
-//         db.climbers
-//           .add_climber_by_authid([user.id])
-//           .then(res => {
-//             done(null, res[0]);
-//           })
-//           .catch(err => done(err, null));
-//       } else {
-//         return done(null, response[0]);
-//       }
-//     })
-//     .catch(err => done(err, null));
-// });
-// passport.deserializeUser((user, done) => done(null, user));
+passport.serializeUser((user, done) => {
+  const db = app.get("db");
+  console.log('user currently logged in', user)
+  db.climbers
+    .get_climber_by_authid([user.id])
+    .then(response => {
+      if (!response[0]) {
+        db.climbers
+          .add_climber_by_authid([user.id])
+          .then(res => {
+            done(null, res[0]);
+          })
+          .catch(err => done(err, null));
+      } else {
+        return done(null, response[0]);
+      }
+    })
+    .catch(err => done(err, null));
+});
+passport.deserializeUser((user, done) => done(null, user));
 
-// app.get(
-//   "/login",
-//   passport.authenticate("auth0", {
-//     // successRedirect: 'http://localhost:3000/plan',
-//     successRedirect: 'http://www.rrgclimb.com/plan',
-//     failureRedirect: '/login'
-//   })
-// );
+app.get(
+  "/login",
+  passport.authenticate("auth0", {
+    successRedirect: 'http://127.0.0.1:3000/plan',
+    // successRedirect: 'http://www.rrgclimb.com/plan',
+    failureRedirect: '/login'
+  })
+);
 
 app.get("/logout", function(req, res) {
   req.logout();
   req.session.destroy();
-  // res.redirect('http://localhost:3000/');
-  res.redirect('http://www.rrgclimb.com/');
+  res.redirect('http://127.0.0.1:3000/');
+  // res.redirect('http://www.rrgclimb.com/');
 });
 
 // Endpoints

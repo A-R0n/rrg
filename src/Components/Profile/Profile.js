@@ -52,7 +52,7 @@ class Profile extends Component {
         loc: results.data.passport.user.location_,
         name: results.data.passport.user.username,
         bio: results.data.passport.user.biography
-      });
+      }).then(console.log(this.state));
     }});
   
   };
