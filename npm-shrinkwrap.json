@@ -11758,9 +11758,9 @@
       }
     },
     "react-s3-uploader": {
-      "version": "4.8.0",
-      "resolved": "https://registry.npmjs.org/react-s3-uploader/-/react-s3-uploader-4.8.0.tgz",
-      "integrity": "sha512-vKt6Gh+pFnkLOHkcOBtAKcbWvs8dHB1/xB9zu6yafvny0/IatVqBoZFp+jVnACLCVkex5hjMUHFknYifF2OoXA==",
+      "version": "4.9.2",
+      "resolved": "https://registry.npmjs.org/react-s3-uploader/-/react-s3-uploader-4.9.2.tgz",
+      "integrity": "sha512-0KwBddRPwkntLxLYN6AbFNDhGQ2OzhSmwYs5Cvq4fIii/oytpV/OYd1qTtCcrC1HCa1iPwOQnO5xNnOU+sXUXw==",
       "requires": {
         "aws-sdk": "2.x",
         "create-react-class": "^15.5.2",

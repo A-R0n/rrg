@@ -6,8 +6,8 @@ import { addImage } from '../redux/reducer';
 require('dotenv').config();
 
 class Upload extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       name: '',
@@ -50,6 +50,8 @@ class Upload extends Component {
   };
 
   render() {
+    console.log(this.props);
+    console.log(this.state);
     const uploadOptions = {
       server: process.env.REACT_APP_SERVER,
       signingUrlQueryParams: { uploadType: 'avatar' }

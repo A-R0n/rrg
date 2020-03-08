@@ -12,7 +12,7 @@ import {
   update_profile_2
 } from '../../redux/reducer';
 import Upload from '../Upload.js';
-import WorldMap from '../WorldMap/WorldMap.js';
+
 // import {SketchField, Tools} from 'react-sketch';
 
 class Profile extends Component {
@@ -46,6 +46,7 @@ class Profile extends Component {
 
   get_user_personal_info = () => {
     axios.get(`/api/user`).then(results => {
+      console.log("resultsssss: ", results);
       if(results.data.passport) {
       this.setState({
         user_exists: true,
@@ -79,7 +80,7 @@ class Profile extends Component {
   }
 
   render() {
-    console.log('props', this.props);
+    console.log(this.state);
     let anotherMap = this.state.routelog.map((elem, i) => {
       return (
         <RouteLog
@@ -162,7 +163,6 @@ class Profile extends Component {
           </button>
         </div>
         <div className='bottomHalf'>
-        <WorldMap />
           <div className='allJournalEntries'>{anotherMap}</div>
           <div className='allMedia' />
           <div className='allSends' />

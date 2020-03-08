@@ -89,7 +89,7 @@ passport.use(
       scope: "openid"
     },
     (_, __, ___, profile, done) => {
-      console.log('prof', profile)
+      console.log("done: ", done);
       done(null, profile);
     }
   )
@@ -97,7 +97,6 @@ passport.use(
 
 passport.serializeUser((user, done) => {
   const db = app.get("db");
-  console.log('user currently logged in', user)
   db.climbers
     .get_climber_by_authid([user.id])
     .then(response => {
@@ -114,7 +113,10 @@ passport.serializeUser((user, done) => {
     })
     .catch(err => done(err, null));
 });
-passport.deserializeUser((user, done) => done(null, user));
+
+passport.deserializeUser((user, done) => {
+  done(null, user)
+});
 
 app.get(
   "/login",
@@ -134,6 +136,7 @@ app.get("/logout", function(req, res) {
 
 // Endpoints
 app.get("/api/user", (req, res) => {
+  console.log(req.session);
   res.status(200).json(req.session);
 });
 app.get(`/api/weather`, getCoordinate);

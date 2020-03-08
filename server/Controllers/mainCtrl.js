@@ -97,6 +97,7 @@ const getUser = (req, res, next) => {
 };
 
 const getTable = (req, res, next) => {
+    console.log("passsssport: ", req.session.passport);
     req.app
         .get('db')
         .getCart([req.session.passport.user.id])
