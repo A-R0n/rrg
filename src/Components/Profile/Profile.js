@@ -3,6 +3,7 @@ import './Profile.css';
 import RouteLog from '../RouteLog/RouteLog.js';
 import moment from 'moment';
 import axios from 'axios';
+import ProfilePic from '../ProfilePic/ProfilePic';
 import { connect } from 'react-redux';
 import {
   updateUserName,
@@ -11,7 +12,7 @@ import {
   updateProfile,
   update_profile_2
 } from '../../redux/reducer';
-import Upload from '../Upload.js';
+// import Upload from '../Upload.js';
 
 // import {SketchField, Tools} from 'react-sketch';
 
@@ -31,8 +32,8 @@ class Profile extends Component {
     };
   }
   componentDidMount() {
-    this.get_user_route_log();
-    this.get_user_personal_info();
+    // this.get_user_route_log();
+    // this.get_user_personal_info();
   }
 
   get_user_route_log = () => {
@@ -101,8 +102,9 @@ class Profile extends Component {
     } = this.props;
     return (
       <div className='entireProfile'>
+        <ProfilePic />
         <div className='topHalf'>
-          <Upload />
+          {/* <Upload /> */}
           
           <div
             className={
