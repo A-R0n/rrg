@@ -6,7 +6,7 @@ var coord = []
 function getCoordinate (req, res, next) {
    axios.get(`https://openweathermap.org/data/2.5/weather?lat=37.6539&lon=-83.7176&${process.env.WEATHER_API}`)
    .then(response => {
-       console.log('the current weather at the red river gorge is: ', response.data.weather[0].main)
+    //    console.log('the current weather at the red river gorge is: ', response.data.weather[0].main)
        if(response.data.weather[0].main == "Clouds"){
            response.data.weather[0].image = 'https://image.flaticon.com/icons/svg/131/131043.svg'
        }
@@ -178,6 +178,8 @@ const createNewProfile = (req, res, next) => {
         .catch(err => {
             res.status(500).send(err)})
 }
+
+
 
 module.exports = {
     getCoordinate,

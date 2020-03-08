@@ -9,7 +9,7 @@ const Auth0Strategy = require("passport-auth0");
 const AWS = require("aws-sdk");
 const path = require('path');
 const { DOMAIN, CLIENT_ID, CLIENT_SECRET, AS3_ACCESS_KEY_ID, 
-  AS3_SECRET_ACCESS_KEY, S3_BUCKET} = process.env;
+  AS3_SECRET_ACCESS_KEY, S3_BUCKET_AVI} = process.env;
 
 const app = express();
 
@@ -52,13 +52,14 @@ app.use(
 );
 
 AWS.config.update({
+  region: 'us-east-1',
    accessKeyId: AS3_ACCESS_KEY_ID,
    secretAccessKey: AS3_SECRET_ACCESS_KEY 
 });
 app.use(
  "/s3",
  require("react-s3-uploader/s3router")({
-   bucket: S3_BUCKET,
+   bucket: S3_BUCKET_AVI,
    region: "us-east-1",
    headers: { "Access-Control_Allow-Origin": "*" },
    ACL: "public-read"
@@ -77,6 +78,14 @@ massive(process.env.CONNECTION_STRING)
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use('/s3', require('react-s3-uploader/s3router')({
+  bucket: S3_BUCKET_AVI,
+  region: 'us-east-1',
+  headers: {'Access-Control-Allow-Origin': '*'}, // optional
+  ACL: 'public-read', // private is the default
+  uniquePrefix: true // (4.0.2 and above) default is true, setting the attribute to false preserves the original filename in S3
+}));
 
 
 passport.use(
@@ -134,6 +143,35 @@ app.get("/logout", function(req, res) {
   // res.redirect('http://www.rrgclimb.com/');
 });
 
+const sign_s3 = (req,res) => {
+  const s3 = new AWS.S3();  // Create a new instance of S3
+  console.log("backenddddd s3 variable", s3);
+  const fileName = req.body.fileName;
+  const fileType = req.body.fileType;
+
+  const s3Params = {
+      Bucket: S3_BUCKET_AVI,
+      Key: fileName,
+      Expires: 500,
+      ContentType: fileType,
+      ACL: 'public-read'
+    };
+
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+      if(err){
+        console.log(err);
+        res.json({success: false, error: err})
+      }
+
+      const returnData = {
+          signedRequest: data,
+          url: `https://${S3_BUCKET_AVI}.s3.amazonaws.com/${fileName}`
+        };
+
+        res.json({success:true, data:{returnData}});
+      });
+}
+
 // Endpoints
 app.get("/api/user", (req, res) => {
   console.log(req.session);
@@ -148,6 +186,7 @@ app.get('/api/routePic:id', getRoutePic)
 app.get('/api/mag', getMag)
 
 app.post(`/api/test/:id`, addRoute);
+app.post(`/api/sign_s3`, sign_s3)
 app.put(`/api/description/:id`, update);
 
 app.put(`/api/image`, addImage);
