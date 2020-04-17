@@ -31,7 +31,8 @@ const {
   routePic,
   getRoutePic,
   createNewProfile,
-  getMag
+  getMag,
+  getClimber
 } = require("./Controllers/mainCtrl");
 
 const port = process.env.SERVER_PORT || 3333;
@@ -44,7 +45,7 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     cookie: {
       maxAge: 14 * 24 * 60 * 60 * 1000
     }
@@ -89,26 +90,29 @@ passport.use(
       scope: "openid"
     },
     (_, __, ___, profile, done) => {
-      console.log('prof', profile)
       done(null, profile);
     }
   )
 );
 
 passport.serializeUser((user, done) => {
+  console.log("passport.serialize user id: ", user.id);
   const db = app.get("db");
-  console.log('user currently logged in', user)
   db.climbers
     .get_climber_by_authid([user.id])
     .then(response => {
+      console.log("response at the zero index: ", response[0]);
       if (!response[0]) {
+        console.log("hey bro this is good");
         db.climbers
           .add_climber_by_authid([user.id])
           .then(res => {
+            console.log("this is good", res);
             done(null, res[0]);
           })
           .catch(err => done(err, null));
       } else {
+        console.log("the user already exists");
         return done(null, response[0]);
       }
     })
@@ -121,7 +125,7 @@ app.get(
   passport.authenticate("auth0", {
     successRedirect: 'http://127.0.0.1:3000/plan',
     // successRedirect: 'http://www.rrgclimb.com/plan',
-    failureRedirect: '/login'
+    failureRedirect: 'http://127.0.0.1:3000/login'
   })
 );
 
@@ -133,16 +137,26 @@ app.get("/logout", function(req, res) {
 });
 
 // Endpoints
-app.get("/api/user", (req, res) => {
-  res.status(200).json(req.session);
+app.get('/api/user', getUser);
+app.get('http://127.0.0.1:3000/plan', (req, res, next) => {
+  console.log("poop on my face");
+	req.app
+		.get('db')
+		.climber.where(`id=$1`, req.user._json.id)
+		.then((result) => {
+			// req.session.user = result[0];
+
+			res.redirect(`localhost:300/profile`);
+		})
+		.catch((err) => console.log("error alerrrrrt:", err));
 });
+app.get(`/api/climber:id`, getClimber);
 app.get(`/api/weather`, getCoordinate);
 app.get(`/api/routes`, getRoutes);
 app.get(`/api/table`, getTable);
 app.get(`/api/everyone`, getEveryonesDescription)
-app.get(`/api/user`, getUser)
-app.get('/api/routePic:id', getRoutePic)
-app.get('/api/mag', getMag)
+app.get('/api/routePic:id', getRoutePic);
+app.get('/api/mag', getMag);
 
 app.post(`/api/test/:id`, addRoute);
 app.put(`/api/description/:id`, update);

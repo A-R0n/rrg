@@ -6,71 +6,37 @@ const initialState = {
   biography: '',
   location: '',
   image_: '',
-  route_picture: ''
+  route_picture: '',
+  user: {}
 };
 
-const UPDATE_USERNAME = "UPDATE_USERNAME";
-const UPDATE_PROFILE = "UPDATE_PROFILE";
-const UPDATE_BIOGRAPHY = "UPDATE_BIOGRAPHY";
-const UPDATE_LOCATION = "UPDATE_LOCATION";
+
 const ADD_IMAGE = 'ADD_IMAGE';
 const ROUTE_PIC = 'ROUTE_PIC';
-const UPDATE_PROFILE_TEXT = 'UPDATE_PROFILE_TEXT'
+
+const SET_USER = 'SET_USER';
 
 function reducer(state = initialState, action) {
   
   switch(action.type){
-    case UPDATE_PROFILE:
-      return Object.assign( {}, state );
-      case UPDATE_PROFILE_TEXT:
-      return Object.assign( {}, state );
-      case UPDATE_USERNAME:
-      return Object.assign({}, state, {userName: action.payload})
-      case UPDATE_BIOGRAPHY:
-      return Object.assign({}, state, {biography: action.payload})
+    case `${SET_USER}_FULFILLED`:
+			// return Object.assign({}, state, { user: action.payload });
+			return { ...state, user: action.payload };
       case ADD_IMAGE:
       return Object.assign( {}, state, {image_: action.payload});
-      case UPDATE_LOCATION:
-      return Object.assign({}, state, {location: action.payload});
       case ROUTE_PIC:
       return Object.assign({}, state, {route_picture: action.payload});
     default:
       return state;
   }
 }
-
-export function updateUserName(username){
-  return {
-    type: UPDATE_USERNAME,
-    payload: username
-  };
-}
-export function updateBiography(bio){
-  return {
-    type: UPDATE_BIOGRAPHY,
-    payload: bio
-  };
-}
-
-export function updateLocation(location){
-  return {
-    type: UPDATE_LOCATION,
-    payload: location
-  };
-}
-
-export function updateProfile(val) {
-  return {
-    type: UPDATE_PROFILE,
-    payload: axios.put("/api/username", {val})
-  };
-}
-export const update_profile_2 = val => {
-  console.log('redux page')
-  return {
-    type: UPDATE_PROFILE_TEXT,
-    payload: axios.put("/api/profile", {val})
-  };
+export function setUser() {
+	return {
+		type: SET_USER,
+		payload: axios.get('/api/user').then((response) => {
+			return response.data;
+		})
+	};
 }
 
 export const addImage = imageUrl => {

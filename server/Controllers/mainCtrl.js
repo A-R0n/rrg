@@ -89,11 +89,20 @@ const getRoutes = (req, res, next) => {
 };
 
 const getUser = (req, res, next) => {
-    req.app
-        .get('db')
-        .get_user(req.user.id)
-        .then(response => res.status(200).send(response))
-        .catch(err => res.status(500).send(err))
+    console.log("whats good dogg?", req.session.id);
+    res.status(200).json(req.session.user);
+};
+
+const getClimber = (req, res, next) => {
+    console.log("boogy man musiccc: ", req.params.id);
+    // req.app
+    //     .get('db')
+    //     .query(`select * from climber where auth_id=${req.params.id}`)
+    //     .then((result) => {
+    //         // req.session.user = result[0];
+    //         res.status(200).json(result);
+    //     })
+    //     .catch((err) => res.status(500).send(err));
 };
 
 const getTable = (req, res, next) => {
@@ -195,5 +204,6 @@ module.exports = {
     routePic,
     getRoutePic,
     createNewProfile,
-    getMag
+    getMag,
+    getClimber
 };
