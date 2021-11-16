@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "aws-sdk": "^2.353.0",
+    "aws-sdk": "^2.814.0",
     "axios": "^0.18.1",
     "body-parser": "^1.18.3",
     "concurrently": "^4.1.0",
